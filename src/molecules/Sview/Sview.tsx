@@ -14,7 +14,7 @@ export interface SviewProps extends ViewProps {
   component?: ReactNode;
 }
 
-// TODO: ideally we'd export from <Sview like a SviewComponentProvider
+// ideally we'd export from <Sview like a SviewComponentProvider? no a componentsettingsprovider
 // and then Sview would have a hook?
 // eh, just make a component if you want something else that bad.
 

@@ -6,6 +6,10 @@ import { Text } from "react-native";
 import type { TextProps, TextStyle, FlexAlignType } from "react-native";
 import { COLORS, DEFAULT_FONT } from "../../constants";
 
+// TODO: make component library with: https://github.com/callstack/react-theme-provider
+// have default fonts with:
+// https://github.com/react-native-training/react-native-fonts
+
 type StextTextProps = Omit<TextProps, "style">;
 
 export interface StextProps extends TextStyle {
@@ -31,20 +35,7 @@ export const getStyleProps = (props, otherProps) => {
     alignItems = "center";
     textAlign = "center";
   }
-  if (justifyContent || alignItems || textAlign) {
-    return {
-      // THESE ARE DEFAULT PROPS YOU CAN ADD.
-      fontFamily: DEFAULT_FONT, //TODO: have this be DEFAULT_FONT Proxima Nova
-      fontWeight: undefined,
-      textAlign,
-      justifyContent,
-      alignItems,
-      backgroundColor: "transparent",
-      color: COLORS.WHITE,
-      ...otherProps
-    };
-  }
-  return {
+  let DEFAULT_PROPS ={
     // THESE ARE DEFAULT PROPS YOU CAN ADD.
     fontFamily: DEFAULT_FONT,
     fontWeight: undefined,
@@ -52,6 +43,16 @@ export const getStyleProps = (props, otherProps) => {
     color: COLORS.WHITE,
     ...otherProps
   };
+  if (justifyContent || alignItems || textAlign) {
+    return {
+      // THESE ARE DEFAULT PROPS YOU CAN ADD.
+      textAlign,
+      justifyContent,
+      alignItems,
+      ...DEFAULT_PROPS
+    };
+  }
+  return DEFAULT_PROPS;
 };
 
 // https://akveo.github.io/react-native-ui-kitten/docs/components/text/overview#text
