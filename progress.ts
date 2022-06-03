@@ -18,7 +18,7 @@ THEN: try downloading in bit.
 // IMPORT COMPONENT =============
 // bit install @nameofcomponent => imports it like a library
 // bit import teambit.base-ui/input/button --path random/directory => installs like you copy/pasted into directory.
-
+https://bit.dev/docs/components/importing-components
 
 
 
