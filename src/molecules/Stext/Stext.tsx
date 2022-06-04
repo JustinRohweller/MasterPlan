@@ -1,10 +1,9 @@
 //Stext is a component that:
 //
-import React from "react";
-// could use regular react native one as well.
-import { Text } from "react-native";
-import type { TextProps, TextStyle, FlexAlignType } from "react-native";
-import { COLORS, DEFAULT_FONT } from "../../constants";
+import React, { useContext } from "react";
+import { FlexAlignType, Text, TextProps, TextStyle } from "react-native";
+import { MoleculeThemeContext } from "..";
+// import { COLORS, DEFAULT_FONT } from "../../constants";
 
 // TODO: make component library with: https://github.com/callstack/react-theme-provider
 // have default fonts with:
@@ -18,7 +17,7 @@ export interface StextProps extends TextStyle {
   center?: boolean;
 }
 
-export const getStyleProps = (props, otherProps) => {
+export const getStyleProps = (props: any, otherProps: any) => {
   let justifyContent:
     | "center"
     | "flex-start"
@@ -30,26 +29,30 @@ export const getStyleProps = (props, otherProps) => {
   let alignItems: FlexAlignType | undefined;
   let textAlign = "auto" as "auto" | "left" | "right" | "center";
 
+  const theme = useContext(MoleculeThemeContext);
+
   if (props.center) {
     justifyContent = "center";
     alignItems = "center";
     textAlign = "center";
   }
-  let DEFAULT_PROPS ={
+  let DEFAULT_PROPS = {
     // THESE ARE DEFAULT PROPS YOU CAN ADD.
-    fontFamily: DEFAULT_FONT,
+    fontFamily: theme?.fontFamily || undefined,
     fontWeight: undefined,
     backgroundColor: "transparent",
-    color: COLORS.WHITE,
-    ...otherProps
+    color: theme?.textColor || undefined,
+    ...otherProps,
   };
+
+  console.log("default", DEFAULT_PROPS);
   if (justifyContent || alignItems || textAlign) {
     return {
       // THESE ARE DEFAULT PROPS YOU CAN ADD.
       textAlign,
       justifyContent,
       alignItems,
-      ...DEFAULT_PROPS
+      ...DEFAULT_PROPS,
     };
   }
   return DEFAULT_PROPS;
@@ -59,9 +62,11 @@ export const getStyleProps = (props, otherProps) => {
 const Stext = (props: StextProps): JSX.Element => {
   const { center, children, textProps, ...otherProps } = props;
 
+  console.log(getStyleProps(props, otherProps));
+
   return (
     <Text style={{ ...getStyleProps(props, otherProps) }} {...textProps}>
-      {children}
+      {props.children}
     </Text>
   );
 };

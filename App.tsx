@@ -1,7 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Sview } from "./src/molecules";
 import { DripsyProvider, makeTheme, View as DView } from "dripsy";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { MoleculeProvider, Stext, Sview } from "./src/molecules";
 
 export const THEME = makeTheme({
   // colors: COLORS,
@@ -13,7 +13,7 @@ export const THEME = makeTheme({
     $5: 5,
     $7: 7,
     $10: 10,
-    $20: 20
+    $20: 20,
   },
   radii: {
     none: 0,
@@ -22,10 +22,10 @@ export const THEME = makeTheme({
     medium: 8,
     large: 16,
     xl: 23,
-    massive: 30
+    massive: 30,
   },
   types: {
-    onlyAllowThemeValues: "always"
+    onlyAllowThemeValues: "always",
   },
   fontSizes: {
     $0: 12,
@@ -34,7 +34,7 @@ export const THEME = makeTheme({
     $3: 18,
     $4: 24,
     $5: 28,
-    $6: 32
+    $6: 32,
   },
   // customFonts: {
   //   OpenSans: {
@@ -60,21 +60,29 @@ export const THEME = makeTheme({
       "75%": "75%",
       "50%": "50%",
       "25%": "25%",
-      "10%": "10%"
-    }
-  }
+      "10%": "10%",
+    },
+  },
 });
 
 export default function App() {
   return (
     <View style={styles.container}>
       <DripsyProvider theme={THEME}>
-
-      <Sview backgroundColor={'blue'} flex={1} component={DView} row >
-        <Sview backgroundColor={'orange'} height={500} width={80} />
-        <Sview backgroundColor={'white'} height={500} width={80} />
-        <Text>Hi</Text>
-        </Sview>
+        <MoleculeProvider theme={{ textColor: "#019123" }}>
+          <Sview
+            // backgroundColor={"blue"}
+            flex={1}
+            component={DView}
+            row
+            center
+            height={500}
+          >
+            <Stext>
+              Hif dak;ldfjk a;sdj f;aldajdk;j ;a;j;ja;;afdf;a;;d a;sdf
+            </Stext>
+          </Sview>
+        </MoleculeProvider>
       </DripsyProvider>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
@@ -85,7 +93,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     // alignItems: 'center',
     // justifyContent: 'center',
   },
