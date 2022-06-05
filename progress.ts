@@ -1,5 +1,6 @@
 /*
 THE PLAN:
+// ok, just need to delete/remove it from the project now, and then import it.
 Make constants into bit usable components.
 PROBLEM: can't be importing assets in there.
 PROBLEM 1: can't import fonts.
@@ -61,7 +62,8 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -molecules DONE
 -constants 
 -root
--navigator
+-hooks
+-navigator?
 -scripts
 
 -make scripts to help make libraries.

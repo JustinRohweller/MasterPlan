@@ -11,7 +11,7 @@
 {
     "ui/constants": {
         "scope": "jrohweller.mycomponents",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "src/constants"
     },

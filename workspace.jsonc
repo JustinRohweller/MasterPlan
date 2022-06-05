@@ -39,6 +39,7 @@
     "packageManager": "teambit.dependencies/yarn",
     "policy": {
       "dependencies": {
+        "@jrohweller/mycomponents.ui.constants": "0.0.3",
         "@jrohweller/mycomponents.ui.molecules": "0.0.2"
       },
       "peerDependencies": {}

@@ -1428,6 +1428,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:7.12.18":
+  version: 7.12.18
+  resolution: "@babel/runtime@npm:7.12.18::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40babel%2Fruntime%2F-%2Fruntime-7.12.18.tgz"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 0ba38dc8d478584b0b5fb15fc2b7855f9f20561917bd434a66429d55d1165199d6161bc5fb087b87254712827f63561ff5196df66701e5647d67c7d0f557569a
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.8.4":
   version: 7.18.3
   resolution: "@babel/runtime@npm:7.18.3::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40babel%2Fruntime%2F-%2Fruntime-7.18.3.tgz"
@@ -1991,6 +2000,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jrohweller/mycomponents.ui.constants@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@jrohweller/mycomponents.ui.constants@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40jrohweller%2Fmycomponents.ui.constants%2F-%2F%40jrohweller-mycomponents.ui.constants-0.0.3.tgz"
+  dependencies:
+    react: 17.0.2
+    react-native: 0.68.2
+  checksum: 6018ae0b0266149de1589b00eb22191f71809f472ea256c41f983d7e1b101d6b42f3ed61940a57e7d3989f75cb19e029336d16a2575ce8159c2e177377f32fe8
+  languageName: node
+  linkType: hard
+
 "@jrohweller/mycomponents.ui.molecules@npm:0.0.2":
   version: 0.0.2
   resolution: "@jrohweller/mycomponents.ui.molecules@npm:0.0.2::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40jrohweller%2Fmycomponents.ui.molecules%2F-%2F%40jrohweller-mycomponents.ui.molecules-0.0.2.tgz"
@@ -2377,10 +2396,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jest@npm:26.0.20":
+  version: 26.0.20
+  resolution: "@types/jest@npm:26.0.20::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40types%2Fjest%2F-%2Fjest-26.0.20.tgz"
+  dependencies:
+    jest-diff: ^26.0.0
+    pretty-format: ^26.0.0
+  checksum: db7730d2d70d2cdaef0ade7a5185fad844b21df827eafdd1690ce8053c399277ecce6b274ffd649e7a38008e192e8f0eb3ecc296b69e75407e30a9c8388d0d5c
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 17.0.40
   resolution: "@types/node@npm:17.0.40::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40types%2Fnode%2F-%2Fnode-17.0.40.tgz"
   checksum: e3b2fe876672fbe4be84ce17773944eb2f5eaba50e2c6c0536bdf6d4972ed6488581580581f154183fdc8f2d56fa42a42e3d6e83b9b71ee25adea16a84765e92
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:12.20.4":
+  version: 12.20.4
+  resolution: "@types/node@npm:12.20.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40types%2Fnode%2F-%2Fnode-12.20.4.tgz"
+  checksum: 30f1f5d8159fcb968206706f0f943167731f3d0763602571af29676b1afdcfe3b41524442cacdee3853a456dcd11d0e3ab2bf28b6821dfa2749a4b393fe7b510
   languageName: node
   linkType: hard
 
@@ -3657,6 +3693,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"constants-99f0ba@workspace:src/constants":
+  version: 0.0.0-use.local
+  resolution: "constants-99f0ba@workspace:src/constants"
+  languageName: unknown
+  linkType: soft
+
 "content-type@npm:~1.0.4":
   version: 1.0.4
   resolution: "content-type@npm:1.0.4::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fcontent-type%2F-%2Fcontent-type-1.0.4.tgz"
@@ -3999,6 +4041,13 @@ __metadata:
   version: 1.2.0
   resolution: "destroy@npm:1.2.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fdestroy%2F-%2Fdestroy-1.2.0.tgz"
   checksum: 0acb300b7478a08b92d810ab229d5afe0d2f4399272045ab22affa0d99dbaf12637659411530a6fcd597a9bdac718fc94373a61a95b4651bbc7b83684a565e38
+  languageName: node
+  linkType: hard
+
+"diff-sequences@npm:^26.6.2":
+  version: 26.6.2
+  resolution: "diff-sequences@npm:26.6.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fdiff-sequences%2F-%2Fdiff-sequences-26.6.2.tgz"
+  checksum: 79af871776ef149a7ff3345d6b1bf37fe6e81f68632aa5542787851f6f60fba19b0be22fdd1e06046f56ae7382763ccfe94a982c39ee72bd107aef435ecbc0cf
   languageName: node
   linkType: hard
 
@@ -5628,6 +5677,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-diff@npm:^26.0.0":
+  version: 26.6.2
+  resolution: "jest-diff@npm:26.6.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fjest-diff%2F-%2Fjest-diff-26.6.2.tgz"
+  dependencies:
+    chalk: ^4.0.0
+    diff-sequences: ^26.6.2
+    jest-get-type: ^26.3.0
+    pretty-format: ^26.6.2
+  checksum: d00d297f31e1ac0252127089892432caa7a11c69bde29cf3bb6c7a839c8afdb95cf1fd401f9df16a4422745da2e6a5d94b428b30666a2540c38e1c5699915c2d
+  languageName: node
+  linkType: hard
+
 "jest-get-type@npm:^26.3.0":
   version: 26.3.0
   resolution: "jest-get-type@npm:26.3.0::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fjest-get-type%2F-%2Fjest-get-type-26.3.0.tgz"
@@ -6190,8 +6251,12 @@ __metadata:
   resolution: "masterplan@workspace:."
   dependencies:
     "@babel/core": ^7.12.9
+    "@babel/runtime": 7.12.18
     "@expo/vector-icons": ^13.0.0
+    "@jrohweller/mycomponents.ui.constants": 0.0.3
     "@jrohweller/mycomponents.ui.molecules": 0.0.2
+    "@types/jest": 26.0.20
+    "@types/node": 12.20.4
     "@types/react": ~17.0.21
     "@types/react-native": ~0.66.13
     "@ui-kitten/components": ^5.1.2
@@ -7450,7 +7515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^26.5.2, pretty-format@npm:^26.6.2":
+"pretty-format@npm:^26.0.0, pretty-format@npm:^26.5.2, pretty-format@npm:^26.6.2":
   version: 26.6.2
   resolution: "pretty-format@npm:26.6.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Fpretty-format%2F-%2Fpretty-format-26.6.2.tgz"
   dependencies:
