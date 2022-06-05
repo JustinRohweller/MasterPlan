@@ -6,7 +6,6 @@ ie. import react-theme-provider, have defaults
 THEN: update components in bit.
 THEN: try downloading in bit.
 
-
 ====================BIT====================
 // CREATE COMPONENT =============
 // bit add res/molecules/Stext
@@ -20,54 +19,7 @@ THEN: try downloading in bit.
 // bit import teambit.base-ui/input/button --path random/directory => installs like you copy/pasted into directory.
 https://bit.dev/docs/components/importing-components
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-package-globally-with-the-command-sudo-npm-inst
 
 STEP 1: make molecules into a lib.
 (right now it crashes)
@@ -91,7 +43,6 @@ STEP 1: make molecules into a lib.
 -make scripts to help make libraries.
 ie. script that copies code over, and publishes.
 
-
 -make scripts, constants, molecules, root, navigator.
 and scripts to make those.
 
@@ -99,7 +50,6 @@ ON SAVE:
 -format, remove unused imports, format imports, import needed DONE
 -remove unused styles
 -make constants?
-
 
 GIT HOOKS:
 git hooks are good I think too for code cleanup.
@@ -109,7 +59,5 @@ git hooks are good I think too for code cleanup.
 
 VSCODE EXTENSIONS:
 -maybe 
-
-
 
 */

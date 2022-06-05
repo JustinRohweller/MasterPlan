@@ -45,7 +45,6 @@ export const getStyleProps = (props: any, otherProps: any) => {
     ...otherProps,
   };
 
-  console.log("default", DEFAULT_PROPS);
   if (justifyContent || alignItems || textAlign) {
     return {
       // THESE ARE DEFAULT PROPS YOU CAN ADD.
@@ -61,8 +60,6 @@ export const getStyleProps = (props: any, otherProps: any) => {
 // https://akveo.github.io/react-native-ui-kitten/docs/components/text/overview#text
 const Stext = (props: StextProps): JSX.Element => {
   const { center, children, textProps, ...otherProps } = props;
-
-  console.log(getStyleProps(props, otherProps));
 
   return (
     <Text style={{ ...getStyleProps(props, otherProps) }} {...textProps}>

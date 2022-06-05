@@ -5,16 +5,14 @@ interface MoleculeProviderProps {
   children?: any;
 }
 
-export type MoleculeThemeContextType = { theme: any };
+export type MoleculeThemeContextType = {
+  fontFamily?: string;
+  textColor?: string;
+};
 
 export const MoleculeThemeContext = createContext<MoleculeThemeContextType>(
   null as any
 );
-
-export const createMoleculeContext = (theme: any) => {
-  const MyContext = createContext(theme);
-  return MyContext;
-};
 
 export const MoleculeProvider = ({
   theme,
@@ -29,16 +27,8 @@ export const MoleculeProvider = ({
   );
 };
 
-// const MoleculeProvider = ({ context, children }: MoleculeProviderProps) => {
-//   const Context = context;
-//   return <Context.Provider />;
-// };
-
-// // ex.
-// const context = createMoleculeContext({ fontSize: 10 });
-
 // return (
-//   <MoleculeProvider context={context}>
+//   <MoleculeProvider theme={{ fontFamily: "bold"}}>
 //     {children}
 //     </MoleculeProvider>
 // )

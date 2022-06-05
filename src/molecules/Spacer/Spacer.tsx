@@ -3,11 +3,14 @@
 //
 
 import React from "react";
+import { Dimensions } from "react-native";
 import Sview from "../Sview/Sview";
-import { PERCENTS } from "../../constants";
 
-const DEFAULT_HEIGHT = PERCENTS.HEIGHT[2.5];
-const DEFAULT_WIDTH = PERCENTS.WIDTH[2.5];
+const WINDOW = Dimensions.get("window");
+const DEFAULT_HEIGHT = WINDOW.height * 0.025;
+const DEFAULT_WIDTH = WINDOW.width * 0.025;
+const DEFAULT_SMALL_WIDTH = WINDOW.width * 0.01;
+const DEFAULT_SMALL_HEIGHT = WINDOW.height * 0.01;
 
 interface SpacerProps {
   height?: number;
@@ -27,11 +30,12 @@ const Spacer = (props: SpacerProps): JSX.Element => {
       {...props}
       height={
         props.small
-          ? PERCENTS.HEIGHT[1]
+          ? DEFAULT_SMALL_HEIGHT
           : props.height
           ? props.height
           : DEFAULT_PROPS.height
       }
+      width={30}
     />
   );
 };
@@ -43,7 +47,7 @@ Spacer.W = (props: SpacerProps): JSX.Element => {
       {...props}
       width={
         props.small
-          ? PERCENTS.WIDTH[1]
+          ? DEFAULT_SMALL_WIDTH
           : props.width
           ? props.width
           : DEFAULT_PROPS.width

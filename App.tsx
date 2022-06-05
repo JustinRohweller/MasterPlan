@@ -1,7 +1,7 @@
-import { DripsyProvider, makeTheme, View as DView } from "dripsy";
-import { StatusBar } from "expo-status-bar";
+import { makeTheme } from "dripsy";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { MoleculeProvider, Stext, Sview } from "./src/molecules";
+import { MoleculeProvider } from "./src/molecules";
 
 export const THEME = makeTheme({
   // colors: COLORS,
@@ -65,36 +65,41 @@ export const THEME = makeTheme({
   },
 });
 
-export default function App() {
+// FOR WHATEVER STUPID REASON: it requires two refreshes (ALL THE TIME?)
+//  to show changes to empty react native view
+
+// ALWAYS NAME THINGS, AND THEN EXPORT
+// https://stackoverflow.com/questions/63788454/fast-refresh-in-react-native-always-fully-reload-the-app
+
+const theme = { textColor: "#019123" };
+const App = () => {
   return (
-    <View style={styles.container}>
-      <DripsyProvider theme={THEME}>
-        <MoleculeProvider theme={{ textColor: "#019123" }}>
-          <Sview
-            // backgroundColor={"blue"}
-            flex={1}
-            component={DView}
-            row
-            center
-            height={500}
-          >
-            <Stext>
-              Hif dak;ldfjk a;sdj f;aldajdk;j ;a;j;ja;;afdf;a;;d a;sdf
-            </Stext>
-          </Sview>
-        </MoleculeProvider>
-      </DripsyProvider>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    // <DripsyProvider theme={THEME}>
+    <View style={{ flex: 1, justifyContent: "center" }}>
+      <MoleculeProvider theme={theme}>
+        {/* <Sview flex={1} component={DView}> */}
+        {/* <Sview height={300} /> */}
+        {/* <View style={{ backgroundColor: "blue", height: 20, width: 20 }} /> */}
+        {/* <Spacer backgroundColor={"orange"} height={500} width={500} /> */}
+        {/* <Spacer /> */}
+        {/* <Spacer backgroundColor={"black"} /> */}
+        <View style={{ backgroundColor: "blue" }}>
+          <Text>Hi</Text>
+        </View>
+        {/* <Stext>
+            Hif dak;ldfjk a;sdj f;aldajdk;j ;a;j;ja;;afdf;a;;d a;sdf
+          </Stext> */}
+      </MoleculeProvider>
+      {/* </DripsyProvider> */}
     </View>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
