@@ -1,3 +1,4 @@
+// YOU CAN CHANGE THE NAMES OF THESE IF YOU"D LIKE!
 export { default as OpenSansBold } from "./OpenSans-Bold.ttf";
 export { default as OpenSansBoldItalic } from "./OpenSans-BoldItalic.ttf";
 export { default as OpenSansExtraBold } from "./OpenSans-ExtraBold.ttf";

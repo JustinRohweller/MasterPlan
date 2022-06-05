@@ -8,31 +8,45 @@ import {
   Stext,
   Sview,
 } from "@jrohweller/mycomponents.ui.molecules";
+import { useFonts } from "expo-font";
 import { TouchableHighlight } from "react-native";
+import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
-import { getLocalImages } from "./src/constants";
+import { getLocalImages, ignoreSettingATimer } from "./src/constants";
 
 export const APP_LOCAL_IMAGES = getLocalImages(Images);
+
+ignoreSettingATimer.ignore();
 // makeTHeme from dripsy forces double refresh.
 
-const theme = { textColor: "#019123" };
 const App = () => {
-  return (
-    <MoleculeProvider theme={theme}>
-      <Sview flex={1}>
-        <Spacer />
-        <Simage source={{ uri: APP_LOCAL_IMAGES.icon.uri }} />
-        <Sbutton
-          onPress={() => console.log("onPress")}
-          center
-          buttonComponent={TouchableHighlight}
-        >
-          <Stext>Hi</Stext>
-        </Sbutton>
-        <Sicon iconComponent={MaterialCommunityIcons} name="home" />
-      </Sview>
-    </MoleculeProvider>
-  );
+  const [loaded, error] = useFonts(Fonts);
+  if (error || !loaded) {
+    // return <Sview>{/* <Stext>Error</Stext> */}</Sview>;
+    return null;
+  }
+  if (loaded) {
+    const theme = {
+      textColor: "#019123",
+      fontFamily: "OpenSansBold",
+    };
+    return (
+      <MoleculeProvider theme={theme}>
+        <Sview flex={1}>
+          <Spacer />
+          <Simage source={{ uri: APP_LOCAL_IMAGES.icon.uri }} />
+          <Sbutton
+            onPress={() => console.log("onPress")}
+            center
+            buttonComponent={TouchableHighlight}
+          >
+            <Stext>Hi</Stext>
+          </Sbutton>
+          <Sicon iconComponent={MaterialCommunityIcons} name="home" />
+        </Sview>
+      </MoleculeProvider>
+    );
+  }
 };
 
 export default App;
