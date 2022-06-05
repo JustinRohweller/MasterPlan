@@ -11,7 +11,7 @@
 {
     "ui/constants": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "src/constants"
     },
