@@ -1,31 +1,36 @@
-// import { makeTheme } from "dripsy";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet } from "react-native";
-import { MoleculeProvider, Spacer, Stext, Sview } from "./src/molecules";
-import Simage from "./src/molecules/Simage";
+import { TouchableHighlight } from "react-native";
+import {
+  MoleculeProvider,
+  Sicon,
+  Simage,
+  Spacer,
+  Stext,
+  Sview,
+} from "./src/molecules";
+import Sbutton from "./src/molecules/Sbutton";
 
 // makeTHeme from dripsy forces double refresh.
-
-// now spacer just straight up does not reload
 
 const theme = { textColor: "#019123" };
 const App = () => {
   return (
     <MoleculeProvider theme={theme}>
-      <Sview flex={1} center>
+      <Sview flex={1}>
         <Spacer />
         <Simage source={{ uri: "https://picsum.photos/200" }} />
-        <Stext>Hi</Stext>
+        <Sbutton
+          onPress={() => console.log("onPress")}
+          center
+          buttonComponent={TouchableHighlight}
+        >
+          <Stext>Hi</Stext>
+        </Sbutton>
+        <Sicon iconComponent={MaterialCommunityIcons} name="home" />
       </Sview>
     </MoleculeProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});
 
 export default App;

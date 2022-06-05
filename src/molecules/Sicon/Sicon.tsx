@@ -1,26 +1,30 @@
 import React from "react";
-import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import {
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ViewStyle,
+} from "react-native";
 import { getStandardProps } from "../Sview/Sview";
 
 type TouchableWithoutStyle = Omit<TouchableOpacityProps, "style">;
 
-interface SbuttonProps extends TouchableWithoutStyle {
-  iconLib: React.ComponentType;
-  name: "string";
-  size?: number;
-  color?: string;
+interface SiconProps extends ViewStyle {
+  iconComponent: React.ComponentType<any>;
+  onPress?: () => void;
 }
 
 // TODO: have a look at old CustomIcon component.
 // ie. pass in all the things.
 
-const Sicon = (props: SbuttonProps) => {
-  const IconLib = props.iconLib;
+const Sicon = (props: any) => {
+  const { iconComponent, onPress, ...otherProps } = props;
+  const IconComponent = props.iconComponent;
   // only onpress, style
   // can pass
   return (
-    <TouchableOpacity onPress={props.onPress} {...getStandardProps(props)}>
-      <IconLib {...props} />
+    <TouchableOpacity onPress={onPress} {...getStandardProps(props)}>
+      {/* @ts-ignore */}
+      <IconComponent {...otherProps} />
     </TouchableOpacity>
   );
 };

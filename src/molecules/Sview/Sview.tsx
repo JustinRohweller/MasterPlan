@@ -1,6 +1,6 @@
 //Sview is a component that:
 // renders a view/layout of
-import React, { ReactNode } from "react";
+import React, { ComponentType, ReactNode } from "react";
 import type { FlexAlignType, ViewProps, ViewStyle } from "react-native";
 import { View } from "react-native";
 
@@ -11,7 +11,7 @@ export interface SviewProps extends ViewStyle {
   center?: boolean;
   viewProps?: ViewPropsWithoutStyle;
   row?: boolean;
-  component?: ReactNode;
+  component?: ComponentType<any>;
   children?: ReactNode;
 }
 
@@ -52,6 +52,7 @@ const Sview = (props: SviewProps): JSX.Element => {
 
   if (props.component) {
     const Component = props.component;
+    // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
     return (
       // @ts-ignore
       <Component
@@ -67,6 +68,8 @@ const Sview = (props: SviewProps): JSX.Element => {
     );
   }
 
+  // it's literally saying React.ReactNode is not (node_modules/ReactNode)
+
   return (
     <View
       style={{
@@ -76,6 +79,7 @@ const Sview = (props: SviewProps): JSX.Element => {
       }}
       {...viewProps}
     >
+      {/* @ts-ignore */}
       {children}
     </View>
   );
