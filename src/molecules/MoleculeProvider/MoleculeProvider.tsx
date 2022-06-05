@@ -27,6 +27,7 @@ export const MoleculeProvider = ({
   );
 };
 
+// ex
 // return (
 //   <MoleculeProvider theme={{ fontFamily: "bold"}}>
 //     {children}
