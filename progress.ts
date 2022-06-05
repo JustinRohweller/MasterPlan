@@ -25,19 +25,7 @@ THEN: try downloading in bit.
 // IMPORT COMPONENT =============
 // bit init
 // change "packageManager": "teambit.dependencies/yarn", in workspace.jsonc
-// Set "defaultScope": "jrohweller.beastly" in workspace.jsonc
-// bit import jrohweller.beastly/molecules => works, brings local
-// might need to run it twice.
-// if successful, can run:
-// bit install.
-// this gets it into node_modules, but idk how to get it from there.
-
-// good video on example of it.
-// https://www.google.com/search?q=bit.dev+example+usage+of+a+component&rlz=1C5CHFA_enUS919US919&oq=bit.dev+example+usage+of+a+component&aqs=chrome..69i57j33i160.5883j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=_XkecYovzEueckPIP5_2Q6AY25
-
-// 
-
-// 
+// bit install @jrohweller/mycomponents.ui.molecules
 
 // 
 // bit import @my-scope/jrohweller.beastly.molecules
