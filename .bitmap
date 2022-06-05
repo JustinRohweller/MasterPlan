@@ -9,5 +9,11 @@
  */
 
 {
+    "ui/constants": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "src/constants"
+    },
     "$schema-version": "14.9.0"
 }

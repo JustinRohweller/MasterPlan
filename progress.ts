@@ -15,7 +15,7 @@ IF shit is red, do use typescript workspace version.
 // idk if matters but=> "name": "mybitworkspace",
 // bit login
 // bit add src/molecules --namespace ui (IMPORTANT!!!!!)
-// bit tag --all --message "second version molecules"
+// bit tag --all --message "constants"
 // can do --force-deploy if needed. ^
 // bit export
 // 
