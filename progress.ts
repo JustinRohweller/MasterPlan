@@ -1,7 +1,6 @@
 /*
 THE PLAN:
-Make molecules work with only packages as imports.
-ie. import react-theme-provider, have defaults
+Make constants into bit usable components.
 
 THEN: update components in bit.
 THEN: try downloading in bit.
@@ -41,24 +40,11 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 
 // 
 
-STEP 1: make molecules into a lib.
-(right now it crashes)
--In order to make any library:
--first, make it run within expo project, have main folder (molecules in this case)
--Does it need other libraries?
--If not, just drag and drop into github repo, and can import the repo. Maybe isn't the best to do this anyway.
--If yes, npm init in another folder, drag and drop, install needed libraries
--https://www.twilio.com/blog/2017/06/writing-a-node-module-in-typescript.html
--change to private, npm publish
--hmm, in theory bit might be a bit easier? not sure
-
--TODO: honestly the keep it simple stupid principle is feeling good at the moment.
--Step 1: get it working the way we want.
--Step 2: drag and drop into github.
--Step 3: npm install githuburl.com
-// then will directly say, "need to have X library installed".
-
--if it has expo modules in it: https://docs.expo.dev/modules/overview/
+-molecules DONE
+-constants 
+-root
+-navigator
+-scripts
 
 -make scripts to help make libraries.
 ie. script that copies code over, and publishes.
