@@ -63,6 +63,7 @@ const Stext = (props: StextProps): JSX.Element => {
 
   return (
     <Text style={{ ...getStyleProps(props, otherProps) }} {...textProps}>
+      {/* @ts-ignore */}
       {props.children}
     </Text>
   );

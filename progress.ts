@@ -8,15 +8,19 @@ THEN: try downloading in bit.
 
 ====================BIT====================
 // CREATE COMPONENT =============
+// WHAT I ACTUALLY DID:
 // bit init
 // change "packageManager": "teambit.dependencies/yarn", in workspace.jsonc
 // Set "defaultScope": "jrohweller.beastly" in workspace.jsonc
+// idk if matters but=> "name": "mybitworkspace",
 // bit login
-// bit add src/molecules
-// bit compile
-// bit tag --all --message "first version" 
-// can do --force-deploy if needed.
-// bit export => put in cloud
+// bit add src/molecules --namespace ui (IMPORTANT!!!!!)
+// bit tag --all --message "second version molecules"
+// can do --force-deploy if needed. ^
+// bit export
+// 
+
+// THEN: OTHER FILE: bit install @jrohweller/mycomponents.ui.molecules
 
 // IMPORT COMPONENT =============
 // bit init
