@@ -1,6 +1,7 @@
 // import { makeTheme } from "dripsy";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { MoleculeProvider, Spacer } from "./src/molecules";
 // import { Spacer } from "./src/molecules";
 
 // export const THEME = makeTheme({
@@ -75,19 +76,20 @@ const App = () => {
   return (
     // <DripsyProvider theme={THEME}>
     <View style={{ flex: 1, justifyContent: "center" }}>
-      {/* <MoleculeProvider theme={theme}> */}
-      {/* <Sview flex={1} component={DView}> */}
-      {/* <Sview height={300} /> */}
-      <View style={{ backgroundColor: "blue", height: 20, width: 200 }} />
-      {/* <Spacer backgroundColor={"orange"} height={500} width={500} /> */}
-      {/* <Spacer backgroundColor={"black"} /> */}
-      <View style={{ backgroundColor: "blue" }}>
-        <Text>Hi</Text>
-      </View>
-      {/* <Stext>
+      <MoleculeProvider theme={theme}>
+        {/* <Sview flex={1} component={DView}> */}
+        {/* <Sview height={300} /> */}
+        {/* <View style={{ backgroundColor: "blue", height: 20, width: 20 }} /> */}
+        {/* <Spacer backgroundColor={"orange"} height={500} width={500} /> */}
+        <Spacer backgroundColor={"black"} />
+        <Spacer backgroundColor={"black"} />
+        <View style={{ backgroundColor: "blue" }}>
+          <Text>Hi</Text>
+        </View>
+        {/* <Stext>
             Hif dak;ldfjk a;sdj f;aldajdk;j ;a;j;ja;;afdf;a;;d a;sdf
           </Stext> */}
-      {/* </MoleculeProvider> */}
+      </MoleculeProvider>
       {/* </DripsyProvider> */}
     </View>
   );
