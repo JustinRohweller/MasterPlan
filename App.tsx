@@ -9,7 +9,10 @@ import {
   Sview,
 } from "@jrohweller/mycomponents.ui.molecules";
 import { TouchableHighlight } from "react-native";
-import { APP_LOCAL_IMAGES } from "./src/constants/images";
+import * as Images from "./src/assets/images";
+import { getLocalImages } from "./src/constants";
+
+export const APP_LOCAL_IMAGES = getLocalImages(Images);
 // makeTHeme from dripsy forces double refresh.
 
 const theme = { textColor: "#019123" };

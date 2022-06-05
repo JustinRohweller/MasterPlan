@@ -1,6 +1,23 @@
 /*
 THE PLAN:
 Make constants into bit usable components.
+PROBLEM: can't be importing assets in there.
+PROBLEM 1: can't import fonts.
+SOLUTION: literally just use expo-font, have a hook useFonts
+Honestly might not even need a component for that. 
+maybe make it a hook anyway for group import effect
+
+PROBLEM 2: can't import images.
+SOLUTION: have function that is getFinalImages
+import * as Images from "./assets/images";
+export const APP_LOCAL_IMAGES = getFinalImages(Images);
+
+THEN: later within our new root, we can have these as "illegal" stuff 
+that we can import directly
+
+// 
+
+// 
 
 IF shit is red, do use typescript workspace version.
 
