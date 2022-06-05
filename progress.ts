@@ -8,18 +8,46 @@ THEN: try downloading in bit.
 
 ====================BIT====================
 // CREATE COMPONENT =============
-// bit add res/molecules/Stext
+// bit init
+// change "packageManager": "teambit.dependencies/yarn", in workspace.jsonc
+// Set "defaultScope": "jrohweller.beastly" in workspace.jsonc
+// bit login
+// bit add src/molecules
 // bit compile
-// bit start
-// bit tag --all --message "first version" --force-deploy => track the things
+// bit tag --all --message "first version" 
+// can do --force-deploy if needed.
 // bit export => put in cloud
 
 // IMPORT COMPONENT =============
+// bit init
+// change "packageManager": "teambit.dependencies/yarn", in workspace.jsonc
+// Set "defaultScope": "jrohweller.beastly" in workspace.jsonc
+// bit import jrohweller.beastly/molecules => works, brings local
+// might need to run it twice.
+// if successful, can run:
+// bit install.
+// this gets it into node_modules, but idk how to get it from there.
+
+// good video on example of it.
+// https://www.google.com/search?q=bit.dev+example+usage+of+a+component&rlz=1C5CHFA_enUS919US919&oq=bit.dev+example+usage+of+a+component&aqs=chrome..69i57j33i160.5883j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=_XkecYovzEueckPIP5_2Q6AY25
+
+// 
+
+// 
+
+// 
+// bit import @my-scope/jrohweller.beastly.molecules
 // bit install @nameofcomponent => imports it like a library
 // bit import teambit.base-ui/input/button --path random/directory => installs like you copy/pasted into directory.
 https://bit.dev/docs/components/importing-components
 
 https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-package-globally-with-the-command-sudo-npm-inst
+
+// 
+
+// 
+
+// 
 
 STEP 1: make molecules into a lib.
 (right now it crashes)
