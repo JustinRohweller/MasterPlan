@@ -7,8 +7,11 @@ import type {
   ImageSourcePropType,
   ImageStyle,
 } from "react-native";
-import { Image } from "react-native";
-import { APP_LOCAL_IMAGES, PERCENTS } from "../../constants";
+import { Dimensions, Image } from "react-native";
+
+const WINDOW = Dimensions.get("window");
+const DEFAULT_HEIGHT = WINDOW.height * 0.15;
+const DEFAULT_WIDTH = WINDOW.width * 0.15;
 
 type SimageImageProps = Omit<ImageProps, "style">;
 
@@ -18,10 +21,6 @@ interface SimageProps extends ImageStyle {
   source: ImageSourcePropType;
   center?: boolean;
 }
-
-const DEFAULT_PROPS = {
-  source: APP_LOCAL_IMAGES.icon,
-};
 
 // https://akveo.github.io/react-native-ui-kitten/docs/components/text/overview#text
 const Simage = (props: SimageProps): JSX.Element => {
@@ -50,12 +49,11 @@ const Simage = (props: SimageProps): JSX.Element => {
     <Image
       style={{
         resizeMode: "contain",
-        width: PERCENTS.WIDTH[15],
-        height: PERCENTS.WIDTH[15],
-        flex: 1,
+        width: DEFAULT_WIDTH,
+        height: DEFAULT_HEIGHT,
         ...getStyleProps(),
       }}
-      source={source ? source : DEFAULT_PROPS.source}
+      source={source}
       {...imageProps}
     />
   );

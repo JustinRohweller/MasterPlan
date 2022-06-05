@@ -2,6 +2,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { MoleculeProvider, Spacer, Stext, Sview } from "./src/molecules";
+import Simage from "./src/molecules/Simage";
 
 // makeTHeme from dripsy forces double refresh.
 
@@ -13,12 +14,7 @@ const App = () => {
     <MoleculeProvider theme={theme}>
       <Sview flex={1} center>
         <Spacer />
-        <Spacer />
-        <Spacer />
-        <Spacer />
-        <Spacer />
-        <Spacer />
-        <Spacer />
+        <Simage source={{ uri: "https://picsum.photos/200" }} />
         <Stext>Hi</Stext>
       </Sview>
     </MoleculeProvider>

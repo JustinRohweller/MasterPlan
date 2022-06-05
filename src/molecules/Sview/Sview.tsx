@@ -1,17 +1,18 @@
 //Sview is a component that:
 // renders a view/layout of
 import React, { ReactNode } from "react";
-import type { FlexAlignType, ViewProps } from "react-native";
+import type { FlexAlignType, ViewProps, ViewStyle } from "react-native";
 import { View } from "react-native";
 
 type ViewPropsWithoutStyle = Omit<ViewProps, "style">;
 
 // can have all the style props + a viewprops that has viewprops.
-export interface SviewProps extends ViewProps {
+export interface SviewProps extends ViewStyle {
   center?: boolean;
   viewProps?: ViewPropsWithoutStyle;
   row?: boolean;
   component?: ReactNode;
+  children?: ReactNode;
 }
 
 // ideally we'd export from <Sview like a SviewComponentProvider? no a componentsettingsprovider
