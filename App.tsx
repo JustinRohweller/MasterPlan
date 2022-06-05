@@ -1,16 +1,15 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import React from "react";
-import { TouchableHighlight } from "react-native";
 import {
   MoleculeProvider,
+  Sbutton,
   Sicon,
   Simage,
   Spacer,
   Stext,
   Sview,
-} from "./src/molecules";
-import Sbutton from "./src/molecules/Sbutton";
-
+} from "@jrohweller/mycomponents.ui.molecules";
+import { TouchableHighlight } from "react-native";
+import { APP_LOCAL_IMAGES } from "./src/constants/images";
 // makeTHeme from dripsy forces double refresh.
 
 const theme = { textColor: "#019123" };
@@ -19,7 +18,7 @@ const App = () => {
     <MoleculeProvider theme={theme}>
       <Sview flex={1}>
         <Spacer />
-        <Simage source={{ uri: "https://picsum.photos/200" }} />
+        <Simage source={{ uri: APP_LOCAL_IMAGES.icon.uri }} />
         <Sbutton
           onPress={() => console.log("onPress")}
           center

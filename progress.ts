@@ -2,8 +2,9 @@
 THE PLAN:
 Make constants into bit usable components.
 
-THEN: update components in bit.
-THEN: try downloading in bit.
+IF shit is red, do use typescript workspace version.
+
+// after every install, may need to reinstall bit modules, ie. put in postinstall script.
 
 ====================BIT====================
 // CREATE COMPONENT =============
@@ -22,16 +23,16 @@ THEN: try downloading in bit.
 // THEN: OTHER FILE: bit install @jrohweller/mycomponents.ui.molecules
 
 // IMPORT COMPONENT =============
+// bit init --reset-hard if you need to install stuff again.
 // bit init
 // change "packageManager": "teambit.dependencies/yarn", in workspace.jsonc
 // bit install @jrohweller/mycomponents.ui.molecules
+// if it succeeds, it may mess with tytpscript.
+// you can do select typescript version and it'll fix it?
+// also had to do: "jsx": "react-jsx", in tsconfig.json
+// AFTER EVERY LIB INSTALL, need to: bit install @jrohweller/mycomponents.ui.molecules -u
 
-// 
-// bit import @my-scope/jrohweller.beastly.molecules
-// bit install @nameofcomponent => imports it like a library
-// bit import teambit.base-ui/input/button --path random/directory => installs like you copy/pasted into directory.
-https://bit.dev/docs/components/importing-components
-
+// https://bit.cloud/jrohweller/mycomponents/ui/molecules/~code
 https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-package-globally-with-the-command-sudo-npm-inst
 
 // 

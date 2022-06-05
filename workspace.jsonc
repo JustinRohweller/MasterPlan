@@ -10,7 +10,7 @@
     /**
      * the name of the component workspace. used for development purposes.
      **/
-    "name": "mybitworkspace",
+    "name": "my-workspace-name",
     /**
      * set the icon to be shown on the Bit server.
      **/
@@ -27,7 +27,7 @@
     /**
      * default scope for all components in workspace.
      **/
-     "defaultScope": "jrohweller.mycomponents"
+    "defaultScope": "jrohweller.beastly"
   },
   /**
    * main configuration for component dependency resolution.
@@ -38,7 +38,9 @@
      */
     "packageManager": "teambit.dependencies/yarn",
     "policy": {
-      "dependencies": {},
+      "dependencies": {
+        "@jrohweller/mycomponents.ui.molecules": "0.0.2"
+      },
       "peerDependencies": {}
     }
   },
