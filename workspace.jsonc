@@ -27,7 +27,7 @@
     /**
      * default scope for all components in workspace.
      **/
-    "defaultScope": "jrohweller.beastly"
+    "defaultScope": "jrohweller.mycomponents"
   },
   /**
    * main configuration for component dependency resolution.

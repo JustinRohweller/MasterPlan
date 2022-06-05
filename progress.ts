@@ -28,7 +28,7 @@ IF shit is red, do use typescript workspace version.
 // WHAT I ACTUALLY DID:
 // bit init
 // change "packageManager": "teambit.dependencies/yarn", in workspace.jsonc
-// Set "defaultScope": "jrohweller.beastly" in workspace.jsonc
+// Set "defaultScope": "jrohweller.mycomponents" in workspace.jsonc
 // idk if matters but=> "name": "mybitworkspace",
 // bit login
 // bit add src/molecules --namespace ui (IMPORTANT!!!!!)
