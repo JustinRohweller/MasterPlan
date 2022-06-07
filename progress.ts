@@ -1,6 +1,20 @@
 /*
 THE PLAN:
-Make root component within bit.
+Make 2 root components within bit.
+1) global stuff.
+-safe area wrapper.
+-have root loading, loadingcontenxt
+-root error
+-root popup/alert (root alert?)
+-root app restart alert
+-init firebase (don't fail if no firebase)
+-status bar
+-app store app update alert
+-handle no internet
+-splash keeper?
+-other hooks
+2) make example you download and use.
+// ie. take the actual file you are using that relies on those, export it.
 
 THEN: later within our new root, we can have these as "illegal" stuff 
 that we can import directly
