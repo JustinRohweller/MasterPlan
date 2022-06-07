@@ -1,9 +1,9 @@
+import * as Updates from "expo-updates";
 import { useEffect, useState } from "react";
 import { Alert, AppState } from "react-native";
-import * as Updates from "expo-updates";
 
 // https://docs.expo.dev/build/updates/
-const checkUpdates = async (setReloading) => {
+const checkUpdates = async (setReloading: (reload: boolean) => void) => {
   console.info("Checking for an update...");
   try {
     const update = await Updates.checkForUpdateAsync();
@@ -31,12 +31,15 @@ const useAutoUpdate = () => {
   };
 
   useEffect(() => {
-    AppState.addEventListener("change", handleAppStateChange);
+    const subscription = AppState.addEventListener(
+      "change",
+      handleAppStateChange
+    );
     // fresh start check
     checkUpdates(setShowReloadDialog);
 
     return () => {
-      AppState.removeEventListener("change", handleAppStateChange);
+      subscription.remove();
     };
   }, []);
 

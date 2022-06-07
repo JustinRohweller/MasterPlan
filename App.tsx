@@ -1,5 +1,9 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
+  getLocalImages,
+  ignoreSettingATimer,
+} from "@jrohweller/mycomponents.ui.constants";
+import {
   MoleculeProvider,
   Sbutton,
   Sicon,
@@ -12,7 +16,6 @@ import { useFonts } from "expo-font";
 import { TouchableHighlight } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
-import { getLocalImages, ignoreSettingATimer } from "./src/constants";
 
 export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
