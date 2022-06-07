@@ -1,21 +1,23 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   getLocalImages,
   ignoreSettingATimer,
+  PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
 import {
   MoleculeProvider,
-  Sbutton,
-  Sicon,
   Simage,
-  Spacer,
-  Stext,
   Sview,
 } from "@jrohweller/mycomponents.ui.molecules";
 import { useFonts } from "expo-font";
-import { TouchableHighlight } from "react-native";
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+  SafeAreaView,
+} from "react-native-safe-area-context";
 import * as Fonts from "../assets/fonts";
 import * as Images from "../assets/images";
+
+// Splash screen => loading animation => content (already loaded)
 
 export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
@@ -33,21 +35,45 @@ const App = () => {
       textColor: "#019123",
       fontFamily: "OpenSansBold",
     };
+
     return (
-      <MoleculeProvider theme={theme}>
-        <Sview flex={1}>
-          <Spacer />
-          <Simage source={{ uri: APP_LOCAL_IMAGES.icon.uri }} />
-          <Sbutton
-            onPress={() => console.log("onPress")}
-            center
-            buttonComponent={TouchableHighlight}
-          >
-            <Stext>Hi</Stext>
-          </Sbutton>
-          <Sicon iconComponent={MaterialCommunityIcons} name="home" />
-        </Sview>
-      </MoleculeProvider>
+      <SafeAreaProvider>
+        <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
+          <MoleculeProvider theme={theme}>
+            <Sview
+              flex={1}
+              backgroundColor={"orange"}
+              height={
+                PERCENTS.HEIGHT[100] +
+                initialWindowMetrics?.insets.top +
+                initialWindowMetrics?.insets.bottom
+              }
+              marginTop={
+                -(
+                  initialWindowMetrics?.insets.top +
+                  initialWindowMetrics?.insets.bottom
+                )
+              }
+              marginBottom={
+                -(
+                  initialWindowMetrics?.insets.top +
+                  initialWindowMetrics?.insets.bottom
+                )
+              }
+              width={PERCENTS.WIDTH[100]}
+            >
+              <Simage
+                width={"100%"}
+                height={"100%"}
+                source={{
+                  uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
+                }}
+                resizeMode={"cover"}
+              />
+            </Sview>
+          </MoleculeProvider>
+        </SafeAreaView>
+      </SafeAreaProvider>
     );
   }
 };

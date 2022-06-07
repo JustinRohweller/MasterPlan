@@ -1,8 +1,12 @@
 /*
 THE PLAN:
+-First, to fix bit typings.
+-Add preinstall script that removes text from package.json
+-Add postinstall script that adds them back.
+
 Make 2 root components within bit.
 1) global stuff.
--safe area wrapper.
+-safe area wrapper. (transparent idea?)
 -have root loading, loadingcontenxt
 -root error
 -root popup/alert (root alert?)
@@ -28,6 +32,7 @@ IF shit is red, do use typescript workspace version.
 // after every install, may need to reinstall bit modules, ie. put in postinstall script.
 
 ====================BIT====================
+// https://github.com/teambit/bit/discussions/4707
 // CREATE COMPONENT =============
 // WHAT I ACTUALLY DID:
 // bit init

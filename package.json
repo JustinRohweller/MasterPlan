@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "postinstall": "node ./src/scripts/stfu.ts && bit install -u"
+    "postinstall": "node ./src/scripts/stfu.ts && bit install"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -21,7 +21,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-web": "0.17.7"
+    "react-native-safe-area-context": "^4.3.1",
+    "react-native-web": "0.17.7",
+    "@jrohweller/mycomponents.ui.constants": "0.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
