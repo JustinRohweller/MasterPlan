@@ -6,6 +6,7 @@ import {
 import {
   MoleculeProvider,
   Simage,
+  Stext,
   Sview,
 } from "@jrohweller/mycomponents.ui.molecules";
 import { NavigationContainer } from "@react-navigation/native";
@@ -20,6 +21,7 @@ import {
 } from "react-native-safe-area-context";
 import * as Fonts from "../assets/fonts";
 import * as Images from "../assets/images";
+import RootLoadingProvider from "./RootLoadingProvider";
 import RootStatusBar from "./RootStatusBar";
 
 // Splash screen => loading animation => content (already loaded)
@@ -28,6 +30,22 @@ export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
 ignoreSettingATimer.ignore();
 // makeTHeme from dripsy forces double refresh.
+
+const MyLoadingItem = () => {
+  return (
+    <Sview
+      position="absolute"
+      alignItems="center"
+      justifyContent="center"
+      left={0}
+      right={0}
+      top={0}
+      bottom={0}
+    >
+      <Stext>Hey Sorry we're loading</Stext>
+    </Sview>
+  );
+};
 
 const Root = (props: any) => {
   const [fullScreen, setFullScreen] = useState(false);
@@ -119,9 +137,11 @@ const Root = (props: any) => {
               />
               <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
                 <MoleculeProvider theme={theme}>
-                  {/* <MainNavigator /> */}
-                  {props.children}
-                  <Sview flex={1}>{renderImage()}</Sview>
+                  <RootLoadingProvider content={MyLoadingItem}>
+                    {/* <MainNavigator /> */}
+                    {/* {props.children} */}
+                    <Sview flex={1}>{renderImage()}</Sview>
+                  </RootLoadingProvider>
                 </MoleculeProvider>
               </SafeAreaView>
             </SafeAreaProvider>

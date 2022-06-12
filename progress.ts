@@ -4,6 +4,9 @@ THE PLAN:
 -Add preinstall script that removes text from package.json
 -Add postinstall script that adds them back.
 
+// according to the internet, 
+// running the install command might work in a regular terminal
+
 // in general, just make your own ui for the headers
 // ie. don't use UI-kitten
 

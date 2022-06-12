@@ -3,7 +3,7 @@ import RootLoadingContent from "./RootLoadingContent";
 
 interface RootLoadingProviderProps {
   children?: ReactNode;
-  content?: any;
+  content: any;
 }
 
 export const LoadingContext = createContext({
