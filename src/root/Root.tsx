@@ -103,27 +103,29 @@ const Root = () => {
     };
 
     return (
-      <NavigationContainer>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            setFullScreen(!fullScreen);
-          }}
-        >
-          <SafeAreaProvider>
-            <RootStatusBar
-              lightColor={"transparent"}
-              darkColor={"transparent"}
-              theme={"dark"}
-            />
-            <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
-              <MoleculeProvider theme={theme}>
-                {/* <MainNavigator /> */}
-                <Sview flex={1}>{renderImage()}</Sview>
-              </MoleculeProvider>
-            </SafeAreaView>
-          </SafeAreaProvider>
-        </TouchableWithoutFeedback>
-      </NavigationContainer>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              setFullScreen(!fullScreen);
+            }}
+          >
+            <SafeAreaProvider>
+              <RootStatusBar
+                lightColor={"transparent"}
+                darkColor={"transparent"}
+                theme={"dark"}
+              />
+              <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
+                <MoleculeProvider theme={theme}>
+                  {/* <MainNavigator /> */}
+                  <Sview flex={1}>{renderImage()}</Sview>
+                </MoleculeProvider>
+              </SafeAreaView>
+            </SafeAreaProvider>
+          </TouchableWithoutFeedback>
+        </NavigationContainer>
+      </GestureHandlerRootView>
     );
   }
 };

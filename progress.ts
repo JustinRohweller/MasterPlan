@@ -12,7 +12,7 @@ that takes in what to render.
 
 Make 2 root components within bit.
 1) global stuff.
- -i believe all the ones we want are in the folder now.
+ -i believe all the ones we want are in the folder
 2) make example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
