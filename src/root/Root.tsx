@@ -12,6 +12,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { useState } from "react";
 import { TouchableWithoutFeedback } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   initialWindowMetrics,
   SafeAreaProvider,
@@ -28,7 +29,7 @@ export const APP_LOCAL_IMAGES = getLocalImages(Images);
 ignoreSettingATimer.ignore();
 // makeTHeme from dripsy forces double refresh.
 
-const Root = () => {
+const Root = (props: any) => {
   const [fullScreen, setFullScreen] = useState(false);
   const [loaded, error] = useFonts(Fonts);
   if (error || !loaded) {
@@ -119,6 +120,7 @@ const Root = () => {
               <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
                 <MoleculeProvider theme={theme}>
                   {/* <MainNavigator /> */}
+                  {props.children}
                   <Sview flex={1}>{renderImage()}</Sview>
                 </MoleculeProvider>
               </SafeAreaView>
