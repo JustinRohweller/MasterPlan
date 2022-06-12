@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useState } from "react";
 import RootLoadingContent from "./RootLoadingContent";
 
+// TODO: troubleshoot if this causes lots of re-renders
+// maybe memo our navigator?
 interface RootLoadingProviderProps {
   children?: ReactNode;
   content: any;
