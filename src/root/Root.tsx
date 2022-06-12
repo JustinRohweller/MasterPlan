@@ -44,6 +44,18 @@ const Root = (props: RootProps) => {
                 <MoleculeProvider theme={theme}>
                   <RootLoadingProvider content={props.loadingProviderContent}>
                     {props.children}
+                    {/* RooatAlert */}
+                    {/* RootError */}
+                    {/* RootFirebase */}
+                    {/* RootGlobals */}
+                    {/* RootNoInternet */}
+                    {/* RootSentry */}
+                    {/* RootAppStoreUpdates */}
+                    {/* RootOTAUpdates */}
+                    {/* RootImageInitializer */}
+                    {/* RootSplashKeeper */}
+                    {/* RootLinkingHandler */}
+                    {/* RootMemoryWatcher */}
                   </RootLoadingProvider>
                 </MoleculeProvider>
               </SafeAreaView>

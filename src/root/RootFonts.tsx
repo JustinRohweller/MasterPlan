@@ -5,6 +5,7 @@ interface RootFontsProps {
   children: any;
 }
 
+// TODO: rename to RootFontInitializer
 const RootFonts = ({ fonts, children }: RootFontsProps) => {
   const [loaded, error] = useFonts(fonts);
 
