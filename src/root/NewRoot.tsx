@@ -9,6 +9,8 @@ import {
   Sview,
 } from "@jrohweller/mycomponents.ui.molecules";
 import { useFonts } from "expo-font";
+import { useState } from "react";
+import { TouchableWithoutFeedback } from "react-native";
 import {
   initialWindowMetrics,
   SafeAreaProvider,
@@ -16,6 +18,7 @@ import {
 } from "react-native-safe-area-context";
 import * as Fonts from "../assets/fonts";
 import * as Images from "../assets/images";
+import RootStatusBar from "./RootStatusBar";
 
 // Splash screen => loading animation => content (already loaded)
 
@@ -25,6 +28,7 @@ ignoreSettingATimer.ignore();
 // makeTHeme from dripsy forces double refresh.
 
 const App = () => {
+  const [fullScreen, setFullScreen] = useState(false);
   const [loaded, error] = useFonts(Fonts);
   if (error || !loaded) {
     // return <Sview>{/* <Stext>Error</Stext> */}</Sview>;
@@ -36,44 +40,86 @@ const App = () => {
       fontFamily: "OpenSansBold",
     };
 
-    return (
-      <SafeAreaProvider>
-        <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
-          <MoleculeProvider theme={theme}>
-            <Sview
-              flex={1}
-              backgroundColor={"orange"}
-              height={
-                PERCENTS.HEIGHT[100] +
+    // TODO: put this in customheaderedcontainer for "noSafeArea"
+
+    const renderImage = () => {
+      if (fullScreen) {
+        return (
+          <Sview
+            flex={1}
+            height={
+              PERCENTS.HEIGHT[100] +
+              initialWindowMetrics?.insets.top * 2 +
+              initialWindowMetrics?.insets.bottom
+            }
+            marginTop={
+              -(
+                initialWindowMetrics?.insets.top * 2 +
+                initialWindowMetrics?.insets.bottom
+              )
+            }
+            marginBottom={
+              -(
                 initialWindowMetrics?.insets.top +
                 initialWindowMetrics?.insets.bottom
-              }
-              marginTop={
-                -(
-                  initialWindowMetrics?.insets.top +
-                  initialWindowMetrics?.insets.bottom
-                )
-              }
-              marginBottom={
-                -(
-                  initialWindowMetrics?.insets.top +
-                  initialWindowMetrics?.insets.bottom
-                )
-              }
-              width={PERCENTS.WIDTH[100]}
-            >
-              <Simage
-                width={"100%"}
-                height={"100%"}
-                source={{
-                  uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
-                }}
-                resizeMode={"cover"}
-              />
-            </Sview>
-          </MoleculeProvider>
-        </SafeAreaView>
-      </SafeAreaProvider>
+              )
+            }
+            width={PERCENTS.WIDTH[100]}
+            zIndex={100}
+          >
+            <SafeAreaView
+              style={{
+                backgroundColor: "#00000050",
+              }}
+            />
+            <Simage
+              width={"100%"}
+              height={"100%"}
+              source={{
+                uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
+              }}
+              resizeMode={"cover"}
+            />
+          </Sview>
+        );
+      }
+      return (
+        <Sview
+          flex={1}
+          height={PERCENTS.HEIGHT[100]}
+          width={PERCENTS.WIDTH[100]}
+        >
+          <Simage
+            width={"100%"}
+            height={"100%"}
+            source={{
+              uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
+            }}
+            resizeMode={"cover"}
+          />
+        </Sview>
+      );
+    };
+
+    return (
+      <TouchableWithoutFeedback
+        onPress={() => {
+          setFullScreen(!fullScreen);
+        }}
+      >
+        <SafeAreaProvider>
+          <RootStatusBar
+            lightColor={"transparent"}
+            darkColor={"transparent"}
+            theme={"dark"}
+          />
+          <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
+            <MoleculeProvider theme={theme}>
+              <Sview flex={1}>{renderImage()}</Sview>
+            </MoleculeProvider>
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </TouchableWithoutFeedback>
     );
   }
 };
