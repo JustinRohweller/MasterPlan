@@ -13,6 +13,9 @@ that takes in what to render.
 Make 2 root components within bit.
 1) global stuff.
  -i believe all the ones we want are in the folder
+ -all should be components, have the hook inside.
+ -ie. event => getEvent render.
+-then ask for a component to render.
 2) make example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
