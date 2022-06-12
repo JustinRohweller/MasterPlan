@@ -1,5 +1,4 @@
 import {
-  getLocalImages,
   ignoreSettingATimer,
   PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
@@ -19,14 +18,10 @@ import {
   SafeAreaProvider,
   SafeAreaView,
 } from "react-native-safe-area-context";
-import * as Fonts from "../assets/fonts";
-import * as Images from "../assets/images";
 import RootLoadingProvider from "./RootLoadingProvider";
 import RootStatusBar from "./RootStatusBar";
 
 // Splash screen => loading animation => content (already loaded)
-
-export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
 ignoreSettingATimer.ignore();
 // makeTHeme from dripsy forces double refresh.
@@ -49,7 +44,7 @@ const MyLoadingItem = () => {
 
 const Root = (props: any) => {
   const [fullScreen, setFullScreen] = useState(false);
-  const [loaded, error] = useFonts(Fonts);
+  const [loaded, error] = useFonts(props.fonts);
   if (error || !loaded) {
     // return <Sview>{/* <Stext>Error</Stext> */}</Sview>;
     return null;
