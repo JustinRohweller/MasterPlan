@@ -4,19 +4,15 @@ THE PLAN:
 -Add preinstall script that removes text from package.json
 -Add postinstall script that adds them back.
 
+// in general, just make your own ui for the headers
+// ie. don't use UI-kitten
+
+// the idea: 1 root alert component 
+that takes in what to render.
+
 Make 2 root components within bit.
 1) global stuff.
--safe area wrapper. (transparent idea?)
--have root loading, loadingcontenxt
--root error
--root popup/alert (root alert?)
--root app restart alert
--init firebase (don't fail if no firebase)
--status bar
--app store app update alert
--handle no internet
--splash keeper?
--other hooks
+ -i believe all the ones we want are in the folder now.
 2) make example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
