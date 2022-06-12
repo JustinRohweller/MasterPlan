@@ -2,6 +2,8 @@ import { createContext, ReactNode, useState } from "react";
 import RootLoadingContent from "./RootLoadingContent";
 
 // TODO: troubleshoot if this causes lots of re-renders
+// all consumers of context will re-render if the store changes.
+// ie. we want to be having few consumers.
 // maybe memo our navigator?
 interface RootLoadingProviderProps {
   children?: ReactNode;
