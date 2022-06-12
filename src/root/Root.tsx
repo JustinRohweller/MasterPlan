@@ -1,132 +1,131 @@
-import * as eva from "@eva-design/eva";
-import { NavigationContainer } from "@react-navigation/native";
-import { StripeProvider } from "@stripe/stripe-react-native";
-import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import * as Linking from "expo-linking";
-import { createContext, useEffect, useState } from "react";
-import { ImageBackground, LogBox, StyleSheet, View } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import * as Sentry from "sentry-expo";
-import { MainNavigator } from "../../src/navigator";
-import { EMAIL_AUTH } from "../api/auth/firebase";
-import { CustomStatusBar } from "../components";
-import { APP_LOCAL_IMAGES, PUBLISHABLE_STRIPE_KEY } from "../constants";
-import { useWatchMemory } from "../hooks";
-import GlobalLoading from "./GlobalLoading";
 import {
-  useAutoUpdate,
-  useCaching,
-  useInitFirebase,
-  useKeepSplash,
-} from "./hooks";
-import { ignoreSettingATimer } from "./ignoreSettingATimer";
+  getLocalImages,
+  ignoreSettingATimer,
+  PERCENTS,
+} from "@jrohweller/mycomponents.ui.constants";
+import {
+  MoleculeProvider,
+  Simage,
+  Sview,
+} from "@jrohweller/mycomponents.ui.molecules";
+import { NavigationContainer } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { useState } from "react";
+import { TouchableWithoutFeedback } from "react-native";
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+  SafeAreaView,
+} from "react-native-safe-area-context";
+import * as Fonts from "../assets/fonts";
+import * as Images from "../assets/images";
+import RootStatusBar from "./RootStatusBar";
 
-Sentry.init({
-  dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
-  enableInExpoDevelopment: true,
-  // If `true`, Sentry will try to print
-  //  out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
-  debug: false,
-});
+// Splash screen => loading animation => content (already loaded)
 
-// TODO: reverse this, see other app.
-if (!__DEV__) {
-  console.log = () => {};
-  console.info = Sentry.Native.captureMessage;
-}
+export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
-// it seems we may have to live with it.
-// https://github.com/firebase/firebase-js-sdk/issues/1847
-console.warn = () => {};
-// INFO: this only removes the logbox, not the actual log from console.
-LogBox.ignoreLogs([
-  "Require cycle:",
-  "AsyncStorage has been extracted from react-native core and will be removed in a future release.",
-]);
 ignoreSettingATimer.ignore();
-
-// TODO: when he wants to add the correct images, put useCaching in here.
-
-export const LoadingContext = createContext({
-  loading: true,
-  updateLoading: (newLoading: boolean) => {},
-});
+// makeTHeme from dripsy forces double refresh.
 
 const Root = () => {
-  const [initing] = useInitFirebase();
-  useCaching();
-  // Keep splash while loading X, Y, Z
-  useKeepSplash(initing);
-  useAutoUpdate();
-  useWatchMemory();
+  const [fullScreen, setFullScreen] = useState(false);
+  const [loaded, error] = useFonts(Fonts);
+  if (error || !loaded) {
+    // return <Sview>{/* <Stext>Error</Stext> */}</Sview>;
+    return null;
+  }
+  if (loaded) {
+    const theme = {
+      textColor: "#019123",
+      fontFamily: "OpenSansBold",
+    };
 
-  const [loading, setLoading] = useState(true);
+    // TODO: put this in customheaderedcontainer for "noSafeArea"
 
-  const updateLoading = (newLoading: boolean) => {
-    setLoading(newLoading);
-  };
-
-  const asyncFunc = async () => {
-    // TODO: make hook, do something with result if needed.
-    Linking.addEventListener("url", something => {
-      if (something.url) {
-        EMAIL_AUTH.handleMagicLinkUrl(something.url);
-      }
-    });
-
-    await Linking.getInitialURL();
-  };
-
-  useEffect(() => {
-    asyncFunc();
-  }, []);
-
-  const renderLoadingOrContent = () => {
-    // while this is null, we are showing splash screen with our hook.
-    if (initing) {
-      return null;
-    }
-    return (
-      <ImageBackground
-        source={{ uri: APP_LOCAL_IMAGES.bgRadialPink.uri }}
-        style={styles.imageBackground}
-      >
-        <SafeAreaProvider>
-          return (
-          <StripeProvider
-            publishableKey={PUBLISHABLE_STRIPE_KEY}
-            // urlScheme="luvbucks"
-            // merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}"
+    const renderImage = () => {
+      if (fullScreen) {
+        return (
+          <Sview
+            flex={1}
+            height={
+              PERCENTS.HEIGHT[100] +
+              initialWindowMetrics?.insets.top * 2 +
+              initialWindowMetrics?.insets.bottom
+            }
+            marginTop={
+              -(
+                initialWindowMetrics?.insets.top * 2 +
+                initialWindowMetrics?.insets.bottom
+              )
+            }
+            marginBottom={
+              -(
+                initialWindowMetrics?.insets.top +
+                initialWindowMetrics?.insets.bottom
+              )
+            }
+            width={PERCENTS.WIDTH[100]}
+            zIndex={100}
           >
-            <View style={styles.container}>
-              <IconRegistry icons={EvaIconsPack} />
-              <ApplicationProvider {...eva} theme={eva.light}>
-                <CustomStatusBar style={"dark"} />
-                <LoadingContext.Provider value={{ loading, updateLoading }}>
-                  <MainNavigator />
-                  <GlobalLoading />
-                </LoadingContext.Provider>
-              </ApplicationProvider>
-            </View>
-          </StripeProvider>
-          );
-        </SafeAreaProvider>
-      </ImageBackground>
+            <SafeAreaView
+              style={{
+                backgroundColor: "#00000050",
+              }}
+            />
+            <Simage
+              width={"100%"}
+              height={"100%"}
+              source={{
+                uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
+              }}
+              resizeMode={"cover"}
+            />
+          </Sview>
+        );
+      }
+      return (
+        <Sview
+          flex={1}
+          height={PERCENTS.HEIGHT[100]}
+          width={PERCENTS.WIDTH[100]}
+        >
+          <Simage
+            width={"100%"}
+            height={"100%"}
+            source={{
+              uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
+            }}
+            resizeMode={"cover"}
+          />
+        </Sview>
+      );
+    };
+
+    return (
+      <NavigationContainer>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            setFullScreen(!fullScreen);
+          }}
+        >
+          <SafeAreaProvider>
+            <RootStatusBar
+              lightColor={"transparent"}
+              darkColor={"transparent"}
+              theme={"dark"}
+            />
+            <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
+              <MoleculeProvider theme={theme}>
+                {/* <MainNavigator /> */}
+                <Sview flex={1}>{renderImage()}</Sview>
+              </MoleculeProvider>
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </TouchableWithoutFeedback>
+      </NavigationContainer>
     );
-  };
-
-  return <NavigationContainer>{renderLoadingOrContent()}</NavigationContainer>;
+  }
 };
-
-const styles = StyleSheet.create({
-  imageBackground: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-});
 
 export default Root;

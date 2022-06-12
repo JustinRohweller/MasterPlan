@@ -2,6 +2,8 @@ import * as Updates from "expo-updates";
 import { useEffect, useState } from "react";
 import { Alert, AppState } from "react-native";
 
+// TODO: replace with component, not alert.
+
 // https://docs.expo.dev/build/updates/
 const checkUpdates = async (setReloading: (reload: boolean) => void) => {
   console.info("Checking for an update...");
