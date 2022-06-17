@@ -1,8 +1,6 @@
 import * as Updates from "expo-updates";
 import { useEffect, useState } from "react";
-import { Alert, AppState } from "react-native";
-
-// TODO: replace with component, not alert.
+import { AppState } from "react-native";
 
 // https://docs.expo.dev/build/updates/
 const checkUpdates = async (setReloading: (reload: boolean) => void) => {
@@ -23,7 +21,7 @@ const checkUpdates = async (setReloading: (reload: boolean) => void) => {
   }
 };
 
-const useAutoUpdate = () => {
+const useOTAUpdateStatus = () => {
   const [showReloadDialog, setShowReloadDialog] = useState(false);
 
   const handleAppStateChange = (nextAppState: string) => {
@@ -45,23 +43,25 @@ const useAutoUpdate = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (showReloadDialog === true) {
-      Alert.alert(
-        "New Update Ready",
-        "There is a new update available for your app. A refresh is required.",
-        [
-          {
-            text: "Refresh",
-            onPress: () => {
-              Updates.reloadAsync();
-            },
-          },
-        ],
-        { cancelable: false }
-      );
-    }
-  }, [showReloadDialog]);
+  // useEffect(() => {
+  //   if (showReloadDialog === true) {
+  //     Alert.alert(
+  //       "New Update Ready",
+  //       "There is a new update available for your app. A refresh is required.",
+  //       [
+  //         {
+  //           text: "Refresh",
+  //           onPress: () => {
+  //             Updates.reloadAsync();
+  //           },
+  //         },
+  //       ],
+  //       { cancelable: false }
+  //     );
+  //   }
+  // }, [showReloadDialog]);
+
+  return [showReloadDialog];
 };
 
-export default useAutoUpdate;
+export default useOTAUpdateStatus;
