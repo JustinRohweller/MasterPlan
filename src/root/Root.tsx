@@ -19,21 +19,22 @@ import useWatchMemory from "./useWatchMemory";
 // TODO: extends all the other file's props
 interface RootProps {
   fonts: any;
+  images: any;
   children: ReactNode;
   loadingProviderContent: any;
   moleculeTheme: any;
   errorBoundaryContent: any;
   noInternetContent: any;
   requiredOTAContent: any;
-  images: any;
   onLowMemory?: any;
   onUrl?: any;
+  shouldKeepSplash?: boolean;
 }
 
 const Root = (props: RootProps) => {
   const [isLoadingComplete] = useCacheImages(props.images);
   useWatchMemory(props.onLowMemory);
-  useKeepSplash(isLoadingComplete);
+  useKeepSplash(isLoadingComplete || props.shouldKeepSplash);
   useLinkingUrl(props.onUrl);
 
   const content = () => {
@@ -58,11 +59,13 @@ const Root = (props: RootProps) => {
                       {/* TODO: export the hooks and the components */}
                       {/* supposed to be things you want in every project. */}
                       {/* RootAppStoreUpdates */}
+                      {/* https://github.com/kimxogus/react-native-version-check */}
 
                       {/* These ones maybe put somewhere else /not in this v1, including alert stuff */}
                       {/* RootFirebase */}
                       {/* alerts */}
-                      {/* Really we just want a root alert that the user can set upon events. */}
+                      {/* Really we just want a root alert that the user can set upon events.
+                       let's try that root view modal and if we like it can be a new component (probably provider, component) */}
                       {/* I think what we'll do is just export helpers to make other alerts.  */}
                       {/* RootError */}
                       {/* RootAlert */}

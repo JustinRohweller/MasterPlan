@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 
-const useKeepSplash = (isLoading: boolean) => {
+const useKeepSplash = (isLoading: boolean | undefined) => {
   const keepSplash = async () => {
     try {
       await SplashScreen.preventAutoHideAsync();
