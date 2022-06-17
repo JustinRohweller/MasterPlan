@@ -42,7 +42,6 @@ const Root = (props: RootProps) => {
                   <RootLoadingProvider content={props.loadingProviderContent}>
                     {props.children}
                     {/* TODO: */}
-                    {/* RooatAlert */}
                     {/* RootError */}
                     {/* RootFirebase */}
                     {/* RootGlobals */}
@@ -54,6 +53,7 @@ const Root = (props: RootProps) => {
                     {/* RootSplashKeeper */}
                     {/* RootLinkingHandler */}
                     {/* RootMemoryWatcher */}
+                    {/* RooatAlert */}
                   </RootLoadingProvider>
                 </MoleculeProvider>
               </SafeAreaView>
