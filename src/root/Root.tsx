@@ -16,14 +16,11 @@ interface RootProps {
   fonts: any;
   children: ReactNode;
   loadingProviderContent: any;
+  moleculeTheme: any;
 }
 
 const Root = (props: RootProps) => {
   const [fullScreen, setFullScreen] = useState(false);
-  const theme = {
-    textColor: "#019123",
-    fontFamily: "OpenSansBold",
-  };
 
   return (
     <GestureHandlerRootView style={styles.gestureHandler}>
@@ -41,7 +38,7 @@ const Root = (props: RootProps) => {
                 theme={"dark"}
               />
               <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
-                <MoleculeProvider theme={theme}>
+                <MoleculeProvider theme={props.moleculeTheme}>
                   <RootLoadingProvider content={props.loadingProviderContent}>
                     {props.children}
                     {/* TODO: */}

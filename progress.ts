@@ -25,8 +25,13 @@ Make 2 root components within bit.
 THEN: later within our new root, we can have these as "illegal" stuff 
 that we can import directly
 
-// 
+// CONTEXT RE-RENDERS ALL OF THE CONSUMER'S CHILDREN => keyword: CONSUMER, not the provider
+// todo: check if too many contextproviders causes lots of re-renders
+// going to literally just try it for a project.
+// all consumers of context will re-render if the store changes.
+// ie. we want to be having few consumers.
 
+// Going to try this method.
 // 
 
 IF shit is red, do use typescript workspace version.

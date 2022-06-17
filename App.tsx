@@ -83,8 +83,17 @@ const App = () => {
     );
   };
 
+  const theme = {
+    textColor: "#019123",
+    fontFamily: "OpenSansBold",
+  };
+
   return (
-    <Root fonts={Fonts} loadingProviderContent={MyLoadingItem}>
+    <Root
+      fonts={Fonts}
+      loadingProviderContent={MyLoadingItem}
+      moleculeTheme={theme}
+    >
       {/* <MainNavigator /> */}
       <Sview flex={1}>{renderImage()}</Sview>
       <ExampleLoadingOff />
