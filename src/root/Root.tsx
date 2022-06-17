@@ -58,7 +58,7 @@ const Root = (props: RootProps) => {
                       <RootOTAUpdates content={props.requiredOTAContent} />
                       {/* TODO: export the hooks and the components */}
                       {/* supposed to be things you want in every project. */}
-                      {/* RootAppStoreUpdates */}
+                      {/* <RootAppStoreUpdates /> */}
                       {/* https://github.com/kimxogus/react-native-version-check */}
 
                       {/* These ones maybe put somewhere else /not in this v1, including alert stuff */}
