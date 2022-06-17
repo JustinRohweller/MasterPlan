@@ -3,6 +3,7 @@ import {
   PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
 import { Simage, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import ExampleLoadingOff from "./ExampleLoadingOff";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
 import Root from "./src/root";
@@ -86,6 +87,7 @@ const App = () => {
     <Root fonts={Fonts} loadingProviderContent={MyLoadingItem}>
       {/* <MainNavigator /> */}
       <Sview flex={1}>{renderImage()}</Sview>
+      <ExampleLoadingOff />
     </Root>
   );
 };

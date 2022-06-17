@@ -85,15 +85,16 @@ and scripts to make those.
 ON SAVE:
 -format, remove unused imports, format imports, import needed DONE
 -remove unused styles
--make constants?
 
 GIT HOOKS:
 git hooks are good I think too for code cleanup.
--ie. clean my whole damn codebase on git hook (maybe like auto format or something)
--do all of the same stuff as on save stuff but for all files
--remove unused exports/files/folders
+-Do all of ON SAVE stuff, but for entire codebase.
+
+SCRIPTS:
+-remove unused exports/files/folders/libraries
 
 VSCODE EXTENSIONS:
--maybe 
+-hover over import name to right click to docs. (built, but would need to make into new lib)
+-remove unused styles
 
 */
