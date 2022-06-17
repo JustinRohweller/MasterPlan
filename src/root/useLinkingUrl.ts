@@ -5,7 +5,9 @@ const useLinkingUrl = (onUrl: any) => {
   const asyncFunc = async () => {
     Linking.addEventListener("url", something => {
       if (something.url) {
-        // EMAIL_AUTH.handleMagicLinkUrl(something.url);
+        if (onUrl) {
+          onUrl(something.url);
+        }
       }
     });
 

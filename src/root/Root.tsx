@@ -12,6 +12,9 @@ import RootNoInternet from "./RootNoInternet";
 import RootOTAUpdates from "./RootOTAUpdates";
 import RootStatusBar from "./RootStatusBar";
 import useCacheImages from "./useCacheImages";
+import useKeepSplash from "./useKeepSplash";
+import useLinkingUrl from "./useLinkingUrl";
+import useWatchMemory from "./useWatchMemory";
 
 // TODO: extends all the other file's props
 interface RootProps {
@@ -23,62 +26,58 @@ interface RootProps {
   noInternetContent: any;
   requiredOTAContent: any;
   images: any;
+  onLowMemory?: any;
+  onUrl?: any;
 }
 
 const Root = (props: RootProps) => {
   const [isLoadingComplete] = useCacheImages(props.images);
+  useWatchMemory(props.onLowMemory);
+  useKeepSplash(isLoadingComplete);
+  useLinkingUrl(props.onUrl);
 
-  return (
-    <RootAlertHelper
-      content={
-        <GestureHandlerRootView style={styles.gestureHandler}>
-          <NavigationContainer>
-            <RootFonts fonts={props.fonts}>
-              <SafeAreaProvider>
-                <RootStatusBar
-                  lightColor={"transparent"}
-                  darkColor={"transparent"}
-                  theme={"dark"}
-                />
-                <SafeAreaView
-                  style={{ backgroundColor: "transparent", flex: 1 }}
-                >
-                  <MoleculeProvider theme={props.moleculeTheme}>
-                    {/* @ts-ignore */}
-                    <RootErrorBoundary content={props.errorBoundaryContent}>
-                      <RootLoadingProvider
-                        content={props.loadingProviderContent}
-                      >
-                        {props.children}
-                        <RootNoInternet content={props.noInternetContent} />
-                        <RootOTAUpdates content={props.requiredOTAContent} />
-                        {/* TODO: export the hooks and the components */}
-                        {/* supposed to be things you want in every project. */}
-                        {/* RootAppStoreUpdates */}
-                        {/* RootSplashKeeper */}
-                        {/* RootLinkingHandler */}
-                        {/* RootMemoryWatcher */}
+  const content = () => {
+    return (
+      <GestureHandlerRootView style={styles.gestureHandler}>
+        <NavigationContainer>
+          <RootFonts fonts={props.fonts}>
+            <SafeAreaProvider>
+              <RootStatusBar
+                lightColor={"transparent"}
+                darkColor={"transparent"}
+                theme={"dark"}
+              />
+              <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
+                <MoleculeProvider theme={props.moleculeTheme}>
+                  {/* @ts-ignore */}
+                  <RootErrorBoundary content={props.errorBoundaryContent}>
+                    <RootLoadingProvider content={props.loadingProviderContent}>
+                      {props.children}
+                      <RootNoInternet content={props.noInternetContent} />
+                      <RootOTAUpdates content={props.requiredOTAContent} />
+                      {/* TODO: export the hooks and the components */}
+                      {/* supposed to be things you want in every project. */}
+                      {/* RootAppStoreUpdates */}
 
-                        {/* These ones maybe put somewhere else /not in this v1, including alert stuff */}
-                        {/* RootFirebase */}
-                        {/* RootSentry */}
-                        {/* alerts */}
-                        {/* Really we just want a root alert that the user can set upon events. */}
-                        {/* I think what we'll do is just export helpers to make other alerts.  */}
-                        {/* RootError */}
-                        {/* RootAlert */}
-                      </RootLoadingProvider>
-                    </RootErrorBoundary>
-                  </MoleculeProvider>
-                </SafeAreaView>
-              </SafeAreaProvider>
-            </RootFonts>
-          </NavigationContainer>
-        </GestureHandlerRootView>
-      }
-      show={isLoadingComplete}
-    />
-  );
+                      {/* These ones maybe put somewhere else /not in this v1, including alert stuff */}
+                      {/* RootFirebase */}
+                      {/* alerts */}
+                      {/* Really we just want a root alert that the user can set upon events. */}
+                      {/* I think what we'll do is just export helpers to make other alerts.  */}
+                      {/* RootError */}
+                      {/* RootAlert */}
+                    </RootLoadingProvider>
+                  </RootErrorBoundary>
+                </MoleculeProvider>
+              </SafeAreaView>
+            </SafeAreaProvider>
+          </RootFonts>
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    );
+  };
+
+  return <RootAlertHelper content={content} show={isLoadingComplete} />;
 };
 
 const styles = StyleSheet.create({
