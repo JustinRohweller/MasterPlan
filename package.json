@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@react-native-community/netinfo": "8.2.0",
     "@react-navigation/native": "^6.0.10",
     "@ui-kitten/components": "^5.1.2",
     "dripsy": "^3.6.0",

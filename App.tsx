@@ -110,6 +110,7 @@ const App = () => {
       loadingProviderContent={MyLoadingItem}
       moleculeTheme={theme}
       errorBoundaryContent={MyErrorItem}
+      noInternetContent={MyLoadingItem}
     >
       {/* <MainNavigator /> */}
       <Sview flex={1}>{renderImage()}</Sview>

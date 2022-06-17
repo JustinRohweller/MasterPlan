@@ -8,6 +8,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import RootErrorBoundary from "./RootErrorBoundary";
 import RootFonts from "./RootFonts";
 import RootLoadingProvider from "./RootLoadingProvider";
+import RootNoInternet from "./RootNoInternet";
 import RootStatusBar from "./RootStatusBar";
 
 ignoreSettingATimer.ignore();
@@ -19,6 +20,7 @@ interface RootProps {
   loadingProviderContent: any;
   moleculeTheme: any;
   errorBoundaryContent: any;
+  noInternetContent: any;
 }
 
 const Root = (props: RootProps) => {
@@ -45,19 +47,20 @@ const Root = (props: RootProps) => {
                   <RootErrorBoundary content={props.errorBoundaryContent}>
                     <RootLoadingProvider content={props.loadingProviderContent}>
                       {props.children}
+                      <RootNoInternet content={props.noInternetContent} />
                       {/* TODO: */}
+                      {/* Really we just want a root alert that the user can set upon events. */}
+                      {/* RootOTAUpdates */}
                       {/* RootError */}
+                      {/* RootAlert */}
                       {/* RootFirebase */}
                       {/* RootGlobals */}
-                      {/* RootNoInternet */}
                       {/* RootSentry */}
                       {/* RootAppStoreUpdates */}
-                      {/* RootOTAUpdates */}
                       {/* RootImageInitializer */}
                       {/* RootSplashKeeper */}
                       {/* RootLinkingHandler */}
                       {/* RootMemoryWatcher */}
-                      {/* RooatAlert */}
                     </RootLoadingProvider>
                   </RootErrorBoundary>
                 </MoleculeProvider>

@@ -4,9 +4,11 @@ interface RootAlertHelperProps {
 }
 
 const RootAlertHelper = ({ show, content }: RootAlertHelperProps) => {
-  const Content = content;
-  if (show) {
-    return <Content />;
+  if (content) {
+    const Content = content;
+    if (show) {
+      return <Content />;
+    }
   }
   return null;
 };
