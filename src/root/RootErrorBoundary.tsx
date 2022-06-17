@@ -12,7 +12,14 @@ class ErrorBoundary extends Component {
     };
   }
 
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true };
+  }
+
   componentDidCatch(error: any, errorInfo: any) {
+    if (this.props.onError) {
+      this.props.onError(error, errorInfo);
+    }
     try {
       console.info("error");
       console.info(JSON.stringify(error));
@@ -29,12 +36,18 @@ class ErrorBoundary extends Component {
   }
 
   render() {
-    return (
-      <RootAlertHelper
-        content={this.props.content}
-        show={this.state.hasError}
-      />
-    );
+    if (this.state.hasError) {
+      if (this.props.content) {
+        return (
+          <RootAlertHelper
+            content={this.props.content}
+            show={this.state.hasError}
+          />
+        );
+      }
+    }
+
+    return this.props.children;
   }
 }
 

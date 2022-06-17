@@ -5,6 +5,7 @@ import { ReactNode, useState } from "react";
 import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import RootErrorBoundary from "./RootErrorBoundary";
 import RootFonts from "./RootFonts";
 import RootLoadingProvider from "./RootLoadingProvider";
 import RootStatusBar from "./RootStatusBar";
@@ -17,6 +18,7 @@ interface RootProps {
   children: ReactNode;
   loadingProviderContent: any;
   moleculeTheme: any;
+  errorBoundaryContent: any;
 }
 
 const Root = (props: RootProps) => {
@@ -39,22 +41,25 @@ const Root = (props: RootProps) => {
               />
               <SafeAreaView style={{ backgroundColor: "transparent", flex: 1 }}>
                 <MoleculeProvider theme={props.moleculeTheme}>
-                  <RootLoadingProvider content={props.loadingProviderContent}>
-                    {props.children}
-                    {/* TODO: */}
-                    {/* RootError */}
-                    {/* RootFirebase */}
-                    {/* RootGlobals */}
-                    {/* RootNoInternet */}
-                    {/* RootSentry */}
-                    {/* RootAppStoreUpdates */}
-                    {/* RootOTAUpdates */}
-                    {/* RootImageInitializer */}
-                    {/* RootSplashKeeper */}
-                    {/* RootLinkingHandler */}
-                    {/* RootMemoryWatcher */}
-                    {/* RooatAlert */}
-                  </RootLoadingProvider>
+                  {/* @ts-ignore */}
+                  <RootErrorBoundary content={props.errorBoundaryContent}>
+                    <RootLoadingProvider content={props.loadingProviderContent}>
+                      {props.children}
+                      {/* TODO: */}
+                      {/* RootError */}
+                      {/* RootFirebase */}
+                      {/* RootGlobals */}
+                      {/* RootNoInternet */}
+                      {/* RootSentry */}
+                      {/* RootAppStoreUpdates */}
+                      {/* RootOTAUpdates */}
+                      {/* RootImageInitializer */}
+                      {/* RootSplashKeeper */}
+                      {/* RootLinkingHandler */}
+                      {/* RootMemoryWatcher */}
+                      {/* RooatAlert */}
+                    </RootLoadingProvider>
+                  </RootErrorBoundary>
                 </MoleculeProvider>
               </SafeAreaView>
             </SafeAreaProvider>

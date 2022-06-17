@@ -10,7 +10,7 @@ const ExampleLoadingOff = ({}: ExampleLoadingOffProps) => {
   useEffect(() => {
     setTimeout(() => {
       loading.updateLoading(false);
-    }, 5000);
+    }, 2000);
   }, []);
   return <></>;
 };

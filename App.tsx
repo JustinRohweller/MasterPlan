@@ -21,7 +21,23 @@ const MyLoadingItem = () => {
       top={0}
       bottom={0}
     >
-      <Stext>Hey Sorry we're loading</Stext>
+      <Stext>we're loading</Stext>
+    </Sview>
+  );
+};
+
+const MyErrorItem = () => {
+  return (
+    <Sview
+      position="absolute"
+      alignItems="center"
+      justifyContent="center"
+      left={0}
+      right={0}
+      top={0}
+      bottom={0}
+    >
+      <Stext>Hey Sorry we errored</Stext>
     </Sview>
   );
 };
@@ -93,6 +109,7 @@ const App = () => {
       fonts={Fonts}
       loadingProviderContent={MyLoadingItem}
       moleculeTheme={theme}
+      errorBoundaryContent={MyErrorItem}
     >
       {/* <MainNavigator /> */}
       <Sview flex={1}>{renderImage()}</Sview>
