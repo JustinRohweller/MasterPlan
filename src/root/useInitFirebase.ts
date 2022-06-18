@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-let initializeApp = null;
+let initializeApp: any = null;
 try {
   initializeApp = require("firebase/app").initializeApp;
 } catch (error) {
@@ -9,9 +9,7 @@ try {
   }
 }
 
-import { GOOGLE_FIREBASE_CONFIG } from "../../../src/config";
-
-const useInitFirebase = () => {
+const useInitFirebase = (GOOGLE_FIREBASE_CONFIG: any) => {
   const [initing, setIniting] = useState(initializeApp ? true : false);
   const initFirebase = async () => {
     if (initializeApp) {

@@ -56,19 +56,6 @@ const Root = (props: RootProps) => {
                       {props.children}
                       <RootNoInternet content={props.noInternetContent} />
                       <RootOTAUpdates content={props.requiredOTAContent} />
-                      {/* TODO: export the hooks and the components */}
-                      {/* supposed to be things you want in every project. */}
-                      {/* <RootAppStoreUpdates /> */}
-                      {/* https://github.com/kimxogus/react-native-version-check */}
-
-                      {/* These ones maybe put somewhere else /not in this v1, including alert stuff */}
-                      {/* RootFirebase */}
-                      {/* alerts */}
-                      {/* Really we just want a root alert that the user can set upon events.
-                       let's try that root view modal and if we like it can be a new component (probably provider, component) */}
-                      {/* I think what we'll do is just export helpers to make other alerts.  */}
-                      {/* RootError */}
-                      {/* RootAlert */}
                     </RootLoadingProvider>
                   </RootErrorBoundary>
                 </MoleculeProvider>
