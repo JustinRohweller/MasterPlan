@@ -2048,9 +2048,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jrohweller/mycomponents.ui.root@npm:0.0.1":
-  version: 0.0.1
-  resolution: "@jrohweller/mycomponents.ui.root@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40jrohweller%2Fmycomponents.ui.root%2F-%2F%40jrohweller-mycomponents.ui.root-0.0.1.tgz"
+"@jrohweller/mycomponents.ui.root@npm:0.0.2":
+  version: 0.0.2
+  resolution: "@jrohweller/mycomponents.ui.root@npm:0.0.2::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40jrohweller%2Fmycomponents.ui.root%2F-%2F%40jrohweller-mycomponents.ui.root-0.0.2.tgz"
   dependencies:
     "@jrohweller/mycomponents.ui.molecules": 0.0.2
     "@react-native-community/netinfo": 8.2.0
@@ -2063,7 +2063,7 @@ __metadata:
     react-native: 0.68.2
     react-native-gesture-handler: ~2.2.1
     react-native-safe-area-context: 4.2.4
-  checksum: dae23dba8cefa3623a9b7e3800b86809bdcb0ac8807b0221f64ee26fb97dcd2ff912e3eba32ce376e78684151c2187673e9b7d32adc8385c2e622dc896c805d5
+  checksum: 16ec85fa9b781b6ecc1c8cc23bd58561c485d4f1237746fa426311416af1f533673dd83007e707d4696cd5faaed427bd91d5ef71187925a3108728ea5015fa1a
   languageName: node
   linkType: hard
 
@@ -6408,7 +6408,7 @@ __metadata:
     "@expo/vector-icons": ^13.0.0
     "@jrohweller/mycomponents.ui.constants": 0.0.3
     "@jrohweller/mycomponents.ui.molecules": 0.0.2
-    "@jrohweller/mycomponents.ui.root": 0.0.1
+    "@jrohweller/mycomponents.ui.root": 0.0.2
     "@react-native-community/netinfo": 8.2.0
     "@react-navigation/native": ^6.0.10
     "@types/jest": 26.0.20

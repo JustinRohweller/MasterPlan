@@ -3,11 +3,12 @@ import {
   ignoreSettingATimer,
   PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
-import { Simage, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { Simage, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
+import SafeAreaEscapingView from "./src/root/SafeAreaEscapingView";
 
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
@@ -89,7 +90,7 @@ const App = () => {
           }}
           resizeMode={"cover"}
         />
-        <Stext>Hi there</Stext>
+        {/* <Stext>Hi there</Stext> */}
       </Sview>
     );
   };
@@ -101,7 +102,9 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} moleculeTheme={theme}>
-      <Sview flex={1}>{renderImage()}</Sview>
+      <SafeAreaEscapingView>
+        <Sview flex={1}>{renderImage()}</Sview>
+      </SafeAreaEscapingView>
     </Root>
   );
 };
