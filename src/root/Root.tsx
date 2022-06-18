@@ -32,6 +32,11 @@ interface RootProps {
   googleFirebaseConfig?: any;
 }
 
+// other things:
+// app store version check.
+// maybe a global root customizable alert. (not pre-configured)
+// ex. alert(Your gift has been sent.)
+
 const Root = (props: RootProps) => {
   const [isLoadingComplete] = useCacheImages(props.images);
   const [isInitializing] = useInitFirebase(props.googleFirebaseConfig);
