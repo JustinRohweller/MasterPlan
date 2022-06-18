@@ -10,21 +10,23 @@ try {
 }
 
 const useInitFirebase = (GOOGLE_FIREBASE_CONFIG: any) => {
-  const [initing, setIniting] = useState(initializeApp ? true : false);
+  const [isInitializing, setIsInitializing] = useState(
+    initializeApp && GOOGLE_FIREBASE_CONFIG ? true : false
+  );
   const initFirebase = async () => {
-    if (initializeApp) {
+    if (initializeApp && GOOGLE_FIREBASE_CONFIG) {
       // if (!apps.length) {
       await initializeApp(GOOGLE_FIREBASE_CONFIG);
-      await setIniting(false);
+      await setIsInitializing(false);
       // } else {
-      //   await setIniting(false);
+      //   await setisInitializing(false);
       // }
     }
   };
   useEffect(() => {
     initFirebase();
   }, []);
-  return [initing];
+  return [isInitializing];
 };
 
 export default useInitFirebase;

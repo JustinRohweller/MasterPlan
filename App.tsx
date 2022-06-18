@@ -5,7 +5,6 @@ import {
 } from "@jrohweller/mycomponents.ui.constants";
 import { Simage, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { LogBox } from "react-native";
-import ExampleLoadingOff from "./ExampleLoadingOff";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
 import Root from "./src/root";
@@ -32,6 +31,8 @@ ignoreSettingATimer.ignore();
 //   //  out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 //   debug: false,
 // });
+
+//
 
 export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
@@ -130,18 +131,8 @@ const App = () => {
   };
 
   return (
-    <Root
-      fonts={Fonts}
-      images={APP_LOCAL_IMAGES}
-      loadingProviderContent={MyLoadingItem}
-      moleculeTheme={theme}
-      errorBoundaryContent={MyErrorItem}
-      // noInternetContent={MyLoadingItem}
-      requiredOTAContent={MyLoadingItem}
-    >
-      {/* <MainNavigator /> */}
+    <Root fonts={Fonts} images={APP_LOCAL_IMAGES} moleculeTheme={theme}>
       <Sview flex={1}>{renderImage()}</Sview>
-      <ExampleLoadingOff />
     </Root>
   );
 };

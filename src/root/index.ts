@@ -1,5 +1,6 @@
 import Root from "./Root";
 
+export { LoadingContext } from "./RootLoadingProvider";
 export { default as useCacheImages } from "./useCacheImages";
 export { default as useInitFirebase } from "./useInitFirebase";
 export { default as useKeepSplash } from "./useKeepSplash";

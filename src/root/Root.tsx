@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { useInitFirebase } from ".";
 import RootAlertHelper from "./RootAlertHelper";
 import RootErrorBoundary from "./RootErrorBoundary";
 import RootFonts from "./RootFonts";
@@ -16,23 +17,24 @@ import useKeepSplash from "./useKeepSplash";
 import useLinkingUrl from "./useLinkingUrl";
 import useWatchMemory from "./useWatchMemory";
 
-// TODO: extends all the other file's props
 interface RootProps {
   fonts: any;
   images: any;
   children: ReactNode;
-  loadingProviderContent: any;
   moleculeTheme: any;
-  errorBoundaryContent: any;
-  noInternetContent: any;
-  requiredOTAContent: any;
+  loadingProviderContent?: any;
+  errorBoundaryContent?: any;
+  noInternetContent?: any;
+  requiredOTAContent?: any;
   onLowMemory?: any;
   onUrl?: any;
   shouldKeepSplash?: boolean;
+  googleFirebaseConfig?: any;
 }
 
 const Root = (props: RootProps) => {
   const [isLoadingComplete] = useCacheImages(props.images);
+  const [isInitializing] = useInitFirebase(props.googleFirebaseConfig);
   useWatchMemory(props.onLowMemory);
   useKeepSplash(isLoadingComplete || props.shouldKeepSplash);
   useLinkingUrl(props.onUrl);
@@ -67,7 +69,12 @@ const Root = (props: RootProps) => {
     );
   };
 
-  return <RootAlertHelper content={content} show={isLoadingComplete} />;
+  return (
+    <RootAlertHelper
+      content={content}
+      show={isLoadingComplete && !isInitializing}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
@@ -75,5 +82,3 @@ const styles = StyleSheet.create({
 });
 
 export default Root;
-// warning:
-// makeTHeme from dripsy forces double refresh.
