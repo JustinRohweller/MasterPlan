@@ -8,7 +8,6 @@ import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
-import SafeAreaEscapingView from "./src/root/SafeAreaEscapingView";
 
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
@@ -17,7 +16,6 @@ import SafeAreaEscapingView from "./src/root/SafeAreaEscapingView";
 //   //  out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 //   debug: false,
 // });
-
 // firebase.initailize(ect.)
 
 if (!__DEV__) {
@@ -39,47 +37,6 @@ export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
 const App = () => {
   const renderImage = () => {
-    // TODO: put this in customheaderedcontainer for "noSafeArea"
-    // if (fullScreen) {
-    //   return (
-    //     <Sview
-    //       flex={1}
-    //       height={
-    //         PERCENTS.HEIGHT[100] +
-    //         initialWindowMetrics?.insets.top * 2 +
-    //         initialWindowMetrics?.insets.bottom
-    //       }
-    //       marginTop={
-    //         -(
-    //           initialWindowMetrics?.insets.top * 2 +
-    //           initialWindowMetrics?.insets.bottom
-    //         )
-    //       }
-    //       marginBottom={
-    //         -(
-    //           initialWindowMetrics?.insets.top +
-    //           initialWindowMetrics?.insets.bottom
-    //         )
-    //       }
-    //       width={PERCENTS.WIDTH[100]}
-    //       zIndex={100}
-    //     >
-    //       <SafeAreaView
-    //         style={{
-    //           backgroundColor: "#00000050",
-    //         }}
-    //       />
-    //       <Simage
-    //         width={"100%"}
-    //         height={"100%"}
-    //         source={{
-    //           uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
-    //         }}
-    //         resizeMode={"cover"}
-    //       />
-    //     </Sview>
-    //   );
-    // }
     return (
       <Sview flex={1} height={PERCENTS.HEIGHT[100]} width={PERCENTS.WIDTH[100]}>
         <Simage
@@ -90,7 +47,6 @@ const App = () => {
           }}
           resizeMode={"cover"}
         />
-        {/* <Stext>Hi there</Stext> */}
       </Sview>
     );
   };
@@ -102,9 +58,7 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} moleculeTheme={theme}>
-      <SafeAreaEscapingView>
-        <Sview flex={1}>{renderImage()}</Sview>
-      </SafeAreaEscapingView>
+      <Sview flex={1}>{renderImage()}</Sview>
     </Root>
   );
 };
