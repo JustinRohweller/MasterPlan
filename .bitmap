@@ -9,11 +9,11 @@
  */
 
 {
-    "ui/constants": {
-        "scope": "jrohweller.mycomponents",
-        "version": "0.0.3",
+    "ui/root": {
+        "scope": "",
+        "version": "",
         "mainFile": "index.ts",
-        "rootDir": "src/constants"
+        "rootDir": "src/root"
     },
     "$schema-version": "14.9.0"
 }

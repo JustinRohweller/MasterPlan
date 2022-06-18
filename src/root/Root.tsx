@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { useInitFirebase } from ".";
 import RootAlertHelper from "./RootAlertHelper";
 import RootErrorBoundary from "./RootErrorBoundary";
 import RootFonts from "./RootFonts";
@@ -29,7 +28,6 @@ interface RootProps {
   onLowMemory?: any;
   onUrl?: any;
   shouldKeepSplash?: boolean;
-  googleFirebaseConfig?: any;
 }
 
 // other things:
@@ -39,7 +37,6 @@ interface RootProps {
 
 const Root = (props: RootProps) => {
   const [isLoadingComplete] = useCacheImages(props.images);
-  const [isInitializing] = useInitFirebase(props.googleFirebaseConfig);
   useWatchMemory(props.onLowMemory);
   useKeepSplash(isLoadingComplete || props.shouldKeepSplash);
   useLinkingUrl(props.onUrl);
@@ -74,12 +71,7 @@ const Root = (props: RootProps) => {
     );
   };
 
-  return (
-    <RootAlertHelper
-      content={content}
-      show={isLoadingComplete && !isInitializing}
-    />
-  );
+  return <RootAlertHelper content={content} show={isLoadingComplete} />;
 };
 
 const styles = StyleSheet.create({

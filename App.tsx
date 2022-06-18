@@ -3,26 +3,11 @@ import {
   ignoreSettingATimer,
   PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
-import { Simage, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { Simage, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { LogBox } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
 import Root from "./src/root";
-
-if (!__DEV__) {
-  console.log = () => {};
-  // console.info = Sentry.Native.captureMessage;
-}
-
-// it seems we may have to live with it.
-// https://github.com/firebase/firebase-js-sdk/issues/1847
-console.warn = () => {};
-// INFO: this only removes the logbox, not the actual log from console.
-LogBox.ignoreLogs([
-  "Require cycle:",
-  "AsyncStorage has been extracted from react-native core and will be removed in a future release.",
-]);
-ignoreSettingATimer.ignore();
 
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
@@ -32,41 +17,22 @@ ignoreSettingATimer.ignore();
 //   debug: false,
 // });
 
-//
+if (!__DEV__) {
+  console.log = () => {};
+  // console.info = Sentry.Native.captureMessage;
+}
+// it seems we may have to live with it.
+// https://github.com/firebase/firebase-js-sdk/issues/1847
+console.warn = () => {};
+
+// INFO: this only removes the logbox, not the actual log from console.
+LogBox.ignoreLogs([
+  "Require cycle:",
+  "AsyncStorage has been extracted from react-native core and will be removed in a future release.",
+]);
+ignoreSettingATimer.ignore();
 
 export const APP_LOCAL_IMAGES = getLocalImages(Images);
-
-const MyLoadingItem = () => {
-  return (
-    <Sview
-      position="absolute"
-      alignItems="center"
-      justifyContent="center"
-      left={0}
-      right={0}
-      top={0}
-      bottom={0}
-    >
-      <Stext>we're loading</Stext>
-    </Sview>
-  );
-};
-
-const MyErrorItem = () => {
-  return (
-    <Sview
-      position="absolute"
-      alignItems="center"
-      justifyContent="center"
-      left={0}
-      right={0}
-      top={0}
-      bottom={0}
-    >
-      <Stext>Hey Sorry we errored</Stext>
-    </Sview>
-  );
-};
 
 const App = () => {
   const renderImage = () => {
