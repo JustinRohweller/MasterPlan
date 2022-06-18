@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import RootAlertHelper from "./RootAlertHelper";
 
 class ErrorBoundary extends Component {
@@ -17,7 +17,9 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error: any, errorInfo: any) {
+    // @ts-ignore
     if (this.props.onError) {
+      // @ts-ignore
       this.props.onError(error, errorInfo);
     }
     try {
@@ -36,11 +38,15 @@ class ErrorBoundary extends Component {
   }
 
   render() {
+    // @ts-ignore
     if (this.state.hasError) {
+      // @ts-ignore
       if (this.props.content) {
         return (
           <RootAlertHelper
+            // @ts-ignore
             content={this.props.content}
+            // @ts-ignore
             show={this.state.hasError}
           />
         );

@@ -1,5 +1,6 @@
 import type { StatusBarProps, StatusBarStyle } from "expo-status-bar";
 import { StatusBar } from "expo-status-bar";
+import React from "react";
 import { SafeAreaView } from "react-native";
 
 // https://docs.expo.dev/versions/latest/sdk/status-bar/#api

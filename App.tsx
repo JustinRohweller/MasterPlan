@@ -17,6 +17,8 @@ import Root from "./src/root";
 //   debug: false,
 // });
 
+// firebase.initailize(ect.)
+
 if (!__DEV__) {
   console.log = () => {};
   // console.info = Sentry.Native.captureMessage;

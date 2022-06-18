@@ -1,6 +1,6 @@
 import { MoleculeProvider } from "@jrohweller/mycomponents.ui.molecules";
 import { NavigationContainer } from "@react-navigation/native";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";

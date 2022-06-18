@@ -1,4 +1,5 @@
 import { useNetInfo } from "@react-native-community/netinfo";
+import React from "react";
 import RootAlertHelper from "./RootAlertHelper";
 
 interface RootNoInternetProps {

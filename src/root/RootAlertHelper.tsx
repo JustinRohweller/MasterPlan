@@ -1,3 +1,5 @@
+import React from "react";
+
 interface RootAlertHelperProps {
   content: any;
   show: boolean;

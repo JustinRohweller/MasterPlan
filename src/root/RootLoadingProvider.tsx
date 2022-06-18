@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 import RootLoadingContent from "./RootLoadingContent";
 
 interface RootLoadingProviderProps {
