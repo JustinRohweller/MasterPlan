@@ -3,11 +3,11 @@ import {
   ignoreSettingATimer,
   PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
-import { Simage, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { Simage, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
-import Root from "./src/root";
 
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
@@ -89,6 +89,7 @@ const App = () => {
           }}
           resizeMode={"cover"}
         />
+        <Stext>Hi there</Stext>
       </Sview>
     );
   };
