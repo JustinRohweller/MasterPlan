@@ -4,9 +4,9 @@ import {
 } from "@jrohweller/mycomponents.ui.constants";
 import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
+import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
-import { GlobalStackNavigator } from "./src/navigator";
 
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} moleculeTheme={theme}>
-      <GlobalStackNavigator />
+      <Navigator />
     </Root>
   );
 };

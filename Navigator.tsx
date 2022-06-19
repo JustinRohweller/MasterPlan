@@ -10,8 +10,8 @@
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as screens from "../../screens";
-import NavigationCreator from "../NavigationCreator";
+import NavigationCreator from "./src/navigator/NavigationCreator";
+import * as screens from "./src/screens";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,12 +21,12 @@ const navStructure = {
   includeKey: "shouldBeInTabs",
   navigator: Tab,
   props: {
-    backBehavior: "none",
-    tabBar: () => null,
-    screenOptions: {
-      unmountOnBlur: true,
-      headerShown: false,
-    },
+    // backBehavior: "none",
+    // tabBar: () => null,
+    // screenOptions: {
+    //   unmountOnBlur: true,
+    //   headerShown: false,
+    // },
   },
   contents: {
     title: "Global Stack",
@@ -43,8 +43,8 @@ const navStructure = {
   },
 };
 
-const GlobalStackNavigator = ({}: any) => {
+const Navigator = ({}: any) => {
   return <NavigationCreator screens={screens} navStructure={navStructure} />;
 };
 
-export default GlobalStackNavigator;
+export default Navigator;

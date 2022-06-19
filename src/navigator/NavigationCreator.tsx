@@ -1,11 +1,12 @@
-import { renderScreens } from "@jrohweller/mycomponents.ui.constants";
+import React from "react";
+import { renderScreens } from "./helpers";
 
 interface NavigationCreator {
-  screens: any;
+  screens: { [key: string]: any };
   navStructure: any;
 }
 
-const NavigationCreator = ({ screens, navStructure }: any) => {
+const NavigationCreator = ({ screens, navStructure }: NavigationCreator) => {
   const createNavigator = (navigationStructure: any) => {
     const Nav = navigationStructure.navigator;
 
@@ -14,7 +15,6 @@ const NavigationCreator = ({ screens, navStructure }: any) => {
     };
 
     return (
-      // @ts-ignore
       <Nav.Navigator {...navigationStructure.props}>
         {navigationStructure.contents && (
           <Nav.Screen
@@ -39,3 +39,31 @@ const NavigationCreator = ({ screens, navStructure }: any) => {
 };
 
 export default NavigationCreator;
+
+// example. tab within a stack.
+// const navStructure = {
+//   title: "Main",
+//   includeKey: "shouldBeInTabs",
+//   navigator: Tab,
+//   props: {
+//     backBehavior: "none",
+//     tabBar: () => null,
+//     screenOptions: {
+//       unmountOnBlur: true,
+//       headerShown: false,
+//     },
+//   },
+//   contents: {
+//     title: "Global Stack",
+//     includeKey: "shouldBeInStack",
+//     navigator: Stack,
+//     props: {
+//       screenOptions: {
+//         headerShown: false,
+//         animationEnabled: false,
+//         detachPreviousScreen: false,
+//       },
+//     },
+//     contents: null,
+//   },
+// };
