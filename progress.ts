@@ -1,5 +1,6 @@
 /*
 THE PLAN:
+-move renderScreens out of constants lib
 -make navigator, move renderScreens out of navigator?
 
  -make root example you download and use.

@@ -11,8 +11,6 @@ interface ScreenType {
   isInitialTab?: boolean;
 }
 
-// const foo = <T,>(x: T) => x;
-
 export const isScreenType = <Type,>(screen: any, type: Type): boolean => {
   if (screen[type]) {
     return true;

@@ -1,9 +1,17 @@
 import React from "react";
 import { renderScreens } from "./helpers";
 
+interface NavStructure {
+  title: string;
+  includeKey: string;
+  navigator: any;
+  props: any;
+  contents: NavStructure | null;
+}
+
 interface NavigationCreator {
   screens: { [key: string]: any };
-  navStructure: any;
+  navStructure: NavStructure;
 }
 
 const NavigationCreator = ({ screens, navStructure }: NavigationCreator) => {
