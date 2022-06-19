@@ -1,13 +1,13 @@
 import {
   getLocalImages,
   ignoreSettingATimer,
-  PERCENTS,
 } from "@jrohweller/mycomponents.ui.constants";
-import { Simage, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import Root from "@jrohweller/mycomponents.ui.root";
+import { NavigationContainer } from "@react-navigation/native";
 import { LogBox } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
+import { GlobalStackNavigator } from "./src/navigator";
 
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
@@ -36,21 +36,6 @@ ignoreSettingATimer.ignore();
 export const APP_LOCAL_IMAGES = getLocalImages(Images);
 
 const App = () => {
-  const renderImage = () => {
-    return (
-      <Sview flex={1} height={PERCENTS.HEIGHT[100]} width={PERCENTS.WIDTH[100]}>
-        <Simage
-          width={"100%"}
-          height={"100%"}
-          source={{
-            uri: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
-          }}
-          resizeMode={"cover"}
-        />
-      </Sview>
-    );
-  };
-
   const theme = {
     textColor: "#019123",
     fontFamily: "OpenSansBold",
@@ -58,7 +43,9 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} moleculeTheme={theme}>
-      <Sview flex={1}>{renderImage()}</Sview>
+      <NavigationContainer>
+        <GlobalStackNavigator />
+      </NavigationContainer>
     </Root>
   );
 };

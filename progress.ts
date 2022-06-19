@@ -1,12 +1,5 @@
 /*
 THE PLAN:
--First, to fix bit typings.
--Add preinstall script that removes text from package.json
--Add postinstall script that adds them back.
-
-// according to the internet, 
-// running the install command might work in a regular terminal
-
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
