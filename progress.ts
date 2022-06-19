@@ -1,6 +1,9 @@
 /*
 THE PLAN:
+-literally copy paste from node_modules to start editing bit stuff? :D
+-root does not use the light/dark colors: statusBarLight/statusBarDark
 -mess with safearea for the root. seems wonky. we want to make own navigator?
+-might not be the play, seems like it's not working good.
 -move renderScreens out of constants lib
 
  -make root example you download and use.
@@ -67,10 +70,10 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 
 -molecules DONE
 -constants DONE
--root pt 1 DONE, pt 2 incoming.
--hooks
--navigator?
--scripts
+-navigator DONE pt 2 => instance of it NOT DONE
+-root pt 1 DONE, pt 2 => instance of it NOT DONE
+-hooks => literally just export them.
+-scripts => likely will be doing pt 2 above.
 
 -make scripts to help make libraries.
 ie. script that copies code over, and publishes.

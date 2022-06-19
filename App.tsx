@@ -38,6 +38,8 @@ const App = () => {
   const theme = {
     textColor: "#019123",
     fontFamily: "OpenSansBold",
+    statusBarLight: "orange",
+    statusBarDark: "blue",
   };
 
   return (
