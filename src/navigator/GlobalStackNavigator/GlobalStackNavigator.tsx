@@ -14,30 +14,60 @@ import * as screens from "../../screens";
 
 const Stack = createStackNavigator();
 
-// const navigatorScreens = Object.values(navigators).map((item, index: number) =>
-//   renderScreens(item, index, Stack, "shouldBeInStack", navigators)
-// );
-
-const regularScreens = Object.values(screens).map((item, index: number) =>
-  renderScreens(item, index, Stack, "shouldBeInStack", screens)
-);
-
 const screenOptions = {
   headerShown: false,
   animationEnabled: false,
   detachPreviousScreen: false,
 };
 
-const GlobalStackNavigator = ({ myNavigationProps }: any) => {
-  return (
-    // @ts-ignore
-    <Stack.Navigator screenOptions={screenOptions} {...myNavigationProps}>
-      {/* {navigatorScreens} */}
-      {Object.values(screens).map((item, index: number) =>
-        renderScreens(item, index, Stack, "shouldBeInStack", screens)
-      )}
-    </Stack.Navigator>
-  );
+// const navigationStructure = {
+//   name: "Switch",
+//   props: { screenOptions },
+//   contents: {
+//     name: "Stack",
+//     props: { screenOptions },
+//     contents: {
+//       name: "Drawer",
+//       props: { screenOptions },
+//       contents: {
+//         name: "Tabs",
+//         props: { screenOptions },
+//         contents: null,
+//       },
+//     },
+//   },
+// };
+
+const navStructure = {
+  screenKey: "shouldBeInStack",
+  navigator: Stack,
+  props: { screenOptions },
+  contents: null,
+};
+
+const GlobalStackNavigator = ({}: any) => {
+  const createNavigator = (navigationStructure: any) => {
+    const Nav = navigationStructure.navigator;
+
+    return (
+      // @ts-ignore
+      <Nav.Navigator {...navigationStructure.props}>
+        {navigationStructure.contents &&
+          createNavigator(navigationStructure.contents)}
+        {Object.values(screens).map((item, index: number) =>
+          renderScreens(
+            item,
+            index,
+            Nav,
+            navigationStructure.screenKey,
+            screens
+          )
+        )}
+      </Nav.Navigator>
+    );
+  };
+
+  return createNavigator(navStructure);
 };
 
 export default GlobalStackNavigator;

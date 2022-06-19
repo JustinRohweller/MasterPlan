@@ -18,6 +18,10 @@ const navigationStructure = {
 };
 const Tab = createBottomTabNavigator();
 
+// const NavigationCreator = ({ screens, navStructure }) => {
+
+// };
+
 const MainNavigator = ({ myNavigationProps }: any) => {
   return (
     // @ts-ignore
