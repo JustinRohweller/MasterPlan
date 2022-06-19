@@ -6,29 +6,9 @@ import * as screens from "../../screens";
 // TODO: DRY THIS MORE. ie. this and global stack are super simliar.
 // maybe pass in an object of the type of navigation structure?
 // ie.
-
 // goal is just to say how the navigators are configured.
-
-// name of screen, navigator it belongs to
-// const navigationStructure = {
-//   auth: {
-//     login: "Switch",
-//     signUp: "Switch",
-//     globalStack: {
-//       drawerNav: {
-
-//       }
-//       profileDetails: "Stack"
-//       tabs: {
-//         home: "Tab",
-//         profile: "Tab",
-//         settings: "Tab",
-//       },
-//     },
-//   },
-// };
-
-const navigationStructure2 = {
+// maybe pass this in, and the screens?
+const navigationStructure = {
   Switch: {
     Stack: {
       Drawer: true,
@@ -37,14 +17,6 @@ const navigationStructure2 = {
   },
 };
 const Tab = createBottomTabNavigator();
-
-const navigatorScreens = Object.values(navigators).map((item, index: number) =>
-  renderScreens(item, index, Tab, "shouldBeInTabs", navigators)
-);
-
-const regularScreens = Object.values(screens).map((item, index: number) =>
-  renderScreens(item, index, Tab, "shouldBeInTabs", screens)
-);
 
 const MainNavigator = ({ myNavigationProps }: any) => {
   return (
@@ -58,8 +30,12 @@ const MainNavigator = ({ myNavigationProps }: any) => {
       }}
       {...myNavigationProps}
     >
-      {navigatorScreens}
-      {regularScreens}
+      {Object.values(navigators).map((item, index: number) =>
+        renderScreens(item, index, Tab, "shouldBeInTabs", navigators)
+      )}
+      {Object.values(screens).map((item, index: number) =>
+        renderScreens(item, index, Tab, "shouldBeInTabs", screens)
+      )}
     </Tab.Navigator>
   );
 };

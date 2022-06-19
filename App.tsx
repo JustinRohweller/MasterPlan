@@ -3,7 +3,6 @@ import {
   ignoreSettingATimer,
 } from "@jrohweller/mycomponents.ui.constants";
 import Root from "@jrohweller/mycomponents.ui.root";
-import { NavigationContainer } from "@react-navigation/native";
 import { LogBox } from "react-native";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
@@ -43,9 +42,7 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} moleculeTheme={theme}>
-      <NavigationContainer>
-        <GlobalStackNavigator />
-      </NavigationContainer>
+      <GlobalStackNavigator />
     </Root>
   );
 };

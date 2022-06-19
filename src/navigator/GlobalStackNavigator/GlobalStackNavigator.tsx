@@ -10,14 +10,13 @@
 
 import { renderScreens } from "@jrohweller/mycomponents.ui.constants";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as navigators from "../../navigator";
 import * as screens from "../../screens";
 
 const Stack = createStackNavigator();
 
-const navigatorScreens = Object.values(navigators).map((item, index: number) =>
-  renderScreens(item, index, Stack, "shouldBeInStack", navigators)
-);
+// const navigatorScreens = Object.values(navigators).map((item, index: number) =>
+//   renderScreens(item, index, Stack, "shouldBeInStack", navigators)
+// );
 
 const regularScreens = Object.values(screens).map((item, index: number) =>
   renderScreens(item, index, Stack, "shouldBeInStack", screens)
@@ -33,8 +32,10 @@ const GlobalStackNavigator = ({ myNavigationProps }: any) => {
   return (
     // @ts-ignore
     <Stack.Navigator screenOptions={screenOptions} {...myNavigationProps}>
-      {navigatorScreens}
-      {regularScreens}
+      {/* {navigatorScreens} */}
+      {Object.values(screens).map((item, index: number) =>
+        renderScreens(item, index, Stack, "shouldBeInStack", screens)
+      )}
     </Stack.Navigator>
   );
 };
