@@ -21,12 +21,12 @@ const navStructure = {
   includeKey: "shouldBeInTabs",
   navigator: Tab,
   props: {
-    // backBehavior: "none",
-    // tabBar: () => null,
-    // screenOptions: {
-    //   unmountOnBlur: true,
-    //   headerShown: false,
-    // },
+    backBehavior: "none",
+    tabBar: () => null,
+    screenOptions: {
+      unmountOnBlur: true,
+      headerShown: false,
+    },
   },
   contents: {
     title: "Global Stack",

@@ -1,5 +1,6 @@
 /*
 THE PLAN:
+-mess with safearea for the root. seems wonky. we want to make own navigator?
 -move renderScreens out of constants lib
 -make navigator, move renderScreens out of navigator?
 
