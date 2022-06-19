@@ -2,7 +2,6 @@
 THE PLAN:
 -mess with safearea for the root. seems wonky. we want to make own navigator?
 -move renderScreens out of constants lib
--make navigator, move renderScreens out of navigator?
 
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
@@ -40,6 +39,7 @@ IF shit is red, do use typescript workspace version.
 // bit login
 // bit add src/molecules --namespace ui (IMPORTANT!!!!!)
 // bit tag --all --message "constants"
+// if issue, delete it out of .bitmap.
 // can do --force-deploy if needed. ^
 // bit export
 // 

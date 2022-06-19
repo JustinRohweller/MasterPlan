@@ -8,9 +8,9 @@
 
 // https://akveo.github.io/react-native-ui-kitten/docs/guides/configure-navigation#configure-navigation
 
+import { NavigationCreator } from "@jrohweller/mycomponents.ui.navigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import NavigationCreator from "./src/navigator/NavigationCreator";
 import * as screens from "./src/screens";
 
 const Stack = createStackNavigator();

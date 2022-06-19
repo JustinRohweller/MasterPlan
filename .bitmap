@@ -9,11 +9,11 @@
  */
 
 {
-    "ui/root": {
+    "ui/navigator": {
         "scope": "jrohweller.mycomponents",
-        "version": "0.0.3",
+        "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "src/root"
+        "rootDir": "src/navigator"
     },
     "$schema-version": "14.9.0"
 }
