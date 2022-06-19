@@ -1,5 +1,7 @@
 /*
 THE PLAN:
+-make navigator, move renderScreens out of navigator?
+
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 

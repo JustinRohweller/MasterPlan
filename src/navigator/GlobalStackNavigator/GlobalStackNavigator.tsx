@@ -8,66 +8,43 @@
 
 // https://akveo.github.io/react-native-ui-kitten/docs/guides/configure-navigation#configure-navigation
 
-import { renderScreens } from "@jrohweller/mycomponents.ui.constants";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as screens from "../../screens";
+import NavigationCreator from "../NavigationCreator";
 
 const Stack = createStackNavigator();
-
-const screenOptions = {
-  headerShown: false,
-  animationEnabled: false,
-  detachPreviousScreen: false,
-};
-
-// const navigationStructure = {
-//   name: "Switch",
-//   props: { screenOptions },
-//   contents: {
-//     name: "Stack",
-//     props: { screenOptions },
-//     contents: {
-//       name: "Drawer",
-//       props: { screenOptions },
-//       contents: {
-//         name: "Tabs",
-//         props: { screenOptions },
-//         contents: null,
-//       },
-//     },
-//   },
-// };
+const Tab = createBottomTabNavigator();
 
 const navStructure = {
-  screenKey: "shouldBeInStack",
-  navigator: Stack,
-  props: { screenOptions },
-  contents: null,
+  title: "Main",
+  includeKey: "shouldBeInTabs",
+  navigator: Tab,
+  props: {
+    backBehavior: "none",
+    tabBar: () => null,
+    screenOptions: {
+      unmountOnBlur: true,
+      headerShown: false,
+    },
+  },
+  contents: {
+    title: "Global Stack",
+    includeKey: "shouldBeInStack",
+    navigator: Stack,
+    props: {
+      screenOptions: {
+        headerShown: false,
+        animationEnabled: false,
+        detachPreviousScreen: false,
+      },
+    },
+    contents: null,
+  },
 };
 
 const GlobalStackNavigator = ({}: any) => {
-  const createNavigator = (navigationStructure: any) => {
-    const Nav = navigationStructure.navigator;
-
-    return (
-      // @ts-ignore
-      <Nav.Navigator {...navigationStructure.props}>
-        {navigationStructure.contents &&
-          createNavigator(navigationStructure.contents)}
-        {Object.values(screens).map((item, index: number) =>
-          renderScreens(
-            item,
-            index,
-            Nav,
-            navigationStructure.screenKey,
-            screens
-          )
-        )}
-      </Nav.Navigator>
-    );
-  };
-
-  return createNavigator(navStructure);
+  return <NavigationCreator screens={screens} navStructure={navStructure} />;
 };
 
 export default GlobalStackNavigator;
