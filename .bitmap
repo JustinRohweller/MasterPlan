@@ -13,7 +13,7 @@
         "scope": "jrohweller.mycomponents",
         "version": "0.0.3",
         "mainFile": "index.ts",
-        "rootDir": "mycomponents/ui/root"
+        "rootDir": "src/root"
     },
     "$schema-version": "14.9.0"
 }

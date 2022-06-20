@@ -1,9 +1,7 @@
 /*
 THE PLAN:
 -literally copy paste from node_modules to start editing bit stuff? :D
--root does not use the light/dark colors: statusBarLight/statusBarDark
 -mess with safearea for the root. seems wonky. we want to make own navigator?
--might not be the play, seems like it's not working good.
 -move renderScreens out of constants lib
 
  -make root example you download and use.
