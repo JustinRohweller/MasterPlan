@@ -1501,12 +1501,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@jrohweller/mycomponents.ui.constants@^0.0.3":
-  version "0.0.3"
-  resolved "https://node.bit.cloud/@jrohweller/mycomponents.ui.constants/-/@jrohweller-mycomponents.ui.constants-0.0.3.tgz#2955aec1b7485ac0fc7f61a64c5f5ac5dd8ae5fa"
-  integrity sha1-KVWuwbdIWsD8f2GmTF9axd2K5fo=
+"@jrohweller/mycomponents.ui.constants@^0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.cloud/@jrohweller/mycomponents.ui.constants/-/@jrohweller-mycomponents.ui.constants-0.0.4.tgz#d88ff4e7bbf0e5d56fed322f5810b52f50937149"
+  integrity sha1-2I/057vw5dVv7TIvWBC1L1CTcUk=
   dependencies:
-    react "17.0.2"
     react-native "0.68.2"
 
 "@jrohweller/mycomponents.ui.molecules@0.0.2", "@jrohweller/mycomponents.ui.molecules@^0.0.2":
