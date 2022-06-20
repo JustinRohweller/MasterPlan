@@ -6,7 +6,7 @@ interface HomeScreenProps {}
 const HomeScreen = ({}: HomeScreenProps) => {
   return (
     <Sview flex={1}>
-      <Stext>HomeScreen</Stext>
+      <Stext>dog</Stext>
     </Sview>
   );
 };

@@ -8,6 +8,9 @@ import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
 
+// IF THE APP IS RELODING TWICE BEFORE SHOWING CHANGES WHEN IMAGES LINE IS THERE:
+// REINSTALL EXPO AND IT SHOULD FIX IT>
+
 // Sentry.init({
 //   dsn: "https://7c5761e94a194e86ab34d06bd1165a44@o1085410.ingest.sentry.io/6133330",
 //   enableInExpoDevelopment: true,
