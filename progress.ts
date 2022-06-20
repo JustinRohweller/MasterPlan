@@ -1,7 +1,6 @@
 /*
 THE PLAN:
 -literally copy paste from node_modules to start editing bit stuff? :D
--mess with safearea for the root. seems wonky. we want to make own navigator?
 -move renderScreens out of constants lib
 
  -make root example you download and use.
