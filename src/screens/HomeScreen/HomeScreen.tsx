@@ -6,8 +6,8 @@ interface HomeScreenProps {}
 const HomeScreen = ({}: HomeScreenProps) => {
   return (
     <Sview flex={1} justifyContent="space-between">
-      <Stext>dog</Stext>
-      <Stext>dog</Stext>
+      <Stext>fsdffd</Stext>
+      <Stext>aaa</Stext>
     </Sview>
   );
 };
