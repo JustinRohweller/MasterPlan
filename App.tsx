@@ -2,12 +2,12 @@ import {
   getLocalImages,
   ignoreSettingATimer,
 } from "@jrohweller/mycomponents.ui.constants";
-// import Root from "@jrohweller/mycomponents.ui.root";
+import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
 import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
-import Root from "./src/root";
+// import Root from "./src/root";
 
 // IF THE APP IS RELODING TWICE BEFORE SHOWING CHANGES WHEN IMAGES LINE IS THERE:
 // REINSTALL EXPO AND IT SHOULD FIX IT>
