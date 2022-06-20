@@ -1,7 +1,7 @@
 /*
 THE PLAN:
--literally copy paste from node_modules to start editing bit stuff? :D
--move renderScreens out of constants lib
+
+-export hooks.
 
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
