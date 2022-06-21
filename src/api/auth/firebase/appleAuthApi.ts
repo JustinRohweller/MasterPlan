@@ -3,11 +3,11 @@
 
 // https://medium.com/p/ca331b4de05/responses/show
 
-import { Alert } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
-import EMAIL_AUTH from "./email";
-import { OAuthProvider } from "firebase/auth";
 import * as Crypto from "expo-crypto";
+import { OAuthProvider } from "firebase/auth";
+import { Alert } from "react-native";
+import EMAIL_AUTH from "./emailAuthApi";
 
 // https://docs.expo.io/versions/latest/sdk/apple-authentication/
 //comment all with function headers.

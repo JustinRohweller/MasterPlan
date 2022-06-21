@@ -6,6 +6,8 @@ import OneSignal from "react-native-onesignal";
 // INFO: BE DAMN SURE NOT TO STORE .p12 or .provisionin file in git
 // ie. make sure that it's stored in .gitignore.
 // WHY? because it gets unsigned when it's been pushed/pulled, and then get:
+// lowkey don't care about the whole, "they'll steal your key"
+// Do care about stuff working.
 // ERROR ITMS-90165:
 // "Invalid Provisioning Profile Signature.
 // The provisioning profile included in the bundle 'com.luvbucks.ios'
@@ -60,7 +62,7 @@ const useOneSignalNotificationHandler = ({
   onNotiPressed,
   onToken,
   onReceivedWhileRunning,
-}) => {
+}: any) => {
   useEffect(() => {
     try {
       OneSignal.setLogLevel(6, 0);
@@ -80,12 +82,12 @@ const useOneSignalNotificationHandler = ({
 
     // https://documentation.onesignal.com/docs/react-native-sdk
     // https://documentation.onesignal.com/docs/react-native-sdk-setup#step-5-initialize-the-onesignal-sdk
-    OneSignal.promptForPushNotificationsWithUserResponse((response) => {
+    OneSignal.promptForPushNotificationsWithUserResponse((response: any) => {
       onToken();
     });
 
     OneSignal.setNotificationWillShowInForegroundHandler(
-      (notificationReceivedEvent) => {
+      (notificationReceivedEvent: any) => {
         if (__DEV__) {
           console.info(
             "OneSignal: notification will show in foreground:",

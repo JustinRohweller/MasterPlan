@@ -1,5 +1,7 @@
 /*
 THE PLAN:
+  -export emailauthapi, then have googleauthapi and appleauthapi rely on that.
+  -export other api stuff (media) include fixFirebase upload script somehow.
 
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
