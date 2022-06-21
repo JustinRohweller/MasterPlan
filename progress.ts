@@ -1,6 +1,5 @@
 /*
 THE PLAN:
--export hooks.
 
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
@@ -62,13 +61,20 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 
 // 
 
-// 
+// ADD STUFF YOU USE THE MOST FIRST =============
+// ie. what do I use in every project, how often do I use it within a project.
 
 -molecules DONE
 -constants DONE
 -navigator DONE pt 2 => instance of it NOT DONE
 -root pt 1 DONE, pt 2 => instance of it NOT DONE
+-very common compoenents =>
+      customcontentcontainer
+      customwrapscrollview
 -hooks => literally just export them.
+      Need to export them one by one.
+-api
+     Need to make reuseable, then export those one by one.
 -scripts => likely will be doing pt 2 above.
 
 // I feel like we don't need the hooks.
