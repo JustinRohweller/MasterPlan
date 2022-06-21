@@ -1,6 +1,8 @@
 /*
 THE PLAN:
   -export emailauthapi, then have googleauthapi and appleauthapi rely on that.
+  -publish each separately.
+  -useUserLogin also relies on that.
   -export other api stuff (media) include fixFirebase upload script somehow.
 
  -make root example you download and use.
@@ -70,14 +72,17 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -constants DONE
 -navigator DONE pt 2 => instance of it NOT DONE
 -root pt 1 DONE, pt 2 => instance of it NOT DONE
+-api
+     Need to make reuseable, then export those one by one.
+-hooks => literally just export them.
+      Need to export them one by one.
 -very common compoenents =>
       customcontentcontainer
       customwrapscrollview
--hooks => literally just export them.
-      Need to export them one by one.
--api
-     Need to make reuseable, then export those one by one.
 -scripts => likely will be doing pt 2 above.
+
+-common instances of stuff from above
+-any random stuff (components, then functions, then maybe screens (loginscreen, ect.))
 
 // I feel like we don't need the hooks.
 
