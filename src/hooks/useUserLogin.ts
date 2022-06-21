@@ -2,6 +2,7 @@ import type { User } from "@firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { EMAIL_AUTH } from "../api/auth/firebase";
+
 const useUserLogin = (
   onLoggedIn: (user: User) => void,
   onNotLoggedIn: () => void

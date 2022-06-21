@@ -1,3 +1,4 @@
+import type { User } from "@firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import * as Segment from "expo-analytics-segment";
@@ -20,12 +21,21 @@ import {
   updateEmail,
 } from "firebase/auth";
 import { Alert } from "react-native";
-import type {
-  AuthFormValues,
-  IFirebaseError,
-  UserVoidFunc,
-  VoidFunc,
-} from "../../../types";
+
+export interface IFirebaseError extends Error {
+  code: string;
+  message: string;
+  stack?: string;
+}
+
+export interface AuthFormValues {
+  email: string;
+  password: string;
+}
+
+export type VoidFunc = () => void;
+export type UserVoidFunc = (user: User) => void;
+export type ObjectType = Record<string, any>;
 
 // TODO: would be better to not use callbacks, instead just return an error or not.
 
@@ -50,7 +60,7 @@ const EMAIL_AUTH = {
     await signInWithCredential(auth, credential).catch(EMAIL_AUTH.onAuthError);
   },
 
-  onValidatedEmail: async (onSuccess: VoidFunc) => {
+  onValidatedEmail: async (onSuccess: VoidFunction) => {
     const auth = getAuth();
     if (auth?.currentUser?.reload) {
       await auth?.currentUser?.reload();
@@ -71,13 +81,13 @@ const EMAIL_AUTH = {
     const auth = getAuth();
     const user = auth?.currentUser;
     if (user) {
-      sendEmailVerification(auth.currentUser)
+      sendEmailVerification(auth.currentUser!)
         .then(() => {
           // Email sent.
           //
           onSuccess();
         })
-        .catch((error) => {
+        .catch(error => {
           // An error happened.
           console.info(JSON.stringify(error));
           onError(error);
@@ -85,7 +95,7 @@ const EMAIL_AUTH = {
     }
   },
 
-  onSendPasswordReset: (values: AuthFormValues, onEmailSent: VoidFunc) => {
+  onSendPasswordReset: (values: AuthFormValues, onEmailSent: VoidFunction) => {
     // send password reset email or error.
     const email = values.email.trim();
     const auth = getAuth();
@@ -109,12 +119,9 @@ const EMAIL_AUTH = {
       .catch(EMAIL_AUTH.onAuthError);
   },
 
-  listenForLogin: (
-    onUserLoggedIn: UserVoidFunc,
-    onUserNotLoggedIn: VoidFunc
-  ) => {
+  listenForLogin: (onUserLoggedIn: any, onUserNotLoggedIn: VoidFunction) => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         // signed in with email.
         onUserLoggedIn(user);
@@ -125,7 +132,7 @@ const EMAIL_AUTH = {
     return unsubscribe;
   },
 
-  onForceSignOut: (navigate: VoidFunc) => {
+  onForceSignOut: (navigate: VoidFunction) => {
     const auth = getAuth();
     Alert.alert(
       "Signing You Out",
@@ -153,7 +160,7 @@ const EMAIL_AUTH = {
     );
   },
 
-  onPressSignOut: (navigate: VoidFunc) => {
+  onPressSignOut: (navigate: VoidFunction) => {
     const auth = getAuth();
     Alert.alert(
       "Sign Out?",
@@ -184,7 +191,7 @@ const EMAIL_AUTH = {
     );
   },
 
-  reauthenticate: async (currentPassword: string, callback: VoidFunc) => {
+  reauthenticate: async (currentPassword: string, callback: VoidFunction) => {
     const { currentUser } = getAuth();
     if (currentUser?.email) {
       const cred = EmailAuthProvider.credential(
@@ -226,8 +233,8 @@ const EMAIL_AUTH = {
 
   onSendCustomMagicLinkEmail: async (
     email: string,
-    onSuccess: VoidFunc,
-    onFailure: VoidFunc
+    onSuccess: VoidFunction,
+    onFailure: VoidFunction
   ): Promise<void> => {
     try {
       const expoLink = Linking.createURL("Login");
@@ -272,7 +279,7 @@ const EMAIL_AUTH = {
 
   onSendMagicLink: async (
     email: string,
-    onSuccess: VoidFunc
+    onSuccess: VoidFunction
   ): Promise<void> => {
     // https://forums.expo.dev/t/passwordless-firebase-authentication-without-ejecting/21433
     // The gist: call this to send email,
@@ -315,7 +322,7 @@ const EMAIL_AUTH = {
         onSuccess();
         // ...
       })
-      .catch((error) => {
+      .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.info(errorCode);
@@ -371,7 +378,7 @@ const EMAIL_AUTH = {
   onPressUpdateEmail: (
     currentPassword: string,
     newEmail: string,
-    onSuccess: VoidFunc
+    onSuccess: VoidFunction
   ) => {
     Alert.alert(
       "Update Email?",
@@ -392,7 +399,7 @@ const EMAIL_AUTH = {
                     // email updated.
                     onSuccess();
                   })
-                  .catch((error) => {
+                  .catch(error => {
                     console.info(JSON.stringify(error));
                     // An error happened.
                   });
