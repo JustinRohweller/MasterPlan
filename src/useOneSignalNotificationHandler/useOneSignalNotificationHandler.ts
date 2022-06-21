@@ -58,15 +58,23 @@ import OneSignal from "react-native-onesignal";
 // GOOD INFO:
 // https://github.com/OneSignal/onesignal-expo-plugin/issues/67#issuecomment-1093362334
 
+interface OneSignalProps {
+  onNotiPressed: any;
+  onToken: any;
+  onReceivedWhileRunning: any;
+  appId: string;
+}
+
 const useOneSignalNotificationHandler = ({
   onNotiPressed,
   onToken,
   onReceivedWhileRunning,
-}: any) => {
+  appId,
+}: OneSignalProps) => {
   useEffect(() => {
     try {
       OneSignal.setLogLevel(6, 0);
-      OneSignal.setAppId("6c6bb837-bb37-49ba-83c9-70d24b698458");
+      OneSignal.setAppId(appId);
       const { currentUser } = getAuth();
       if (currentUser) {
         if (currentUser.uid) {
@@ -88,6 +96,7 @@ const useOneSignalNotificationHandler = ({
 
     OneSignal.setNotificationWillShowInForegroundHandler(
       (notificationReceivedEvent: any) => {
+        // @ts-ignore
         if (__DEV__) {
           console.info(
             "OneSignal: notification will show in foreground:",
@@ -95,10 +104,12 @@ const useOneSignalNotificationHandler = ({
           );
         }
         const notification = notificationReceivedEvent.getNotification();
+        // @ts-ignore
         if (__DEV__) {
           console.info("notification: ", notification);
         }
         const data = notification.additionalData;
+        // @ts-ignore
         if (__DEV__) {
           console.info("additionalData: ", data);
         }
