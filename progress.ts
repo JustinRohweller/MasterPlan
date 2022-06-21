@@ -1,6 +1,5 @@
 /*
 THE PLAN:
-
 -export hooks.
 
  -make root example you download and use.
@@ -71,6 +70,8 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -root pt 1 DONE, pt 2 => instance of it NOT DONE
 -hooks => literally just export them.
 -scripts => likely will be doing pt 2 above.
+
+// I feel like we don't need the hooks.
 
 -make scripts to help make libraries.
 ie. script that copies code over, and publishes.
