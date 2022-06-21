@@ -9,11 +9,11 @@
  */
 
 {
-    "ui/use-keyboard-is-visible": {
+    "ui/use-online-status": {
         "scope": "jrohweller.mycomponents",
         "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "src/useKeyboardIsVisible"
+        "rootDir": "src/useOnlineStatus"
     },
     "$schema-version": "14.9.0"
 }
