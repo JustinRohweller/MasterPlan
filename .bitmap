@@ -9,11 +9,5 @@
  */
 
 {
-    "ui/use-one-signal-notification-handler": {
-        "scope": "jrohweller.mycomponents",
-        "version": "0.0.1",
-        "mainFile": "index.ts",
-        "rootDir": "src/useOneSignalNotificationHandler"
-    },
     "$schema-version": "14.9.0"
 }
