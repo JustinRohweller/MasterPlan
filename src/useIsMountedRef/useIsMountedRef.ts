@@ -6,7 +6,6 @@ const useIsMountedRef = () => {
   useEffect(() => {
     isMountedRef.current = true;
     return () => {
-      // ie. on unmount, set to nonmounted.
       isMountedRef.current = false;
     };
   });

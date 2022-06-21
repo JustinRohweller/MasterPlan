@@ -2,7 +2,7 @@ import type { User } from "@firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { EMAIL_AUTH } from "../api/auth/firebase";
-import useIsMountedRef from "./useIsMountedRef";
+import useIsMountedRef from "../useIsMountedRef/useIsMountedRef";
 
 const useUserLogin = (
   onLoggedIn: (user: User) => void,
