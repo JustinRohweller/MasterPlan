@@ -1,5 +1,6 @@
 /*
 THE PLAN:
+-make issue for dripsy that too many styles causes crash.
 -fix Sicon.
 -very common components =>
       customcontentcontainer
@@ -80,7 +81,8 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -scripts => likely will be doing pt 2 above.
 
 -common instances of stuff from above
--BUILD APP!
+-BUILD APP! breaktime
+-test perf with that library.
 -go back and improve/fix the stuff we have. (eh will do that as I build app)
 -any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
