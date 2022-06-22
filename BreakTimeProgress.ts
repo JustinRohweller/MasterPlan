@@ -386,3 +386,7 @@
 // Project home: => started at 8:02, ends in 5 minutes, at 8:07 (Bottom is END NOW)
 // Project home: => started at 8:02, should have ended 5 minutes ago at 8:07 END NOW
 //
+
+// own computer, which you then use to host your own database.
+// vultr.com
+// digitalocean

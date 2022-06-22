@@ -47,8 +47,6 @@ const COMPONENT_TYPES = [
   "check",
 ];
 
-// TODO: need generics
-
 const createOneScheme = <
   ValueType,
   SchemaType,
@@ -57,7 +55,7 @@ const createOneScheme = <
 >(
   id: string,
   value: ValueType,
-  schema: Yup.Schema<SchemaType>,
+  schema: any,
   componentType: string,
   componentProps?: ComponentPropsType,
   wrapperProps?: WrapperPropsType
@@ -275,7 +273,7 @@ const LAST_NAME_SCHEME = createOneScheme(
 );
 
 // @ts-ignore
-const VALIDATION = {
+export const VALIDATION = {
   COMPONENT_TYPES,
 
   // SPECIFIC SCHEMES: INSTANCE OF A SCHEME (think one component)
@@ -352,5 +350,3 @@ const VALIDATION = {
     // return VALIDATION.getSignUpSchema();
   },
 };
-
-export default VALIDATION;
