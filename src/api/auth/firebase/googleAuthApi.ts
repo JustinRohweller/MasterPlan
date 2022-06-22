@@ -5,7 +5,7 @@ import * as Google from "expo-auth-session/providers/google";
 import { GoogleAuthRequestConfig } from "expo-auth-session/providers/google";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useEffect } from "react";
-import EMAIL_AUTH from "./emailAuthApi";
+import EMAIL_AUTH from "../../../emailAuthApi/emailAuthApi";
 
 // https://docs.expo.dev/versions/v44.0.0/sdk/auth-session/
 // https://docs.expo.dev/guides/authentication/#google
@@ -18,16 +18,24 @@ import EMAIL_AUTH from "./emailAuthApi";
 // make credentials for each of these.
 // then you're good!
 
-const useGoogleAuth = (config: Partial<GoogleAuthRequestConfig>) => {
+interface IFirebaseError extends Error {
+  code: string;
+  message: string;
+  stack?: string;
+}
+
+const useGoogleAuth = (
+  config: Partial<GoogleAuthRequestConfig>,
+  onError: (error: IFirebaseError) => void
+) => {
   const [request, response, promptAsync] = Google.useAuthRequest(config);
 
   useEffect(() => {
     if (response?.type === "success") {
       const { id_token } = response.params;
-
       const credential = GoogleAuthProvider.credential(id_token);
 
-      EMAIL_AUTH.signInWithCredential(credential);
+      EMAIL_AUTH.signInWithCredential(credential, onError);
     }
   }, [response]);
 

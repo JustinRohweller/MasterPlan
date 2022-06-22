@@ -1,7 +1,6 @@
 import type { User } from "@firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
-import * as Segment from "expo-analytics-segment";
 import * as Linking from "expo-linking";
 import * as Updates from "expo-updates";
 import {
@@ -33,34 +32,33 @@ export interface AuthFormValues {
   password: string;
 }
 
-export type VoidFunc = () => void;
 export type UserVoidFunc = (user: User) => void;
 export type ObjectType = Record<string, any>;
 
-// TODO: would be better to not use callbacks, instead just return an error or not.
-
 const EMAIL_AUTH = {
-  onCreateUser: async (values: AuthFormValues) => {
+  onCreateUser: async (
+    values: AuthFormValues,
+    onError: (error: IFirebaseError) => void
+  ) => {
     const { email, password } = values;
     // new account
     const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email.trim(), password)
       .then(() => {
-        // NO NEED TO DO ANYTHING HERE> EVERY SCREEN SHOULD HAVE
-        // LISTEN FOR LOGIN
-        // success, navigate in.
+        // NO NEED TO DO ANYTHING HERE> ONCE ONE SCREEN LISTENS FOR LOGIN IS ENOUGH.
       })
-      .catch(EMAIL_AUTH.onAuthError);
+      .catch(onError);
   },
 
-  // IDEA: all local state where you can, upload on app close?
-  // Sign in with credential from the Facebook user.
-  signInWithCredential: async (credential: any) => {
+  signInWithCredential: async (
+    credential: any,
+    onError: (error: IFirebaseError) => void
+  ) => {
     const auth = getAuth();
-    await signInWithCredential(auth, credential).catch(EMAIL_AUTH.onAuthError);
+    await signInWithCredential(auth, credential).catch(onError);
   },
 
-  onValidatedEmail: async (onSuccess: VoidFunction) => {
+  onValidatedEmail: async (onSuccess: VoidFunction, onFail: VoidFunction) => {
     const auth = getAuth();
     if (auth?.currentUser?.reload) {
       await auth?.currentUser?.reload();
@@ -69,7 +67,8 @@ const EMAIL_AUTH = {
     if (auth?.currentUser?.emailVerified) {
       onSuccess();
     } else {
-      Alert.alert("Email not verified.", "Be sure to press the link!");
+      // "Email not verified.", "Be sure to press the link!"
+      onFail();
     }
   },
 
@@ -89,34 +88,28 @@ const EMAIL_AUTH = {
         })
         .catch(error => {
           // An error happened.
-          console.info(JSON.stringify(error));
           onError(error);
         });
     }
   },
 
-  onSendPasswordReset: (values: AuthFormValues, onEmailSent: VoidFunction) => {
+  onSendPasswordReset: (
+    values: AuthFormValues,
+    onEmailSent: VoidFunction,
+    onError: (error: IFirebaseError) => void
+  ) => {
     // send password reset email or error.
     const email = values.email.trim();
     const auth = getAuth();
     sendPasswordResetEmail(auth, email)
       .then(() => {
         // Email sent.
-        Alert.alert(
-          "Email Sent",
-          `A password reset email has been sent to ${email}`,
-          [
-            {
-              text: "Ok",
-              onPress: () => {
-                onEmailSent();
-              },
-            },
-          ],
-          { cancelable: false }
-        );
+        onEmailSent();
       })
-      .catch(EMAIL_AUTH.onAuthError);
+      .catch(error => {
+        // An error happened.
+        onError(error);
+      });
   },
 
   listenForLogin: (onUserLoggedIn: any, onUserNotLoggedIn: VoidFunction) => {
@@ -132,66 +125,28 @@ const EMAIL_AUTH = {
     return unsubscribe;
   },
 
-  onForceSignOut: (navigate: VoidFunction) => {
+  onPressSignOut: (
+    navigate: VoidFunction,
+    onError: (error: IFirebaseError) => void
+  ) => {
     const auth = getAuth();
-    Alert.alert(
-      "Signing You Out",
-      "Your session has expired. Please log back in.",
-      [
-        {
-          text: "Ok, Sign Me Out",
-          onPress: () => {
-            Segment.track("Forced Sign Out");
-            signOut(auth).then(() => {
-              // eslint-disable-next-line no-undef
-              if (__DEV__) {
-                // You cannot use the Updates module in development mode in a production app.
-                // so we just go back.Slash we are forced to reload.
-                navigate();
-              } else {
-                Updates.reloadAsync();
-              }
-              // navigate();
-            }, EMAIL_AUTH.onAuthError);
-          },
-        },
-      ],
-      { cancelable: false }
-    );
+    signOut(auth).then(() => {
+      // eslint-disable-next-line no-undef
+      if (__DEV__) {
+        // You cannot use the Updates module in development mode in a production app.
+        // so we just go back.Slash we are forced to reload.
+        navigate();
+      } else {
+        Updates.reloadAsync();
+      }
+    }, onError);
   },
 
-  onPressSignOut: (navigate: VoidFunction) => {
-    const auth = getAuth();
-    Alert.alert(
-      "Sign Out?",
-      "Are you sure you would like to sign out?",
-      [
-        {
-          text: "Yes, Sign Out",
-          onPress: () => {
-            Segment.track("Logout Modal : Logout Finalized");
-            signOut(auth).then(() => {
-              // eslint-disable-next-line no-undef
-              if (__DEV__) {
-                // You cannot use the Updates module in development mode in a production app.
-                // so we just go back.Slash we are forced to reload.
-                navigate();
-              } else {
-                Updates.reloadAsync();
-              }
-              // navigate();
-            }, EMAIL_AUTH.onAuthError);
-          },
-        },
-        {
-          text: "Cancel",
-        },
-      ],
-      { cancelable: false }
-    );
-  },
-
-  reauthenticate: async (currentPassword: string, callback: VoidFunction) => {
+  reauthenticate: async (
+    currentPassword: string,
+    callback: VoidFunction,
+    onError: (error: IFirebaseError) => void
+  ) => {
     const { currentUser } = getAuth();
     if (currentUser?.email) {
       const cred = EmailAuthProvider.credential(
@@ -200,13 +155,16 @@ const EMAIL_AUTH = {
       );
       await reauthenticateWithCredential(currentUser, cred)
         .then(callback)
-        .catch(EMAIL_AUTH.onAuthError);
+        .catch(onError);
     } else {
       console.info("no user");
     }
   },
 
-  handleMagicLinkUrl: async (url: string) => {
+  handleMagicLinkUrl: async (
+    url: string,
+    onError: (error: IFirebaseError) => void
+  ) => {
     const auth = getAuth();
     const isCorrectLink = isSignInWithEmailLink(auth, url);
     if (isCorrectLink) {
@@ -222,11 +180,9 @@ const EMAIL_AUTH = {
           console.info("user had no stored email");
         }
       } catch (error) {
-        Alert.alert(
-          "Error signing you in.",
-          "Please try again. We're aware of an issue where if you press the link too rapidly we'll fail here."
-        );
-        console.info(JSON.stringify(error));
+        //   "Error signing you in.",
+        //   "Please try again. We're aware of an issue where if you press the link too rapidly we'll fail here."
+        onError(error);
       }
     }
   },
@@ -267,7 +223,7 @@ const EMAIL_AUTH = {
         if (result.data?.title === "Success") {
           onSuccess();
         } else {
-          Alert.alert("Error", "Failed to send email.");
+          // "Error", "Failed to send email."
           onFailure();
         }
       }
@@ -278,6 +234,7 @@ const EMAIL_AUTH = {
   },
 
   onSendMagicLink: async (
+    proxyLink: string, //"https://us-central1-luvbucks-mobile.cloudfunctions.net/redirectSignupUrl"
     email: string,
     onSuccess: VoidFunction
   ): Promise<void> => {
@@ -293,8 +250,7 @@ const EMAIL_AUTH = {
     const auth = getAuth();
     const expoLink = Linking.createURL("Login");
 
-    const FIREBASE_LINK_PROXY =
-      "https://us-central1-luvbucks-mobile.cloudfunctions.net/redirectSignupUrl";
+    const FIREBASE_LINK_PROXY = proxyLink;
     const proxyUrl = `${FIREBASE_LINK_PROXY}?redirectUrl=${encodeURIComponent(
       expoLink
     )}`;
@@ -331,89 +287,69 @@ const EMAIL_AUTH = {
       });
   },
 
-  // onPressDeleteAccount: (currentPassword, navigation) => {
-  //   Alert.alert(
-  //     "Delete Account?",
-  //     "Danger! Are you sure you would like to delete your account? You will lose all your data.",
-  //     [
-  //       {
-  //         text: "Yes, Delete My Account",
-  //         onPress: async () => {
-  //           const { currentUser } = firebase.auth();
-  //           // first, delete them from db
-  //           await EMAIL_AUTH.reauthenticate(currentPassword, async () => {
-  //             const batch = FIRESTORE.db.batch();
+  onDeleteAccount: async (
+    currentPassword: any,
+    beforeDelete: any,
+    afterDeleteDev: any,
+    onError: (error: IFirebaseError) => void
+  ) => {
+    const { currentUser } = getAuth();
+    if (currentUser) {
+      await EMAIL_AUTH.reauthenticate(
+        currentPassword,
+        async () => {
+          if (beforeDelete) {
+            beforeDelete();
+            // ex.
+            // const batch = FIRESTORE.db.batch();
+            // batch.delete(FIRESTORE.db.collection("users").doc(currentUser.uid));
+            // await batch.commit();
+          }
 
-  //             batch.delete(
-  //               FIRESTORE.db.collection("users").doc(currentUser.uid)
-  //             );
+          await currentUser.delete().then(async () => {
+            // eslint-disable-next-line no-undef
 
-  //             await batch.commit();
+            if (__DEV__) {
+              // You cannot use the Updates module in development mode in a production app.
+              // so we just go back.
+              if (afterDeleteDev) {
+                afterDeleteDev();
+              }
+            } else {
+              Updates.reloadAsync();
+            }
+          }, onError);
+        },
+        onError
+      );
+    }
+  },
 
-  //             await firebase
-  //               .auth()
-  //               .currentUser.delete()
-  //               .then(async () => {
-  //                 // eslint-disable-next-line no-undef
-  //                 if (__DEV__) {
-  //                   // You cannot use the Updates module in development mode in a production app.
-  //                   // so we just go back.
-  //                   navigation.navigate("Loading");
-  //                 } else {
-  //                   Updates.reloadAsync();
-  //                 }
-  //               }, EMAIL_AUTH.onAuthError);
-  //           });
-  //         },
-  //       },
-  //       {
-  //         text: "Cancel",
-  //         onPress: () => {},
-  //       },
-  //     ],
-  //     { cancelable: false }
-  //   );
-  // },
-
-  onPressUpdateEmail: (
+  onPressUpdateEmail: async (
     currentPassword: string,
     newEmail: string,
-    onSuccess: VoidFunction
+    onSuccess: VoidFunction,
+    onError: (error: IFirebaseError) => void
   ) => {
-    Alert.alert(
-      "Update Email?",
-      "Are you sure you would like to update your email? All future logins will need to use this email.",
-      [
-        {
-          text: "Yes, Update My Email",
-          onPress: async () => {
-            // first, delete them from db
-            await EMAIL_AUTH.reauthenticate(currentPassword, async () => {
-              // then update their email.
-              const { currentUser } = getAuth();
+    // first, delete them from db
+    await EMAIL_AUTH.reauthenticate(
+      currentPassword,
+      async () => {
+        // then update their email.
+        const { currentUser } = getAuth();
 
-              if (currentUser) {
-                updateEmail(currentUser, newEmail)
-                  .then(() => {
-                    // Update successful.
-                    // email updated.
-                    onSuccess();
-                  })
-                  .catch(error => {
-                    console.info(JSON.stringify(error));
-                    // An error happened.
-                  });
-              } else {
-                console.info("no User onPressUpdateEmail");
-              }
-            });
-          },
-        },
-        {
-          text: "Cancel",
-        },
-      ],
-      { cancelable: false }
+        if (currentUser) {
+          updateEmail(currentUser, newEmail)
+            .then(() => {
+              // email updated.
+              onSuccess();
+            })
+            .catch(onError);
+        } else {
+          console.info("no User onPressUpdateEmail");
+        }
+      },
+      onError
     );
   },
 
@@ -461,13 +397,16 @@ const EMAIL_AUTH = {
     }
   },
 
-  onPressLogin: async (values: AuthFormValues) => {
+  onPressLogin: async (
+    values: AuthFormValues,
+    onError: (error: IFirebaseError) => void
+  ) => {
     const auth = getAuth();
     await signInWithEmailAndPassword(
       auth,
       values.email.trim(),
       values.password
-    ).catch(EMAIL_AUTH.onAuthError);
+    ).catch(onError);
   },
 };
 

@@ -6,18 +6,22 @@
 import * as AppleAuthentication from "expo-apple-authentication";
 import * as Crypto from "expo-crypto";
 import { OAuthProvider } from "firebase/auth";
-import { Alert } from "react-native";
-import EMAIL_AUTH from "./emailAuthApi";
+import EMAIL_AUTH from "../../../emailAuthApi/emailAuthApi";
 
 // https://docs.expo.io/versions/latest/sdk/apple-authentication/
 //comment all with function headers.
 
+interface IFirebaseError extends Error {
+  code: string;
+  message: string;
+  stack?: string;
+}
 // basic steps: add library.
 // eas build
 // PUT app bundleID in firebase apple services id (com.luvbucks.ios) ect.
 // call this when you want to login.
 const APPLE_AUTH = {
-  signInWithApple: async () => {
+  signInWithApple: async (onError: (error: IFirebaseError) => void) => {
     try {
       const nonce = Math.random().toString(36).substring(2, 10);
       const hashedNonce = await Crypto.digestStringAsync(
@@ -36,19 +40,14 @@ const APPLE_AUTH = {
           idToken: identityToken, //this tells typescript that identityToken is not null
           rawNonce: nonce,
         });
-        EMAIL_AUTH.signInWithCredential(credential);
+        EMAIL_AUTH.signInWithCredential(credential, onError);
       } else {
-        Alert.alert("Sign in failed");
+        // @ts-ignore
+        onError("Sign In failed");
       }
       // signed in
     } catch (e) {
-      if (e.code === "ERR_CANCELED") {
-        // handle that the user canceled the sign-in flow
-      } else {
-        console.info(e);
-        // handle other errors
-        Alert.alert("Error", "There was an error signing you in.");
-      }
+      onError(e);
     }
   },
 };
