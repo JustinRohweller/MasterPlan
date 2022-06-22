@@ -1,5 +1,8 @@
 /*
 THE PLAN:
+-very common compoenents =>
+      customcontentcontainer
+      customwrapscrollview
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
