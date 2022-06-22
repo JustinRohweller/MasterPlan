@@ -1,6 +1,5 @@
 /*
 THE PLAN:
-  -export other api stuff (media) include fixFirebase upload script somehow.
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
