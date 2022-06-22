@@ -3,6 +3,7 @@ THE PLAN:
 -very common compoenents =>
       customcontentcontainer
       customwrapscrollview
+      custombutton
  -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
@@ -80,7 +81,7 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -common instances of stuff from above
 -any random stuff (components, then functions, then maybe screens (loginscreen, ect.))
 
-// I feel like we don't need the hooks.
+// revisit nandorojo stuff. solito, ect.
 
 -make scripts to help make libraries.
 ie. script that copies code over, and publishes.
