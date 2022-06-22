@@ -1,6 +1,7 @@
 import { Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Sview";
 import React from "react";
+import CustomHeader from "./CustomHeader";
 
 export interface CustomHeaderedContainerProps extends SviewProps {
   children?: React.ReactNode;
@@ -9,7 +10,7 @@ export interface CustomHeaderedContainerProps extends SviewProps {
   renderLeftAction?: () => React.ReactNode;
   renderRightAction?: () => React.ReactNode;
   header?: React.ReactNode;
-  backgroundColor: string;
+  backgroundColor?: string;
 }
 
 const CustomHeaderedContainer = (props: CustomHeaderedContainerProps) => {
@@ -24,7 +25,7 @@ const CustomHeaderedContainer = (props: CustomHeaderedContainerProps) => {
   }
   return (
     <Sview backgroundColor={backgroundColor} flex={1} {...otherProps}>
-      {header}
+      {header || <CustomHeader />}
       <Sview backgroundColor={backgroundColor} flex={1}>
         {children}
       </Sview>

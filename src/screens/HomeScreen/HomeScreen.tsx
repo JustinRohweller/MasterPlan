@@ -1,14 +1,16 @@
 import { Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import React from "react";
+import CustomHeaderedContainer from "../../CustomHeaderedContainer";
 
 interface HomeScreenProps {}
 
 const HomeScreen = ({}: HomeScreenProps) => {
   return (
-    <Sview flex={1} justifyContent="space-between">
-      <Stext>fsdffd</Stext>
-      <Stext>aaa</Stext>
-    </Sview>
+    <CustomHeaderedContainer>
+      <Sview flex={1}>
+        <Stext>Hi</Stext>
+      </Sview>
+    </CustomHeaderedContainer>
   );
 };
 
