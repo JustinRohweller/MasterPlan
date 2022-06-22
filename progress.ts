@@ -67,10 +67,8 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -constants DONE
 -navigator DONE pt 2 => instance of it NOT DONE
 -root pt 1 DONE, pt 2 => instance of it NOT DONE
--api
-     Need to make reuseable, then export those one by one.
--hooks => literally just export them.
-      Need to export them one by one.
+-api DONE
+-hooks => DONE
 -very common compoenents =>
       customcontentcontainer
       customwrapscrollview
