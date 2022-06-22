@@ -14,6 +14,7 @@
     "@expo/vector-icons": "^13.0.0",
     "@jrohweller/mycomponents.ui.constants": "^0.0.4",
     "@jrohweller/mycomponents.ui.email-auth-api": "^0.0.1",
+    "@jrohweller/mycomponents.ui.expo-media-picker": "^0.0.1",
     "@jrohweller/mycomponents.ui.molecules": "^0.0.2",
     "@jrohweller/mycomponents.ui.navigator": "^0.0.1",
     "@jrohweller/mycomponents.ui.root": "^0.0.4",

@@ -9,11 +9,11 @@
  */
 
 {
-    "ui/expo-media-picker": {
+    "ui/firebase-storage": {
         "scope": "jrohweller.mycomponents",
         "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "src/expoMediaPicker"
+        "rootDir": "src/firebaseStorage"
     },
     "$schema-version": "14.9.0"
 }

@@ -1,3 +1,4 @@
+import { EXPO_MEDIA_PICKER } from "@jrohweller/mycomponents.ui.expo-media-picker";
 import * as ImageManipulator from "expo-image-manipulator";
 import { getAuth } from "firebase/auth";
 import {
@@ -7,7 +8,6 @@ import {
   ref,
   uploadBytes,
 } from "firebase/storage";
-import { EXPO_MEDIA_PICKER } from "../expoMediaPicker";
 
 // TODO: would be better as a class. OOP ftw?
 // then we'd do export const new MediaPicker(400, firebase_config);

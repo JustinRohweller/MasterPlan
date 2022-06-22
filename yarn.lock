@@ -1912,6 +1912,15 @@
     firebase "^9.8.3"
     react-native "0.68.2"
 
+"@jrohweller/mycomponents.ui.expo-media-picker@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.cloud/@jrohweller/mycomponents.ui.expo-media-picker/-/@jrohweller-mycomponents.ui.expo-media-picker-0.0.1.tgz#9bb68fefaf9a00f90c9baf51cb13384f24633ce9"
+  integrity sha1-m7aP76+aAPkMm69RyxM4TyRjPOk=
+  dependencies:
+    expo-image-picker "~13.1.1"
+    expo-video-thumbnails "~6.3.0"
+    react-native "0.68.2"
+
 "@jrohweller/mycomponents.ui.molecules@0.0.2", "@jrohweller/mycomponents.ui.molecules@^0.0.2":
   version "0.0.2"
   resolved "https://node.bit.cloud/@jrohweller/mycomponents.ui.molecules/-/@jrohweller-mycomponents.ui.molecules-0.0.2.tgz#8efaab5dbcc7d1bacbba229d21509b24aac18e4a"
