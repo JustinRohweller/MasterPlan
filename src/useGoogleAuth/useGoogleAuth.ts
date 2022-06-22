@@ -1,11 +1,10 @@
 //Most interactions with the DB or different API or our back-end are in this file.
 /* eslint-disable max-len */
 
-import * as Google from "expo-auth-session/providers/google";
-import { GoogleAuthRequestConfig } from "expo-auth-session/providers/google";
+import EMAIL_AUTH from "@jrohweller/mycomponents.ui.email-auth-api";
+import { AuthRequestConfig, useAuthRequest } from "expo-auth-session";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useEffect } from "react";
-import EMAIL_AUTH from "../../../emailAuthApi/emailAuthApi";
 
 // https://docs.expo.dev/versions/v44.0.0/sdk/auth-session/
 // https://docs.expo.dev/guides/authentication/#google
@@ -25,10 +24,10 @@ interface IFirebaseError extends Error {
 }
 
 const useGoogleAuth = (
-  config: Partial<GoogleAuthRequestConfig>,
+  config: AuthRequestConfig,
   onError: (error: IFirebaseError) => void
 ) => {
-  const [request, response, promptAsync] = Google.useAuthRequest(config);
+  const [request, response, promptAsync] = useAuthRequest(config, null);
 
   useEffect(() => {
     if (response?.type === "success") {

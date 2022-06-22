@@ -3,10 +3,10 @@
 
 // https://medium.com/p/ca331b4de05/responses/show
 
+import EMAIL_AUTH from "@jrohweller/mycomponents.ui.email-auth-api";
 import * as AppleAuthentication from "expo-apple-authentication";
 import * as Crypto from "expo-crypto";
 import { OAuthProvider } from "firebase/auth";
-import EMAIL_AUTH from "../../../emailAuthApi/emailAuthApi";
 
 // https://docs.expo.io/versions/latest/sdk/apple-authentication/
 //comment all with function headers.
