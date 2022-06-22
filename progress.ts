@@ -1,6 +1,6 @@
 /*
 THE PLAN:
--make issue for dripsy that too many styles causes crash.
+-make issue for dripsy that too many styles causes crash. (breaktime2)
 -fix Sicon.
 -very common components =>
       customcontentcontainer
