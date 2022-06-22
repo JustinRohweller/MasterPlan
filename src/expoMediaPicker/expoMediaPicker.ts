@@ -1,5 +1,5 @@
-import * as VideoThumbnails from "expo-video-thumbnails";
 import * as ImagePicker from "expo-image-picker";
+import * as VideoThumbnails from "expo-video-thumbnails";
 import { Platform } from "react-native";
 
 // https://docs.expo.dev/versions/latest/sdk/imagepicker/
@@ -7,7 +7,6 @@ const EXPO_MEDIA_PICKER = {
   MediaTypeOptions: ImagePicker.MediaTypeOptions,
   requestMediaLibraryPermissionsAsync:
     ImagePicker.requestMediaLibraryPermissionsAsync,
-  // TODO: maybe create a separate file for image resizing.
 
   generateThumbnailFromVideo: async (videoUrl: string) => {
     const result = await VideoThumbnails.getThumbnailAsync(videoUrl, {

@@ -1,26 +1,16 @@
-import { initializeApp } from "@firebase/app";
+import * as ImageManipulator from "expo-image-manipulator";
+import { getAuth } from "firebase/auth";
 import {
-  getStorage,
-  ref,
-  getDownloadURL,
   deleteObject,
+  getDownloadURL,
   getMetadata,
+  ref,
   uploadBytes,
 } from "firebase/storage";
-import * as ImageManipulator from "expo-image-manipulator";
-import { GOOGLE_FIREBASE_CONFIG } from "../../../src/config";
-import { getAuth } from "firebase/auth";
-import { EXPO_MEDIA_PICKER } from "../mediaSelect";
-import { MAX_IMAGE_SIZE } from "../../constants";
+import { EXPO_MEDIA_PICKER } from "../expoMediaPicker";
 
-const firebaseApp = initializeApp(GOOGLE_FIREBASE_CONFIG);
-const storage = getStorage(firebaseApp);
-
-// crashes when: DO ALL FAST
-// message: text
-// then click directly into choose image
-// into directly the email
-// into directly send. (Happened on second attempt)
+// TODO: would be better as a class. OOP ftw?
+// then we'd do export const new MediaPicker(400, firebase_config);
 
 export const MEDIA_FOLDER_NAME = "userUploads";
 
@@ -30,11 +20,18 @@ interface ImageResult {
   height: number;
 }
 
+// const firebaseApp = initializeApp(GOOGLE_FIREBASE_CONFIG);
+// const storage = getStorage(firebaseApp);
+
 const FIREBASE_STORAGE = {
-  MAX_SIZE: MAX_IMAGE_SIZE,
+  MAX_SIZE: 400,
 
   // options is MediaPickerOptions
-  selectAndUploadMedia: async (options: any, storageRef: string) => {
+  selectAndUploadMedia: async (
+    options: any,
+    storageRef: string,
+    storage: any
+  ) => {
     const { currentUser } = getAuth();
     let result = await EXPO_MEDIA_PICKER.openPicker(options);
 
@@ -45,7 +42,8 @@ const FIREBASE_STORAGE = {
         if (currentUser) {
           const mediaContentCopy = await FIREBASE_STORAGE.getUploadedMedia(
             result,
-            storageRef
+            storageRef,
+            storage
           );
           return mediaContentCopy;
 
@@ -59,7 +57,7 @@ const FIREBASE_STORAGE = {
     return null;
   },
 
-  uploadImageAsync: async (uri: string, id: string) => {
+  uploadImageAsync: async (uri: string, id: string, storage: any) => {
     // Why are we using XMLHttpRequest? See:
     // https://github.com/expo/expo/issues/2402#issuecomment-443726662
     // TODO: tell other people:
@@ -86,9 +84,11 @@ const FIREBASE_STORAGE = {
       cacheControl: "public, max-age=86400",
     };
 
-    const result = await uploadBytes(imagesRef, blob, metadata);
+    // @ts-ignore
+    await uploadBytes(imagesRef, blob, metadata);
 
     // We're done with the blob, close and release it
+    // @ts-ignore
     blob.close();
 
     return await getDownloadURL(imagesRef);
@@ -122,7 +122,7 @@ const FIREBASE_STORAGE = {
     }
   },
 
-  getMultValue: (width: number, height: number) => {
+  getMultValue: (width: number, height: number, size?: number) => {
     // no divide by zero or undefined. typescript would prevent this.
     if (!width || !height) {
       return 1;
@@ -132,8 +132,8 @@ const FIREBASE_STORAGE = {
     let newHeight = height;
     // while the current height is too big, make it smaller.
     while (
-      newHeight > FIREBASE_STORAGE.MAX_SIZE ||
-      newWidth > FIREBASE_STORAGE.MAX_SIZE
+      newHeight > (size || FIREBASE_STORAGE.MAX_SIZE) ||
+      newWidth > (size || FIREBASE_STORAGE.MAX_SIZE)
     ) {
       //
       newHeight *= 0.99;
@@ -145,21 +145,25 @@ const FIREBASE_STORAGE = {
 
   // https://firebase.google.com/docs/storage/web/delete-files
 
-  deleteMediaUrl: async (url: string, onDeleteComplete: VoidFunction) => {
+  deleteMediaUrl: async (
+    url: string,
+    onDeleteComplete: VoidFunction,
+    storage: any
+  ) => {
     const mediaRef = ref(storage, url);
     await deleteObject(mediaRef)
       .then(() => {
         // File deleted successfully
         onDeleteComplete();
       })
-      .catch((error) => {
+      .catch(error => {
         // Uh-oh, an error occurred!
         console.info(JSON.stringify(error));
       });
   },
 
   // https://firebase.google.com/docs/storage/web/file-metadata
-  getFileMetadata: async (url: string) => {
+  getFileMetadata: async (url: string, storage: any) => {
     try {
       const metadataRef = await ref(storage, url);
       const metadata = await getMetadata(metadataRef);
@@ -170,28 +174,34 @@ const FIREBASE_STORAGE = {
     }
   },
 
-  getUploadedMedia: async (mediaContent: any, id: string) => {
+  getUploadedMedia: async (
+    mediaContent: any,
+    id: string,
+    storage: any,
+    size?: number
+  ) => {
     let mediaContentCopy = {
       uri: "",
-      width: FIREBASE_STORAGE.MAX_SIZE,
-      height: FIREBASE_STORAGE.MAX_SIZE,
+      width: size || FIREBASE_STORAGE.MAX_SIZE,
+      height: size || FIREBASE_STORAGE.MAX_SIZE,
     };
     if (mediaContent?.uri) {
       mediaContentCopy = { ...mediaContent };
       if (mediaContent?.type !== "video") {
         const multValue = await FIREBASE_STORAGE.getMultValue(
-          mediaContent?.width || FIREBASE_STORAGE.MAX_SIZE,
-          mediaContent?.height || FIREBASE_STORAGE.MAX_SIZE
+          mediaContent?.width || size || FIREBASE_STORAGE.MAX_SIZE,
+          mediaContent?.height || size || FIREBASE_STORAGE.MAX_SIZE
         );
         const manipResult = await FIREBASE_STORAGE.resizeImage(
           mediaContent?.uri,
-          mediaContent?.width || FIREBASE_STORAGE.MAX_SIZE,
-          mediaContent?.height || FIREBASE_STORAGE.MAX_SIZE,
+          mediaContent?.width || size || FIREBASE_STORAGE.MAX_SIZE,
+          mediaContent?.height || size || FIREBASE_STORAGE.MAX_SIZE,
           multValue
         );
         const url = await FIREBASE_STORAGE.uploadImageAsync(
           manipResult.uri,
-          id
+          id,
+          storage
         );
 
         mediaContentCopy.uri = url;
@@ -201,24 +211,26 @@ const FIREBASE_STORAGE = {
       } else {
         const url = await FIREBASE_STORAGE.uploadImageAsync(
           mediaContent.uri,
-          id
+          id,
+          storage
         );
         const thumbnailContent =
           await EXPO_MEDIA_PICKER.generateThumbnailFromVideo(url);
 
         const multValue = await FIREBASE_STORAGE.getMultValue(
-          thumbnailContent?.width || FIREBASE_STORAGE.MAX_SIZE,
-          thumbnailContent?.height || FIREBASE_STORAGE.MAX_SIZE
+          thumbnailContent?.width || size || FIREBASE_STORAGE.MAX_SIZE,
+          thumbnailContent?.height || size || FIREBASE_STORAGE.MAX_SIZE
         );
         const manipResult = await FIREBASE_STORAGE.resizeImage(
           thumbnailContent?.uri,
-          thumbnailContent?.width || FIREBASE_STORAGE.MAX_SIZE,
-          thumbnailContent?.height || FIREBASE_STORAGE.MAX_SIZE,
+          thumbnailContent?.width || size || FIREBASE_STORAGE.MAX_SIZE,
+          thumbnailContent?.height || size || FIREBASE_STORAGE.MAX_SIZE,
           multValue
         );
         const thumbnailUrl = await FIREBASE_STORAGE.uploadImageAsync(
           manipResult.uri,
-          `thumbnail${id}`
+          `thumbnail${id}`,
+          storage
         );
 
         // @ts-ignore

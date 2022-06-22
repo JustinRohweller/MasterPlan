@@ -274,6 +274,7 @@ const LAST_NAME_SCHEME = createOneScheme(
   }
 );
 
+// @ts-ignore
 const VALIDATION = {
   COMPONENT_TYPES,
 
