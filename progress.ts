@@ -1,7 +1,7 @@
 /*
 THE PLAN:
 -fix Sicon.
--very common compoenents =>
+-very common components =>
       customcontentcontainer
       customwrapscrollview
       custombutton
@@ -80,7 +80,9 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -scripts => likely will be doing pt 2 above.
 
 -common instances of stuff from above
--any random stuff (components, then functions, then maybe screens (loginscreen, ect.))
+-BUILD APP!
+-go back and improve/fix the stuff we have. (eh will do that as I build app)
+-any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
 // revisit nandorojo stuff. solito, ect.
 
