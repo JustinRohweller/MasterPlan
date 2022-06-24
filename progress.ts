@@ -1,12 +1,12 @@
 /*
 THE PLAN:
--make issue for dripsy that too many styles causes crash. (breaktime2)
 -fix Sicon.
 -very common components =>
-      customcontentcontainer
-      customwrapscrollview
-      custombutton
- -make root example you download and use.
+  customcontentcontainer
+  customwrapscrollview
+  custombutton
+-re-try Dripsy
+-make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 
 // in general, just make your own ui for the headers
