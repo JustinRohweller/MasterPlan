@@ -1,5 +1,6 @@
 /*
 THE PLAN:
+-improve Sicon even more, should have Sbutton as the container.
 -very common components =>
   customcontentcontainer
   customwrapscrollview
