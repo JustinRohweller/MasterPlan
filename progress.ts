@@ -4,6 +4,8 @@ THE PLAN:
   customcontentcontainer
   customwrapscrollview
   custombutton
+-try changing the name to be after "n" for node_modules.
+-ie. don't name it mycomponents
 -re-try Dripsy
 -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.

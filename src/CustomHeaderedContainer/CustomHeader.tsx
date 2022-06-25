@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import { Sicon, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
@@ -7,7 +7,7 @@ interface CustomHeaderProps {
   title?: string;
   renderLeftAction?: () => React.ReactNode;
   renderRightAction?: () => React.ReactNode;
-  HOME_TABS: { [key: string]: boolean };
+  noBack?: boolean;
 }
 
 const CustomHeader = (props: CustomHeaderProps) => {
@@ -23,23 +23,23 @@ const CustomHeader = (props: CustomHeaderProps) => {
   };
 
   const renderLeftAction = () => {
-    if (props.renderLeftAction) {
-      return props.renderLeftAction();
-    }
-    if (navigation.canGoBack() && !props.HOME_TABS[route.name]) {
-      return (
-        <Sview flex={1}>
-          <Sicon
-            onPress={navigation.goBack}
-            iconComponent={Ionicons}
-            name="ios-arrow-back"
-            size={24}
-            color="black"
-          />
-        </Sview>
-      );
-    }
-    return <Sview flex={1} />;
+    // if (props.renderLeftAction) {
+    //   return props.renderLeftAction();
+    // }
+    // if (navigation.canGoBack() && !props.noBack) {
+    return (
+      <Sview flex={1}>
+        <Sicon
+          onPress={navigation.goBack}
+          iconComponent={Entypo}
+          name="chevron-small-left"
+          size={24}
+          color="black"
+        />
+      </Sview>
+    );
+    // }
+    // return <Sview flex={1} />;
   };
 
   const renderRightAction = () => {
@@ -53,7 +53,7 @@ const CustomHeader = (props: CustomHeaderProps) => {
     <Sview
       width={"100%"}
       row
-      height={80}
+      height={50}
       backgroundColor={"orange"}
       alignItems="center"
     >
