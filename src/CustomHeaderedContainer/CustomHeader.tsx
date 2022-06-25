@@ -16,22 +16,30 @@ const CustomHeader = (props: CustomHeaderProps) => {
 
   const renderCenterAction = () => {
     return (
-      <Stext flex={1} alignSelf={"center"} textAlign={"center"} center>
+      <Stext
+        flex={1}
+        alignSelf={"center"}
+        textAlign={"center"}
+        center
+        textAlignVertical={"bottom"}
+      >
         {props.title || route.name}
       </Stext>
     );
   };
 
   const renderLeftAction = () => {
-    // if (props.renderLeftAction) {
-    //   return props.renderLeftAction();
-    // }
+    if (props.renderLeftAction) {
+      return props.renderLeftAction();
+    }
     // if (navigation.canGoBack() && !props.noBack) {
     return (
-      <Sview flex={1}>
+      <Sview flex={1} justifyContent={"center"} height={50}>
         <Sicon
+          backgroundColor={"black"}
           onPress={navigation.goBack}
           iconComponent={Entypo}
+          // @ts-ignore
           name="chevron-small-left"
           size={24}
           color="black"
@@ -39,7 +47,7 @@ const CustomHeader = (props: CustomHeaderProps) => {
       </Sview>
     );
     // }
-    // return <Sview flex={1} />;
+    return <Sview flex={1} />;
   };
 
   const renderRightAction = () => {
@@ -52,14 +60,23 @@ const CustomHeader = (props: CustomHeaderProps) => {
   return (
     <Sview
       width={"100%"}
-      row
+      // row
       height={50}
       backgroundColor={"orange"}
       alignItems="center"
     >
-      {renderLeftAction()}
-      {renderCenterAction()}
-      {renderRightAction()}
+      <Sview
+        height={50}
+        width={"90%"}
+        row
+        backgroundColor={"orange"}
+        alignItems="center"
+        alignSelf="center"
+      >
+        {renderLeftAction()}
+        {renderCenterAction()}
+        {renderRightAction()}
+      </Sview>
     </Sview>
   );
 };

@@ -9,5 +9,11 @@
  */
 
 {
+    "ui/molecules": {
+        "scope": "jrohweller.mycomponents",
+        "version": "0.0.4",
+        "mainFile": "index.ts",
+        "rootDir": "mycomponents/ui/molecules"
+    },
     "$schema-version": "14.9.0"
 }
