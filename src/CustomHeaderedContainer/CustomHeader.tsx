@@ -36,13 +36,9 @@ const CustomHeader = (props: CustomHeaderProps) => {
     // if (navigation.canGoBack() && !props.noBack) {
     return (
       <Sicon
-        // backgroundColor={"black"}
-        // height={50}
-        // width={100}
+        backgroundColor={"black"}
         flex={1}
-        justifyContent={"center"}
-        // alignItems={"flex-start"}
-        // alignSelf={"center"}
+        center
         onPress={navigation.goBack}
         iconComponent={Entypo}
         iconProps={{

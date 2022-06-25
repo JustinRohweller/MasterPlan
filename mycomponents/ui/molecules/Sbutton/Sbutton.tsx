@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { Sview } from "..";
-import { SviewProps } from "../Sview/Sview";
+import { getStandardProps, SviewProps } from "../Sview/Sview";
 
 export interface SbuttonProps extends SviewProps {
   onPress?: () => void;
@@ -11,6 +11,8 @@ export interface SbuttonProps extends SviewProps {
 const Sbutton = (props: SbuttonProps) => {
   const { onPress, buttonComponent, children, ...otherProps } = props;
 
+  console.log(otherProps);
+
   let buttComponent = TouchableOpacity;
   if (buttonComponent) {
     buttComponent = buttonComponent;
@@ -18,7 +20,14 @@ const Sbutton = (props: SbuttonProps) => {
 
   const ButtonComponent = buttComponent;
   return (
-    <ButtonComponent onPress={onPress}>
+    <ButtonComponent
+      onPress={onPress}
+      style={{
+        backgroundColor: "transparent",
+        ...getStandardProps(props),
+        ...otherProps,
+      }}
+    >
       <Sview {...otherProps}>{children}</Sview>
     </ButtonComponent>
   );

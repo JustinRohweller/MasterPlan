@@ -1,6 +1,7 @@
 /*
 THE PLAN:
 -improve Sicon even more, should have Sbutton as the container.
+-idea: have defaults for the components within the provider
 -very common components =>
   customcontentcontainer
   customwrapscrollview
