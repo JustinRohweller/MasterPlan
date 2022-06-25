@@ -1,25 +1,31 @@
 //Sview is a component that:
 // renders a view/layout of
-import { ScrollView } from "dripsy";
+import { Sx, View } from "dripsy";
 import React, { ComponentType, ReactNode, useContext } from "react";
-import type { FlexAlignType, ViewProps, ViewStyle } from "react-native";
-import { View } from "react-native";
+import type { FlexAlignType, ViewProps } from "react-native";
 import { MoleculeThemeContext } from "..";
-type ScrollProps = Omit<
-  React.ComponentProps<typeof ScrollView>,
-  "contentContainerStyle"
->;
 
 type ViewPropsWithoutStyle = Omit<ViewProps, "style">;
 
+type ViewType = typeof View;
+// type SxType = keyof SxProp;
+
+export type SviewProps = ViewType &
+  Sx & {
+    center?: boolean;
+    viewProps?: ViewPropsWithoutStyle;
+    row?: boolean;
+    viewComponent?: ComponentType<any>;
+    children?: ReactNode;
+  };
 // can have all the style props + a viewprops that has viewprops.
-export interface SviewProps extends ViewStyle {
-  center?: boolean;
-  viewProps?: ViewPropsWithoutStyle;
-  row?: boolean;
-  viewComponent?: ComponentType<any>;
-  children?: ReactNode;
-}
+// export interface SviewProps extends ViewStyle {
+//   center?: boolean;
+//   viewProps?: ViewPropsWithoutStyle;
+//   row?: boolean;
+//   viewComponent?: ComponentType<any>;
+//   children?: ReactNode;
+// }
 
 // ideally we'd export from <Sview like a SviewComponentProvider? no a componentsettingsprovider
 // and then Sview would have a hook?
