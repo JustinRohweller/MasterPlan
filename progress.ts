@@ -1,9 +1,7 @@
 /*
 THE PLAN:
--maybe have "useDripsy or something"
--OR GO ALL IN?
--need to make my <Sview with Dripsy so I get both worlds.
--need to update other packages too, 
+-GO ALL IN ON DRIPSY.
+-molecules finish rewrite.
 // since molecules is relied upon for other libs
 -improve Sicon even more, should have Sbutton as the container.
 -idea: have defaults for the components within the provider
