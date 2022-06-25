@@ -11,14 +11,22 @@ export interface CustomHeaderedContainerProps extends SviewProps {
   renderRightAction?: () => React.ReactNode;
   header?: React.ReactNode;
   backgroundColor?: string;
+  innerSviewProps?: SviewProps;
 }
 
 const CustomHeaderedContainer = (props: CustomHeaderedContainerProps) => {
-  const { children, header, title, backgroundColor, ...otherProps } = props;
+  const {
+    children,
+    header,
+    title,
+    backgroundColor,
+    innerSviewProps,
+    ...otherProps
+  } = props;
 
   if (props.noHeader) {
     return (
-      <Sview backgroundColor={backgroundColor} flex={1}>
+      <Sview backgroundColor={backgroundColor} flex={1} {...innerSviewProps}>
         {props.children}
       </Sview>
     );
@@ -26,7 +34,7 @@ const CustomHeaderedContainer = (props: CustomHeaderedContainerProps) => {
   return (
     <Sview backgroundColor={backgroundColor} flex={1} {...otherProps}>
       {header || <CustomHeader />}
-      <Sview backgroundColor={backgroundColor} flex={1}>
+      <Sview backgroundColor={backgroundColor} flex={1} {...innerSviewProps}>
         {children}
       </Sview>
     </Sview>
