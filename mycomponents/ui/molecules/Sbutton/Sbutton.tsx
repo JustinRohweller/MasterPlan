@@ -11,8 +11,6 @@ export interface SbuttonProps extends SviewProps {
 const Sbutton = (props: SbuttonProps) => {
   const { onPress, buttonComponent, children, ...otherProps } = props;
 
-  console.log(otherProps);
-
   let buttComponent = TouchableOpacity;
   if (buttonComponent) {
     buttComponent = buttonComponent;

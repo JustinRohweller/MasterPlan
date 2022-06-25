@@ -3,7 +3,10 @@ import {
   ignoreSettingATimer,
 } from "@jrohweller/mycomponents.ui.constants";
 import Root from "@jrohweller/mycomponents.ui.root";
+import { DripsyProvider, View } from "dripsy";
 import { LogBox } from "react-native";
+import { THEME } from "./dripsyTheme";
+import { MoleculeProvider } from "./mycomponents/ui/molecules";
 import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
@@ -45,9 +48,17 @@ const App = () => {
     statusBarDark: "transparant",
   };
 
+  const myTheme = {
+    viewComponent: View,
+  };
+
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} theme={theme}>
-      <Navigator />
+      <DripsyProvider theme={THEME}>
+        <MoleculeProvider theme={myTheme}>
+          <Navigator />
+        </MoleculeProvider>
+      </DripsyProvider>
     </Root>
   );
 };

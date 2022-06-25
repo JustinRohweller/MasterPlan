@@ -1,6 +1,6 @@
 //Simage is a component that:
 //
-import React from "react";
+import React, { ComponentType } from "react";
 import type {
   FlexAlignType,
   ImageProps,
@@ -20,15 +20,21 @@ interface SimageProps extends ImageStyle {
   imageProps?: SimageImageProps;
   source: ImageSourcePropType;
   center?: boolean;
+  imageComponent?: ComponentType<any>;
 }
 
-// https://akveo.github.io/react-native-ui-kitten/docs/components/text/overview#text
 const Simage = (props: SimageProps): JSX.Element => {
-  const { center, source, children, imageProps, ...otherProps } = props;
+  const {
+    center,
+    source,
+    imageComponent,
+    children,
+    imageProps,
+    ...otherProps
+  } = props;
 
   const getStyleProps = (): ImageStyle => {
     let alignSelf = "auto" as FlexAlignType | "auto" | undefined;
-
     if (props.center) {
       alignSelf = "center";
     }
@@ -45,8 +51,16 @@ const Simage = (props: SimageProps): JSX.Element => {
     };
   };
 
+  let imgComponent = Image;
+  if (imageComponent) {
+    // @ts-ignore
+    imgComponent = imageComponent;
+  }
+
+  const ImgComponent = imgComponent;
+
   return (
-    <Image
+    <ImgComponent
       style={{
         resizeMode: "contain",
         width: DEFAULT_WIDTH,

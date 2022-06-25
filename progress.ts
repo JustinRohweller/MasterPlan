@@ -1,5 +1,7 @@
 /*
 THE PLAN:
+-need to update other packages too, 
+// since molecules is relied upon for other libs
 -improve Sicon even more, should have Sbutton as the container.
 -idea: have defaults for the components within the provider
 -very common components =>
@@ -21,7 +23,10 @@ that takes in what to render.
 THEN: later within our new root, we can have these as "illegal" stuff 
 that we can import directly
 
-// CONTEXT RE-RENDERS ALL OF THE CONSUMER'S CHILDREN => keyword: CONSUMER, not the provider
+// CONTEXT RE-RENDERS ALL OF THE CONSUMER'S CHILDREN => 
+// keyword: CONSUMER, not the provider
+// also keyword: IF THE STORE CHANGES.
+// IE. seems like it's still good for DEFAULT GLOBAL PROPS
 // todo: check if too many contextproviders causes lots of re-renders
 // going to literally just try it for a project.
 // all consumers of context will re-render if the store changes.

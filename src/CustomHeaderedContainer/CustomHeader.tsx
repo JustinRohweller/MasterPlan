@@ -1,8 +1,8 @@
 import { Entypo } from "@expo/vector-icons";
-import { Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { Stext } from "@jrohweller/mycomponents.ui.molecules";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
-import { Sicon } from "../../mycomponents/ui/molecules";
+import { Sicon, Sview } from "../../mycomponents/ui/molecules";
 
 interface CustomHeaderProps {
   title?: string;
@@ -33,23 +33,30 @@ const CustomHeader = (props: CustomHeaderProps) => {
     if (props.renderLeftAction) {
       return props.renderLeftAction();
     }
-    // if (navigation.canGoBack() && !props.noBack) {
+    if (navigation.canGoBack() && !props.noBack) {
+      return (
+        <Sicon
+          flex={1}
+          justifyContent={"center"}
+          onPress={navigation.goBack}
+          iconComponent={Entypo}
+          iconProps={{
+            name: "chevron-small-left",
+            size: 24,
+            color: "black",
+          }}
+        />
+      );
+    }
     return (
-      <Sicon
-        backgroundColor={"black"}
+      <Sview
         flex={1}
-        center
-        onPress={navigation.goBack}
-        iconComponent={Entypo}
-        iconProps={{
-          name: "chevron-small-left",
-          size: 24,
-          color: "black",
-        }}
+        borderRadius={"massive"}
+        width={50}
+        height={50}
+        backgroundColor={"blue"}
       />
     );
-    // }
-    return <Sview flex={1} />;
   };
 
   const renderRightAction = () => {

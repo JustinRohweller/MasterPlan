@@ -1,8 +1,14 @@
 //Sview is a component that:
 // renders a view/layout of
-import React, { ComponentType, ReactNode } from "react";
+import { ScrollView } from "dripsy";
+import React, { ComponentType, ReactNode, useContext } from "react";
 import type { FlexAlignType, ViewProps, ViewStyle } from "react-native";
 import { View } from "react-native";
+import { MoleculeThemeContext } from "..";
+type ScrollProps = Omit<
+  React.ComponentProps<typeof ScrollView>,
+  "contentContainerStyle"
+>;
 
 type ViewPropsWithoutStyle = Omit<ViewProps, "style">;
 
@@ -50,18 +56,31 @@ export const getStandardProps = (props: any) => {
 const Sview = (props: SviewProps): JSX.Element => {
   const { viewProps, viewComponent, children, ...otherProps } = props;
 
+  const theme = useContext(MoleculeThemeContext);
+
   let newcomponent = View;
   if (viewComponent) {
     // @ts-ignore
     newcomponent = viewComponent;
   }
+  if (theme?.viewComponent) {
+    // @ts-ignore
+    newcomponent = theme.viewComponent;
+  }
 
   const Newcomponent = newcomponent;
+
   // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
   return (
     // @ts-ignore
     <Newcomponent
       style={{
+        backgroundColor: "transparent",
+        ...getStandardProps(props),
+        ...otherProps,
+      }}
+      // @ts-ignore
+      sx={{
         backgroundColor: "transparent",
         ...getStandardProps(props),
         ...otherProps,

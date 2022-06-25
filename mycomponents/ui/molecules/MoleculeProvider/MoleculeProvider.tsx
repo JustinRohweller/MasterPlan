@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from "react";
+import React, { ComponentType, createContext, useMemo } from "react";
 
 interface MoleculeProviderProps {
   theme?: any;
@@ -8,6 +8,11 @@ interface MoleculeProviderProps {
 export type MoleculeThemeContextType = {
   fontFamily?: string;
   textColor?: string;
+  viewComponent?: ComponentType<any>;
+  textComponent?: ComponentType<any>;
+  iconComponent?: ComponentType<any>;
+  buttonComponent?: ComponentType<any>;
+  imageComponent?: ComponentType<any>;
 };
 
 export const MoleculeThemeContext = createContext<MoleculeThemeContextType>(

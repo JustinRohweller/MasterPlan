@@ -8,7 +8,7 @@ const HomeScreen = ({}: HomeScreenProps) => {
   return (
     <CustomHeaderedContainer>
       <Sview flex={1}>
-        <Stext>Hi</Stext>
+        <Stext>there</Stext>
       </Sview>
     </CustomHeaderedContainer>
   );
