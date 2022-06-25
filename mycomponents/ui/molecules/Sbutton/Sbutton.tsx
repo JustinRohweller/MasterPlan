@@ -9,20 +9,18 @@ export interface SbuttonProps extends SviewProps {
 }
 
 const Sbutton = (props: SbuttonProps) => {
-  const { onPress, buttonComponent, ...otherProps } = props;
+  const { onPress, buttonComponent, children, ...otherProps } = props;
+
+  let buttComponent = TouchableOpacity;
   if (buttonComponent) {
-    const ButtonComponent = buttonComponent;
-    return (
-      <ButtonComponent onPress={onPress}>
-        <Sview {...otherProps} />
-      </ButtonComponent>
-    );
+    buttComponent = buttonComponent;
   }
 
+  const ButtonComponent = buttComponent;
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Sview {...otherProps} />
-    </TouchableOpacity>
+    <ButtonComponent onPress={onPress}>
+      <Sview {...otherProps}>{children}</Sview>
+    </ButtonComponent>
   );
 };
 

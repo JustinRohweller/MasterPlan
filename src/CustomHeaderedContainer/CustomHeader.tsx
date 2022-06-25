@@ -1,7 +1,8 @@
 import { Entypo } from "@expo/vector-icons";
-import { Sicon, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
+import { Sicon } from "../../mycomponents/ui/molecules";
 
 interface CustomHeaderProps {
   title?: string;
@@ -34,17 +35,22 @@ const CustomHeader = (props: CustomHeaderProps) => {
     }
     // if (navigation.canGoBack() && !props.noBack) {
     return (
-      <Sview flex={1} justifyContent={"center"} height={50}>
-        <Sicon
-          backgroundColor={"black"}
-          onPress={navigation.goBack}
-          iconComponent={Entypo}
-          // @ts-ignore
-          name="chevron-small-left"
-          size={24}
-          color="black"
-        />
-      </Sview>
+      <Sicon
+        // backgroundColor={"black"}
+        // height={50}
+        // width={100}
+        flex={1}
+        justifyContent={"center"}
+        // alignItems={"flex-start"}
+        // alignSelf={"center"}
+        onPress={navigation.goBack}
+        iconComponent={Entypo}
+        iconProps={{
+          name: "chevron-small-left",
+          size: 24,
+          color: "black",
+        }}
+      />
     );
     // }
     return <Sview flex={1} />;
@@ -60,23 +66,14 @@ const CustomHeader = (props: CustomHeaderProps) => {
   return (
     <Sview
       width={"100%"}
-      // row
+      row
       height={50}
       backgroundColor={"orange"}
       alignItems="center"
     >
-      <Sview
-        height={50}
-        width={"90%"}
-        row
-        backgroundColor={"orange"}
-        alignItems="center"
-        alignSelf="center"
-      >
-        {renderLeftAction()}
-        {renderCenterAction()}
-        {renderRightAction()}
-      </Sview>
+      {renderLeftAction()}
+      {renderCenterAction()}
+      {renderRightAction()}
     </Sview>
   );
 };

@@ -11,7 +11,7 @@ export interface SviewProps extends ViewStyle {
   center?: boolean;
   viewProps?: ViewPropsWithoutStyle;
   row?: boolean;
-  component?: ComponentType<any>;
+  viewComponent?: ComponentType<any>;
   children?: ReactNode;
 }
 
@@ -48,30 +48,19 @@ export const getStandardProps = (props: any) => {
 };
 
 const Sview = (props: SviewProps): JSX.Element => {
-  const { viewProps, children, ...otherProps } = props;
+  const { viewProps, viewComponent, children, ...otherProps } = props;
 
-  if (props.component) {
-    const Component = props.component;
-    // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
-    return (
-      // @ts-ignore
-      <Component
-        style={{
-          backgroundColor: "transparent",
-          ...getStandardProps(props),
-          ...otherProps,
-        }}
-        {...viewProps}
-      >
-        {children}
-      </Component>
-    );
+  let newcomponent = View;
+  if (viewComponent) {
+    // @ts-ignore
+    newcomponent = viewComponent;
   }
 
-  // it's literally saying React.ReactNode is not (node_modules/ReactNode)
-
+  const Newcomponent = newcomponent;
+  // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
   return (
-    <View
+    // @ts-ignore
+    <Newcomponent
       style={{
         backgroundColor: "transparent",
         ...getStandardProps(props),
@@ -79,9 +68,8 @@ const Sview = (props: SviewProps): JSX.Element => {
       }}
       {...viewProps}
     >
-      {/* @ts-ignore */}
       {children}
-    </View>
+    </Newcomponent>
   );
 };
 

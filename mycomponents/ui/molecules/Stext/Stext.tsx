@@ -1,6 +1,6 @@
 //Stext is a component that:
 //
-import React, { useContext } from "react";
+import React, { ComponentType, useContext } from "react";
 import { FlexAlignType, Text, TextProps, TextStyle } from "react-native";
 import { MoleculeThemeContext } from "..";
 // import { COLORS, DEFAULT_FONT } from "../../constants";
@@ -15,6 +15,7 @@ export interface StextProps extends TextStyle {
   children?: React.ReactNode;
   textProps?: StextTextProps;
   center?: boolean;
+  textComponent?: ComponentType<any>;
 }
 
 export const getStyleProps = (props: any, otherProps: any) => {
@@ -59,13 +60,24 @@ export const getStyleProps = (props: any, otherProps: any) => {
 
 // https://akveo.github.io/react-native-ui-kitten/docs/components/text/overview#text
 const Stext = (props: StextProps): JSX.Element => {
-  const { center, children, textProps, ...otherProps } = props;
+  const { center, textComponent, children, textProps, ...otherProps } = props;
+
+  let newcomponent = Text;
+  if (textComponent) {
+    // @ts-ignore
+    newcomponent = textComponent;
+  }
+
+  const Newcomponent = newcomponent;
 
   return (
-    <Text style={{ ...getStyleProps(props, otherProps) }} {...textProps}>
+    <Newcomponent
+      style={{ ...getStyleProps(props, otherProps) }}
+      {...textProps}
+    >
       {/* @ts-ignore */}
       {props.children}
-    </Text>
+    </Newcomponent>
   );
 };
 
