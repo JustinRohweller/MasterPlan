@@ -1,6 +1,5 @@
 /*
 THE PLAN:
--fix Sicon.
 -very common components =>
   customcontentcontainer
   customwrapscrollview

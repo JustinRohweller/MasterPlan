@@ -39,7 +39,6 @@
     "packageManager": "teambit.dependencies/yarn",
     "policy": {
       "dependencies": {
-        "@jrohweller/mycomponents.ui.molecules": "0.0.2",
         "expo-updates": "0.13.2"
       },
       "peerDependencies": {}
