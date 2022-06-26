@@ -1,6 +1,7 @@
 /*
 THE PLAN:
 -GO ALL IN ON DRIPSY.
+-ie. molecules, then root, then other that rely on molecules
 -molecules finish rewrite.
 // since molecules is relied upon for other libs
 -improve Sicon even more, should have Sbutton as the container.

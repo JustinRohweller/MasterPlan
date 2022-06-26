@@ -7,29 +7,13 @@ import { MoleculeThemeContext } from "..";
 
 type ViewPropsWithoutStyle = Omit<ViewProps, "style">;
 
-type ViewType = typeof View;
-// type SxType = keyof SxProp;
-
-export type SviewProps = ViewType &
-  Sx & {
-    center?: boolean;
-    viewProps?: ViewPropsWithoutStyle;
-    row?: boolean;
-    viewComponent?: ComponentType<any>;
-    children?: ReactNode;
-  };
-// can have all the style props + a viewprops that has viewprops.
-// export interface SviewProps extends ViewStyle {
-//   center?: boolean;
-//   viewProps?: ViewPropsWithoutStyle;
-//   row?: boolean;
-//   viewComponent?: ComponentType<any>;
-//   children?: ReactNode;
-// }
-
-// ideally we'd export from <Sview like a SviewComponentProvider? no a componentsettingsprovider
-// and then Sview would have a hook?
-// eh, just make a component if you want something else that bad.
+export interface SviewProps extends Sx {
+  center?: boolean;
+  viewProps?: ViewPropsWithoutStyle;
+  row?: boolean;
+  viewComponent?: ComponentType<any>;
+  children?: ReactNode;
+}
 
 export const getStandardProps = (props: any) => {
   let justifyContent:
@@ -64,27 +48,10 @@ const Sview = (props: SviewProps): JSX.Element => {
 
   const theme = useContext(MoleculeThemeContext);
 
-  let newcomponent = View;
-  if (viewComponent) {
-    // @ts-ignore
-    newcomponent = viewComponent;
-  }
-  if (theme?.viewComponent) {
-    // @ts-ignore
-    newcomponent = theme.viewComponent;
-  }
-
-  const Newcomponent = newcomponent;
-
   // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
   return (
     // @ts-ignore
-    <Newcomponent
-      style={{
-        backgroundColor: "transparent",
-        ...getStandardProps(props),
-        ...otherProps,
-      }}
+    <View
       // @ts-ignore
       sx={{
         backgroundColor: "transparent",
@@ -94,7 +61,7 @@ const Sview = (props: SviewProps): JSX.Element => {
       {...viewProps}
     >
       {children}
-    </Newcomponent>
+    </View>
   );
 };
 

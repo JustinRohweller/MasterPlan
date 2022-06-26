@@ -51,7 +51,7 @@ const CustomHeader = (props: CustomHeaderProps) => {
     return (
       <Sview
         flex={1}
-        borderRadius={"massive"}
+        borderRadius={"medium"}
         width={50}
         height={50}
         backgroundColor={"blue"}
