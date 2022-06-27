@@ -1,5 +1,6 @@
 //Simage is a component that:
 //
+import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Sview";
 import React, { ComponentType, useContext } from "react";
 import type {
   FlexAlignType,
@@ -16,7 +17,7 @@ const DEFAULT_WIDTH = WINDOW.width * 0.15;
 
 type SimageImageProps = Omit<ImageProps, "style">;
 
-interface SimageProps extends ImageStyle {
+interface SimageProps extends SviewProps {
   children?: React.ReactNode;
   imageProps?: SimageImageProps;
   source: ImageSourcePropType;
@@ -41,6 +42,7 @@ const Simage = (props: SimageProps): JSX.Element => {
     if (props.center) {
       alignSelf = "center";
     }
+    // @ts-ignore
     return {
       alignSelf,
       backgroundColor: "transparent",

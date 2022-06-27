@@ -50,16 +50,16 @@ export const THEME = makeTheme({
   fonts: {
     root: "OpenSans",
   },
-  sizes: {
-    width: {
-      "100%": "100%",
-      "90%": "90%",
-      "75%": "75%",
-      "50%": "50%",
-      "25%": "25%",
-      "10%": "10%",
-    },
-  },
+  // sizes: {
+  //   width: {
+  //     "100%": "100%",
+  //     "90%": "90%",
+  //     "75%": "75%",
+  //     "50%": "50%",
+  //     "25%": "25%",
+  //     "10%": "10%",
+  //   },
+  // },
 });
 type MyTheme = typeof THEME;
 declare module "dripsy" {

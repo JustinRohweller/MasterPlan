@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from "react";
 import { Dimensions } from "react-native";
-import Sview from "../Sview/Sview";
+import Sview, { SviewProps } from "../Sview/Sview";
 
 const WINDOW = Dimensions.get("window");
 const DEFAULT_HEIGHT = WINDOW.height * 0.025;
@@ -9,7 +9,7 @@ const DEFAULT_WIDTH = WINDOW.width * 0.025;
 const DEFAULT_SMALL_WIDTH = WINDOW.width * 0.01;
 const DEFAULT_SMALL_HEIGHT = WINDOW.height * 0.01;
 
-interface SpacerProps {
+interface SpacerProps extends SviewProps {
   height?: number;
   width?: number;
   small?: boolean;

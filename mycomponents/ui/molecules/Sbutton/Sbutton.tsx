@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
-import { Sview } from "..";
-import { getStandardProps, SviewProps } from "../Sview/Sview";
+import { MoleculeThemeContext, Sview } from "..";
+import { getStandardProps } from "../Sview/standardProps";
+import { SviewProps } from "../Sview/Sview";
 
 export interface SbuttonProps extends SviewProps {
   onPress?: () => void;
@@ -10,9 +11,15 @@ export interface SbuttonProps extends SviewProps {
 
 const Sbutton = (props: SbuttonProps) => {
   const { onPress, buttonComponent, children, ...otherProps } = props;
+  const theme = useContext(MoleculeThemeContext);
 
   let buttComponent = TouchableOpacity;
+  if (theme?.buttonComponent) {
+    // @ts-ignore
+    imgComponent = theme.buttonComponent;
+  }
   if (buttonComponent) {
+    // @ts-ignore
     buttComponent = buttonComponent;
   }
 
@@ -21,6 +28,7 @@ const Sbutton = (props: SbuttonProps) => {
     <ButtonComponent
       onPress={onPress}
       style={{
+        // @ts-ignore
         backgroundColor: "transparent",
         ...getStandardProps(props),
         ...otherProps,

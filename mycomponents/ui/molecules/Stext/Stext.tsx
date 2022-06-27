@@ -1,12 +1,12 @@
-import { Text } from "dripsy";
+import { Sx, Text } from "dripsy";
 import React, { ComponentType, useContext } from "react";
-import { TextProps, TextStyle } from "react-native";
+import { TextProps } from "react-native";
 import { MoleculeThemeContext } from "..";
 import { getTextStyleProps } from "./getTextStyleProps";
 
 type StextTextProps = Omit<TextProps, "style">;
 
-export interface StextProps extends TextStyle {
+export interface StextProps extends Sx {
   children?: React.ReactNode;
   textProps?: StextTextProps;
   center?: boolean;
