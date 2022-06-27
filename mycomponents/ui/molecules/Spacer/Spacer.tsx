@@ -9,6 +9,8 @@ const DEFAULT_WIDTH = WINDOW.width * 0.025;
 const DEFAULT_SMALL_WIDTH = WINDOW.width * 0.01;
 const DEFAULT_SMALL_HEIGHT = WINDOW.height * 0.01;
 
+// spacer is complete, needs testing
+
 interface SpacerProps extends SviewProps {
   height?: number;
   width?: number;

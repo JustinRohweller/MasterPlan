@@ -4,6 +4,8 @@ import { TextProps } from "react-native";
 import { MoleculeThemeContext } from "..";
 import { getTextStyleProps } from "./getTextStyleProps";
 
+// stext is complete, needs testing.
+
 type StextTextProps = Omit<TextProps, "style">;
 
 export interface StextProps extends Sx {

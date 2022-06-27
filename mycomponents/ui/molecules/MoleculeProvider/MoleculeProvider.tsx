@@ -1,8 +1,10 @@
+import { DripsyProvider } from "dripsy";
 import React, { ComponentType, createContext, useMemo } from "react";
 
 interface MoleculeProviderProps {
   theme?: any;
   children?: any;
+  dripsyTheme: any;
 }
 
 export type MoleculeThemeContextType = {
@@ -21,13 +23,16 @@ export const MoleculeThemeContext = createContext<MoleculeThemeContextType>(
 export const MoleculeProvider = ({
   theme,
   children,
+  dripsyTheme,
 }: MoleculeProviderProps) => {
   const context = useMemo(() => theme, [theme]);
 
   return (
-    <MoleculeThemeContext.Provider value={context}>
-      {children}
-    </MoleculeThemeContext.Provider>
+    <DripsyProvider theme={dripsyTheme}>
+      <MoleculeThemeContext.Provider value={context}>
+        {children}
+      </MoleculeThemeContext.Provider>
+    </DripsyProvider>
   );
 };
 

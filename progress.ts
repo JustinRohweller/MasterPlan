@@ -1,6 +1,7 @@
 /*
 THE PLAN:
 -ie. molecules, then root, then other that rely on molecules
+-dripsy let's us typecheck our propvalues.
 -GO ALL IN ON DRIPSY.
 -molecules finish rewrite.
 // since molecules is relied upon for other libs
@@ -10,7 +11,8 @@ THE PLAN:
   customcontentcontainer
   customwrapscrollview
   custombutton
--try changing the name to be after "n" for node_modules.
+-try changing the name to be after "n" for node_modules. 
+-ie. change scope to: personal
 -ie. don't name it mycomponents
 -re-try Dripsy
 -make root example you download and use.

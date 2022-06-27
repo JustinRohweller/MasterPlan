@@ -12,8 +12,6 @@ export const getTextStyleProps = (props: any, otherProps: any, theme: any) => {
   let alignItems: FlexAlignType | undefined;
   let textAlign = "auto" as "auto" | "left" | "right" | "center";
 
-  // This is working, but shouldn't be done?
-
   if (props.center) {
     justifyContent = "center";
     alignItems = "center";

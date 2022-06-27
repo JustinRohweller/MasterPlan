@@ -45,7 +45,9 @@ const Simage = (props: SimageProps): JSX.Element => {
     }
     // @ts-ignore
     return {
+      // @ts-ignore
       alignSelf,
+      // @ts-ignore
       backgroundColor: "transparent",
       ...otherProps,
     };

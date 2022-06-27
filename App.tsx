@@ -3,7 +3,6 @@ import {
   ignoreSettingATimer,
 } from "@jrohweller/mycomponents.ui.constants";
 import Root from "@jrohweller/mycomponents.ui.root";
-import { DripsyProvider } from "dripsy";
 import { LogBox } from "react-native";
 import { THEME } from "./dripsyTheme";
 import { MoleculeProvider } from "./mycomponents/ui/molecules";
@@ -50,11 +49,9 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} theme={theme}>
-      <DripsyProvider theme={THEME}>
-        <MoleculeProvider theme={theme}>
-          <Navigator />
-        </MoleculeProvider>
-      </DripsyProvider>
+      <MoleculeProvider theme={theme} dripsyTheme={THEME}>
+        <Navigator />
+      </MoleculeProvider>
     </Root>
   );
 };

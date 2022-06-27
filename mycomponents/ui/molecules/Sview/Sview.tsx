@@ -3,6 +3,8 @@ import React, { ComponentType, ReactNode } from "react";
 import type { ViewProps } from "react-native";
 import { getStandardProps } from "./standardProps";
 
+// sview is complete.
+
 type ViewPropsWithoutStyle = Omit<ViewProps, "style">;
 
 export interface SviewProps extends Sx {
