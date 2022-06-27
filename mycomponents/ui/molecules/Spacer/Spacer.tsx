@@ -26,6 +26,7 @@ const DEFAULT_PROPS = {
 const Spacer = (props: SpacerProps): JSX.Element => {
   return (
     <Sview
+      // @ts-ignore
       backgroundColor={"transparent"}
       {...props}
       height={
@@ -35,7 +36,8 @@ const Spacer = (props: SpacerProps): JSX.Element => {
           ? props.height
           : DEFAULT_PROPS.height
       }
-      width={30}
+      // @ts-ignore
+      width={DEFAULT_WIDTH}
     />
   );
 };
@@ -45,6 +47,7 @@ Spacer.W = (props: SpacerProps): JSX.Element => {
     <Sview
       backgroundColor={"transparent"}
       {...props}
+      // @ts-ignore
       width={
         props.small
           ? DEFAULT_SMALL_WIDTH
