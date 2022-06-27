@@ -1,7 +1,8 @@
 //Stext is a component that:
 //
+import { Text } from "dripsy";
 import React, { ComponentType, useContext } from "react";
-import { FlexAlignType, Text, TextProps, TextStyle } from "react-native";
+import { FlexAlignType, TextProps, TextStyle } from "react-native";
 import { MoleculeThemeContext } from "..";
 
 type StextTextProps = Omit<TextProps, "style">;
@@ -51,6 +52,8 @@ export const getStyleProps = (props: any, otherProps: any) => {
   }
   return DEFAULT_PROPS;
 };
+
+// do dripsy shit.
 
 // https://akveo.github.io/react-native-ui-kitten/docs/components/text/overview#text
 const Stext = (props: StextProps): JSX.Element => {
