@@ -29,6 +29,7 @@ const Spacer = (props: SpacerProps): JSX.Element => {
       // @ts-ignore
       backgroundColor={"transparent"}
       {...props}
+      // @ts-ignore
       height={
         props.small
           ? DEFAULT_SMALL_HEIGHT
