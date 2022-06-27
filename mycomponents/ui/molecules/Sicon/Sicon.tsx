@@ -7,6 +7,8 @@ interface SiconProps extends SbuttonProps {
   iconProps: any;
 }
 
+// Sicon is done, should be tested.
+
 const Sicon = (props: SiconProps) => {
   const { iconComponent, iconProps, ...otherProps } = props;
   const IconComponent = props.iconComponent;

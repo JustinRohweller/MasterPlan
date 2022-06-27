@@ -16,6 +16,8 @@ const WINDOW = Dimensions.get("window");
 const DEFAULT_HEIGHT = WINDOW.height * 0.15;
 const DEFAULT_WIDTH = WINDOW.width * 0.15;
 
+// Simage is done, just needs to be tested.
+
 type SimageImageProps = Omit<ImageProps, "style">;
 
 interface SimageProps extends SviewProps {

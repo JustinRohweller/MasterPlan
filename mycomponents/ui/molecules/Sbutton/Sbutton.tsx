@@ -8,7 +8,7 @@ export interface SbuttonProps extends SviewProps {
   onPress?: () => void;
   buttonComponent?: any;
 }
-
+// Sbutton is done, should be tested.
 const Sbutton = (props: SbuttonProps) => {
   const { onPress, buttonComponent, children, ...otherProps } = props;
   const theme = useContext(MoleculeThemeContext);
