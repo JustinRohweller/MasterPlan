@@ -3,11 +3,6 @@
 import React, { ComponentType, useContext } from "react";
 import { FlexAlignType, Text, TextProps, TextStyle } from "react-native";
 import { MoleculeThemeContext } from "..";
-// import { COLORS, DEFAULT_FONT } from "../../constants";
-
-// TODO: make component library with: https://github.com/callstack/react-theme-provider
-// have default fonts with:
-// https://github.com/react-native-training/react-native-fonts
 
 type StextTextProps = Omit<TextProps, "style">;
 
@@ -30,6 +25,7 @@ export const getStyleProps = (props: any, otherProps: any) => {
   let alignItems: FlexAlignType | undefined;
   let textAlign = "auto" as "auto" | "left" | "right" | "center";
 
+  // This is working, but shouldn't be done?
   const theme = useContext(MoleculeThemeContext);
 
   if (props.center) {
@@ -38,7 +34,6 @@ export const getStyleProps = (props: any, otherProps: any) => {
     textAlign = "center";
   }
   let DEFAULT_PROPS = {
-    // THESE ARE DEFAULT PROPS YOU CAN ADD.
     fontFamily: theme?.fontFamily || undefined,
     fontWeight: undefined,
     backgroundColor: "transparent",
@@ -48,7 +43,6 @@ export const getStyleProps = (props: any, otherProps: any) => {
 
   if (justifyContent || alignItems || textAlign) {
     return {
-      // THESE ARE DEFAULT PROPS YOU CAN ADD.
       textAlign,
       justifyContent,
       alignItems,

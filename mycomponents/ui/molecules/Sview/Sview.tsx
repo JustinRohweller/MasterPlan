@@ -1,9 +1,8 @@
 //Sview is a component that:
-// renders a view/layout of
+// renders a view/layout.
 import { Sx, View } from "dripsy";
-import React, { ComponentType, ReactNode, useContext } from "react";
+import React, { ComponentType, ReactNode } from "react";
 import type { FlexAlignType, ViewProps } from "react-native";
-import { MoleculeThemeContext } from "..";
 
 type ViewPropsWithoutStyle = Omit<ViewProps, "style">;
 
@@ -45,8 +44,6 @@ export const getStandardProps = (props: any) => {
 
 const Sview = (props: SviewProps): JSX.Element => {
   const { viewProps, viewComponent, children, ...otherProps } = props;
-
-  const theme = useContext(MoleculeThemeContext);
 
   // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
   return (

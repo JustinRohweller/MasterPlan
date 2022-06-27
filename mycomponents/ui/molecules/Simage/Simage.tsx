@@ -1,6 +1,6 @@
 //Simage is a component that:
 //
-import React, { ComponentType } from "react";
+import React, { ComponentType, useContext } from "react";
 import type {
   FlexAlignType,
   ImageProps,
@@ -8,6 +8,7 @@ import type {
   ImageStyle,
 } from "react-native";
 import { Dimensions, Image } from "react-native";
+import { MoleculeThemeContext } from "..";
 
 const WINDOW = Dimensions.get("window");
 const DEFAULT_HEIGHT = WINDOW.height * 0.15;
@@ -33,25 +34,25 @@ const Simage = (props: SimageProps): JSX.Element => {
     ...otherProps
   } = props;
 
+  const theme = useContext(MoleculeThemeContext);
+
   const getStyleProps = (): ImageStyle => {
     let alignSelf = "auto" as FlexAlignType | "auto" | undefined;
     if (props.center) {
       alignSelf = "center";
     }
-    if (alignSelf) {
-      return {
-        alignSelf,
-        backgroundColor: "transparent",
-        ...otherProps,
-      };
-    }
     return {
+      alignSelf,
       backgroundColor: "transparent",
       ...otherProps,
     };
   };
 
   let imgComponent = Image;
+  if (theme?.imageComponent) {
+    // @ts-ignore
+    imgComponent = theme.imageComponent;
+  }
   if (imageComponent) {
     // @ts-ignore
     imgComponent = imageComponent;

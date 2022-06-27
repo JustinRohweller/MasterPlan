@@ -8,7 +8,6 @@ interface MoleculeProviderProps {
 export type MoleculeThemeContextType = {
   fontFamily?: string;
   textColor?: string;
-  viewComponent?: ComponentType<any>;
   textComponent?: ComponentType<any>;
   iconComponent?: ComponentType<any>;
   buttonComponent?: ComponentType<any>;
