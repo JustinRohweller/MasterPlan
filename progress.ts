@@ -1,7 +1,7 @@
 /*
 THE PLAN:
--GO ALL IN ON DRIPSY.
 -ie. molecules, then root, then other that rely on molecules
+-GO ALL IN ON DRIPSY.
 -molecules finish rewrite.
 // since molecules is relied upon for other libs
 -improve Sicon even more, should have Sbutton as the container.
@@ -96,7 +96,10 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -go back and improve/fix the stuff we have. (eh will do that as I build app)
 -any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
+-Keep it simple stupid. Step 1) regular app, dripsy, my components.
+
 // revisit nandorojo stuff. solito, ect.
+-later => make it into a web version/try making a monorepo where you copy over.
 
 -make scripts to help make libraries.
 ie. script that copies code over, and publishes.
