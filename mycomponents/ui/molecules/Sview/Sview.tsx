@@ -1,5 +1,3 @@
-//Sview is a component that:
-// renders a view/layout.
 import { Sx, View } from "dripsy";
 import React, { ComponentType, ReactNode } from "react";
 import type { ViewProps } from "react-native";
@@ -18,7 +16,6 @@ export interface SviewProps extends Sx {
 const Sview = (props: SviewProps): JSX.Element => {
   const { viewProps, viewComponent, children, ...otherProps } = props;
 
-  // https://stackoverflow.com/questions/71852153/type-is-not-assignable-to-type-reactnode
   return (
     // @ts-ignore
     <View

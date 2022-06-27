@@ -1,7 +1,4 @@
 /* eslint-disable no-nested-ternary */
-// Spacer is a component that:
-//
-
 import React from "react";
 import { Dimensions } from "react-native";
 import Sview from "../Sview/Sview";
