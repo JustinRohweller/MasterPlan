@@ -3,7 +3,7 @@ import {
   ignoreSettingATimer,
 } from "@jrohweller/mycomponents.ui.constants";
 import Root from "@jrohweller/mycomponents.ui.root";
-import { DripsyProvider, View } from "dripsy";
+import { DripsyProvider } from "dripsy";
 import { LogBox } from "react-native";
 import { THEME } from "./dripsyTheme";
 import { MoleculeProvider } from "./mycomponents/ui/molecules";
@@ -11,7 +11,7 @@ import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
 
-// IF THE APP IS RELODING TWICE BEFORE SHOWING CHANGES WHEN IMAGES LINE IS THERE:
+// IF THE APP IS RELOADING TWICE BEFORE SHOWING CHANGES WHEN IMAGES LINE IS THERE:
 // REINSTALL EXPO AND IT SHOULD FIX IT>
 
 // Sentry.init({
@@ -48,14 +48,10 @@ const App = () => {
     statusBarDark: "transparant",
   };
 
-  const myTheme = {
-    viewComponent: View,
-  };
-
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} theme={theme}>
       <DripsyProvider theme={THEME}>
-        <MoleculeProvider theme={myTheme}>
+        <MoleculeProvider theme={theme}>
           <Navigator />
         </MoleculeProvider>
       </DripsyProvider>

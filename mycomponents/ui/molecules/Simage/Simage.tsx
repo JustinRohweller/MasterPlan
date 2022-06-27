@@ -1,6 +1,6 @@
 //Simage is a component that:
 //
-import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Sview";
+import { Image } from "dripsy";
 import React, { ComponentType, useContext } from "react";
 import type {
   FlexAlignType,
@@ -8,8 +8,9 @@ import type {
   ImageSourcePropType,
   ImageStyle,
 } from "react-native";
-import { Dimensions, Image } from "react-native";
+import { Dimensions } from "react-native";
 import { MoleculeThemeContext } from "..";
+import { SviewProps } from "../Sview/Sview";
 
 const WINDOW = Dimensions.get("window");
 const DEFAULT_HEIGHT = WINDOW.height * 0.15;
@@ -64,7 +65,7 @@ const Simage = (props: SimageProps): JSX.Element => {
 
   return (
     <ImgComponent
-      style={{
+      sx={{
         resizeMode: "contain",
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
