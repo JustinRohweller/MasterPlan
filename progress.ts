@@ -111,6 +111,9 @@ ON SAVE:
 -format, remove unused imports, format imports, import needed DONE
 -remove unused styles
 
+COMMIT:
+-have commit command with vscode
+
 GIT HOOKS:
 git hooks are good I think too for code cleanup.
 -Do all of ON SAVE stuff, but for entire codebase.
