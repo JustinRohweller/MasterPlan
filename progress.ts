@@ -112,7 +112,9 @@ ON SAVE:
 -remove unused styles
 
 COMMIT:
+-ctrl + shift + S
 -have commit command with vscode
+-on successful commit, push.
 
 GIT HOOKS:
 git hooks are good I think too for code cleanup.
