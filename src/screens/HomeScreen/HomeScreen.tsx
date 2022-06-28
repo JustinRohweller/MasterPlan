@@ -5,6 +5,7 @@ import {
   Sbutton,
   Sicon,
   Simage,
+  Spacer,
   Stext,
   Sview,
 } from "../../../mycomponents/ui/molecules";
@@ -24,11 +25,14 @@ const HomeScreen = ({}: HomeScreenProps) => {
             console.log("hi");
           }}
         />
-        <Simage
-          source={{ uri: APP_LOCAL_IMAGES.splash.uri }}
-          backgroundColor={"black"}
-          height={500}
-        />
+        <Sview row>
+          <Spacer row />
+          <Simage
+            source={{ uri: APP_LOCAL_IMAGES.splash.uri }}
+            backgroundColor={"black"}
+            height={500}
+          />
+        </Sview>
         <Sbutton
           borderRadius={"massive"}
           backgroundColor={"blue"}
