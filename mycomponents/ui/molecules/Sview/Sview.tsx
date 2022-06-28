@@ -29,6 +29,7 @@ const Sview = (props: SviewProps): JSX.Element => {
       }}
       {...viewProps}
     >
+      {/* @ts-ignore */}
       {children}
     </View>
   );

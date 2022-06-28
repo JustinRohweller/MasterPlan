@@ -68,6 +68,7 @@ const Simage = (props: SimageProps): JSX.Element => {
   const ImgComponent = imgComponent;
 
   return (
+    // @ts-ignore
     <ImgComponent
       // @ts-ignore
       sx={{
