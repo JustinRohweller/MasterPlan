@@ -1,12 +1,10 @@
+import { PERCENTS } from "@jrohweller/mycomponents.ui.constants";
+import { Spacer, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Sview";
 import React from "react";
 import { StyleSheet } from "react-native";
 import type { KeyboardAwareFlatListProps } from "react-native-keyboard-aware-scroll-view";
 import { KeyboardAwareFlatList } from "react-native-keyboard-aware-scroll-view";
-import { CustomHeaderedContainer } from "..";
-import { COLORS, PERCENTS } from "../../constants";
-import { Spacer, Sview } from "../../molecules";
-import type { SviewProps } from "../../molecules/Sview/Sview";
-import type { CustomHeaderedContainerProps } from "../CustomHeaderedContainer/CustomHeaderedContainer";
 
 // https://github.com/APSL/react-native-keyboard-aware-scroll-view
 // https://reactnative.dev/docs/flatlist
@@ -40,13 +38,13 @@ const CustomWrapScrollView = (props: CustomWrapScrollViewProps) => {
         ListHeaderComponent={
           <Sview
             flex={1}
-            backgroundColor={COLORS.BACKGROUND_ONE}
+            // backgroundColor={COLORS.BACKGROUND_ONE}
             {...props.containerViewProps}
           >
             <Sview
               width={"90%"}
               sCenter
-              backgroundColor={COLORS.BACKGROUND_ONE}
+              // backgroundColor={COLORS.BACKGROUND_ONE}
               {...props.outerViewProps}
             >
               {!props.noMarginTop && <Spacer height={PERCENTS.HEIGHT[5]} />}
@@ -86,6 +84,6 @@ export default CustomWrapScrollView;
 
 const styles = StyleSheet.create({
   flatlist: {
-    backgroundColor: COLORS.BACKGROUND_ONE
-  }
+    backgroundColor: COLORS.BACKGROUND_ONE,
+  },
 });
