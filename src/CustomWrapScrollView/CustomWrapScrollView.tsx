@@ -1,8 +1,11 @@
+import {
+  CustomHeaderedContainer,
+  CustomHeaderedContainerProps,
+} from "@jrohweller/mycomponents.custom-headered-container";
 import { PERCENTS } from "@jrohweller/mycomponents.ui.constants";
 import { Spacer, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Sview";
 import React from "react";
-import { StyleSheet } from "react-native";
 import type { KeyboardAwareFlatListProps } from "react-native-keyboard-aware-scroll-view";
 import { KeyboardAwareFlatList } from "react-native-keyboard-aware-scroll-view";
 
@@ -11,7 +14,6 @@ import { KeyboardAwareFlatList } from "react-native-keyboard-aware-scroll-view";
 
 interface CustomWrapScrollViewProps {
   renderFooter?: () => JSX.Element;
-  // headerProps?: CustomHeaderedContainerProps;
   containerViewProps?: SviewProps;
   outerViewProps?: SviewProps;
   children?: React.ReactNode;
@@ -21,7 +23,10 @@ interface CustomWrapScrollViewProps {
   onlyKeyboardView?: boolean;
   noHeader?: boolean;
   renderHeader?: () => JSX.Element;
+  backgroundColor?: string;
 }
+
+const renderItem = () => null;
 
 const CustomWrapScrollView = (props: CustomWrapScrollViewProps) => {
   const renderFooter = () => {
@@ -38,13 +43,13 @@ const CustomWrapScrollView = (props: CustomWrapScrollViewProps) => {
         ListHeaderComponent={
           <Sview
             flex={1}
-            // backgroundColor={COLORS.BACKGROUND_ONE}
+            backgroundColor={props.backgroundColor || "transparent"}
             {...props.containerViewProps}
           >
             <Sview
               width={"90%"}
-              sCenter
-              // backgroundColor={COLORS.BACKGROUND_ONE}
+              alignSelf="center"
+              backgroundColor={props.backgroundColor || "transparent"}
               {...props.outerViewProps}
             >
               {!props.noMarginTop && <Spacer height={PERCENTS.HEIGHT[5]} />}
@@ -53,8 +58,8 @@ const CustomWrapScrollView = (props: CustomWrapScrollViewProps) => {
           </Sview>
         }
         data={[{ id: "-1" }]}
-        style={styles.flatlist}
-        renderItem={() => null}
+        style={{ backgroundColor: props.backgroundColor || "transparent" }}
+        renderItem={renderItem}
         {...props.flatlistProps}
       />
     );
@@ -81,9 +86,3 @@ const CustomWrapScrollView = (props: CustomWrapScrollViewProps) => {
 };
 
 export default CustomWrapScrollView;
-
-const styles = StyleSheet.create({
-  flatlist: {
-    backgroundColor: COLORS.BACKGROUND_ONE,
-  },
-});
