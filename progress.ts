@@ -1,21 +1,23 @@
 /*
 THE PLAN:
 -quick export the example stuff (App.tsx, Navigator.tsx)
--Make breaktime app, with cool button =>
+-see if you can get solito running. if it runs, use for new breaktime.
+-Make breaktime app, with cool button => custombutton
+-document new project pains.
+- try the idea: 1 root alert component 
+that takes in what to render.
+-try perf lib
+-This helps decide what next.
+
 -very common components =>
+  customheaderedcontainer.
   custombutton --use moti and stuff to make cool button.
-  customwrapscrollview --SKIPPING?
+  customwrapscrollview
 -try changing the name to be after "n" for node_modules. 
 -ie. change scope to: personal
 -ie. don't name it mycomponents
 -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
-
-// in general, just make your own ui for the headers
-// ie. don't use UI-kitten
-
-// the idea: 1 root alert component 
-that takes in what to render.
 
 THEN: later within our new root, we can have these as "illegal" stuff 
 that we can import directly
@@ -88,8 +90,6 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 
 -common instances of stuff from above
 -BUILD APP! breaktime, have it able to export hrs/timesheet.
--test perf with that library.
--go back and improve/fix the stuff we have. (eh will do that as I build app)
 -any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
 -dripsy lets us typecheck our propvalues.
