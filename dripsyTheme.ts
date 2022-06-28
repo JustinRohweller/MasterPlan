@@ -48,7 +48,7 @@ export const THEME = makeTheme({
     },
   },
   fonts: {
-    root: "OpenSans",
+    root: "OpenSans-Regular",
   },
   // sizes: {
   //   width: {

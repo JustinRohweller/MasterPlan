@@ -1,3 +1,4 @@
+import { useSx } from "dripsy";
 import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
 import { MoleculeThemeContext, Sview } from "..";
@@ -13,6 +14,8 @@ const Sbutton = (props: SbuttonProps) => {
   const { onPress, buttonComponent, children, ...otherProps } = props;
   const theme = useContext(MoleculeThemeContext);
 
+  const sx = useSx();
+
   let buttComponent = TouchableOpacity;
   if (theme?.buttonComponent) {
     // @ts-ignore
@@ -24,16 +27,17 @@ const Sbutton = (props: SbuttonProps) => {
   }
 
   const ButtonComponent = buttComponent;
+
+  const style = {
+    // @ts-ignore
+    backgroundColor: "transparent",
+    ...getStandardProps(props),
+    ...otherProps,
+  };
+
+  console.log("Style", style);
   return (
-    <ButtonComponent
-      onPress={onPress}
-      style={{
-        // @ts-ignore
-        backgroundColor: "transparent",
-        ...getStandardProps(props),
-        ...otherProps,
-      }}
-    >
+    <ButtonComponent onPress={onPress} style={sx(style)}>
       <Sview {...otherProps}>{children}</Sview>
     </ButtonComponent>
   );
