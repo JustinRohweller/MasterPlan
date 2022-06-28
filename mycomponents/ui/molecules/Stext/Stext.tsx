@@ -23,6 +23,7 @@ const Stext = (props: StextProps): JSX.Element => {
 
   let newcomponent = Text;
   if (theme?.textComponent) {
+    // @ts-ignore
     newcomponent = theme.textComponent;
   }
 
@@ -36,6 +37,7 @@ const Stext = (props: StextProps): JSX.Element => {
   const style = { ...getTextStyleProps(props, otherProps, theme) };
 
   return (
+    // @ts-ignore
     <Newcomponent style={sx(style)} sx={style} {...textProps}>
       {/* @ts-ignore */}
       {props.children}

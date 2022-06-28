@@ -69,6 +69,7 @@ const Simage = (props: SimageProps): JSX.Element => {
 
   return (
     <ImgComponent
+      // @ts-ignore
       sx={{
         resizeMode: "contain",
         width: DEFAULT_WIDTH,
