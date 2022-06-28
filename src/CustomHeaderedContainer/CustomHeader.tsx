@@ -14,7 +14,7 @@ interface CustomHeaderProps {
   headerSviewProps?: SviewProps;
 }
 
-const DEFAULT_HEIGHT = 30;
+const DEFAULT_HEIGHT = 45;
 
 const CustomHeader = (props: CustomHeaderProps) => {
   const navigation = useNavigation();
@@ -62,7 +62,6 @@ const CustomHeader = (props: CustomHeaderProps) => {
       width={"100%"}
       row
       height={props.height || DEFAULT_HEIGHT}
-      backgroundColor={"orange"}
       alignItems="center"
       // @ts-ignore
       paddingHorizontal={PERCENTS.WIDTH[5]}
