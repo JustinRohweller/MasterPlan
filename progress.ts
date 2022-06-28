@@ -2,6 +2,7 @@
 THE PLAN:
 -quick export the example stuff (App.tsx, Navigator.tsx)
 -see if you can get solito running. if it runs, use for new breaktime.
+-try FB lib
 -Make breaktime app, with cool button => custombutton
 -document new project pains.
 - try the idea: 1 root alert component 
@@ -93,6 +94,8 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
 -dripsy lets us typecheck our propvalues.
+
+-idea for stack: heroku + prisma? hasura seemed ok, firebase seemed ok.
 
 // revisit nandorojo stuff. solito, ect.
 -later => make it into a web version/try making a monorepo where you copy over.
