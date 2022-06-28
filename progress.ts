@@ -1,9 +1,10 @@
 /*
 THE PLAN:
+-quick export the example stuff (App.tsx, Navigator.tsx)
+-Make breaktime app, with cool button =>
 -very common components =>
-  customcontentcontainer
-  customwrapscrollview
-  custombutton
+  custombutton --use moti and stuff to make cool button.
+  customwrapscrollview --SKIPPING?
 -try changing the name to be after "n" for node_modules. 
 -ie. change scope to: personal
 -ie. don't name it mycomponents
@@ -80,17 +81,17 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -api DONE
 -hooks => DONE
 -very common compoenents =>
-      customcontentcontainer
+      customcontentcontainer => maybe should make defaults
       customwrapscrollview
--scripts => likely will be doing pt 2 above.
+      custombutton
+-scripts => likely will be doing pt 2 above? no, just bit components.
 
 -common instances of stuff from above
--BUILD APP! breaktime
+-BUILD APP! breaktime, have it able to export hrs/timesheet.
 -test perf with that library.
 -go back and improve/fix the stuff we have. (eh will do that as I build app)
 -any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
--Keep it simple stupid. Step 1) regular app, dripsy, my components.
 -dripsy lets us typecheck our propvalues.
 
 // revisit nandorojo stuff. solito, ect.
@@ -104,7 +105,7 @@ and scripts to make those.
 
 ON SAVE:
 -format, remove unused imports, format imports, import needed DONE
--remove unused styles
+-remove unused styles NOT A BIG DEAL AT THE MOMENT, SHOULD USE INLINE STYLES
 
 COMMIT:
 -ctrl + shift + S
