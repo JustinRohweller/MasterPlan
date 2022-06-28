@@ -21,9 +21,7 @@ const HomeScreen = ({}: HomeScreenProps) => {
         <Sicon
           iconComponent={EvilIcons}
           iconProps={{ size: 30, name: "plus" }}
-          onPress={() => {
-            console.log("hi");
-          }}
+          onPress={() => {}}
         />
         <Sview row>
           <Spacer />

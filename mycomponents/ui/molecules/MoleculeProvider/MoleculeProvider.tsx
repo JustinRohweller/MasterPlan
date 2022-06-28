@@ -29,11 +29,9 @@ export const MoleculeProvider = ({
   const context = useMemo(() => theme, [theme]);
 
   return (
-    <DripsyProvider theme={dripsyTheme}>
-      <MoleculeThemeContext.Provider value={context}>
-        {children}
-      </MoleculeThemeContext.Provider>
-    </DripsyProvider>
+    <MoleculeThemeContext.Provider value={context}>
+      <DripsyProvider theme={dripsyTheme}>{children}</DripsyProvider>
+    </MoleculeThemeContext.Provider>
   );
 };
 

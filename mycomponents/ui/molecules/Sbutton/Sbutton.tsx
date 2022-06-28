@@ -35,7 +35,6 @@ const Sbutton = (props: SbuttonProps) => {
     ...otherProps,
   };
 
-  console.log("Style", style);
   return (
     <ButtonComponent onPress={onPress} style={sx(style)}>
       <Sview {...otherProps}>{children}</Sview>

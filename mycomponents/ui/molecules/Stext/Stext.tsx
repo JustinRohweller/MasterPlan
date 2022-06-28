@@ -35,7 +35,6 @@ const Stext = (props: StextProps): JSX.Element => {
 
   const style = { ...getTextStyleProps(props, otherProps, theme) };
 
-  console.log(sx(style));
   return (
     <Newcomponent style={sx(style)} sx={style} {...textProps}>
       {/* @ts-ignore */}
