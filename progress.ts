@@ -1,6 +1,5 @@
 /*
 THE PLAN:
--ie. molecules, then root, then other that rely on molecules
 -very common components =>
   customcontentcontainer
   customwrapscrollview
@@ -8,7 +7,6 @@ THE PLAN:
 -try changing the name to be after "n" for node_modules. 
 -ie. change scope to: personal
 -ie. don't name it mycomponents
--re-try Dripsy
 -make root example you download and use.
 // ie. take the actual file you are using that relies on those, export it.
 

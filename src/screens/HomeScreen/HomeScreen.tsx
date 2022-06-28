@@ -1,6 +1,4 @@
 import { EvilIcons } from "@expo/vector-icons";
-import React from "react";
-import { APP_LOCAL_IMAGES } from "../../../App";
 import {
   Sbutton,
   Sicon,
@@ -8,7 +6,9 @@ import {
   Spacer,
   Stext,
   Sview,
-} from "../../../mycomponents/ui/molecules";
+} from "@jrohweller/mycomponents.ui.molecules";
+import React from "react";
+import { APP_LOCAL_IMAGES } from "../../../App";
 import CustomHeaderedContainer from "../../CustomHeaderedContainer";
 
 interface HomeScreenProps {}
@@ -26,6 +26,7 @@ const HomeScreen = ({}: HomeScreenProps) => {
         <Sview row>
           <Spacer />
           <Simage
+            borderRadius={"massive"}
             source={{ uri: APP_LOCAL_IMAGES.splash.uri }}
             backgroundColor={"black"}
             height={500}

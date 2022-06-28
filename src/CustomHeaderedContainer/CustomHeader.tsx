@@ -1,8 +1,7 @@
 import { Entypo } from "@expo/vector-icons";
-import { Stext } from "@jrohweller/mycomponents.ui.molecules";
+import { Sicon, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
-import { Sicon, Sview } from "../../mycomponents/ui/molecules";
 
 interface CustomHeaderProps {
   title?: string;
