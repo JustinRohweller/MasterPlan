@@ -1,7 +1,7 @@
 /*
 THE PLAN:
 -ie. molecules, then root, then other that rely on molecules
--dripsy let's us typecheck our propvalues.
+-dripsy lets us typecheck our propvalues.
 -GO ALL IN ON DRIPSY.
 -molecules finish rewrite.
 // since molecules is relied upon for other libs
