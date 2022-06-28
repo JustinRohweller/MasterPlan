@@ -12,6 +12,11 @@ import { KeyboardAwareFlatList } from "react-native-keyboard-aware-scroll-view";
 // https://github.com/APSL/react-native-keyboard-aware-scroll-view
 // https://reactnative.dev/docs/flatlist
 
+// TODO: have provider to give defaults
+// ie. all these props in theme.
+
+// Also get stuff from luvbucks.
+
 interface CustomWrapScrollViewProps {
   renderFooter?: () => JSX.Element;
   containerViewProps?: SviewProps;
