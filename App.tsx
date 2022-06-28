@@ -4,8 +4,6 @@ import {
 } from "@jrohweller/mycomponents.ui.constants";
 import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
-import { THEME } from "./dripsyTheme";
-import { MoleculeProvider } from "./mycomponents/ui/molecules";
 import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
@@ -49,9 +47,7 @@ const App = () => {
 
   return (
     <Root fonts={Fonts} images={APP_LOCAL_IMAGES} theme={theme}>
-      <MoleculeProvider theme={theme} dripsyTheme={THEME}>
-        <Navigator />
-      </MoleculeProvider>
+      <Navigator />
     </Root>
   );
 };

@@ -1,12 +1,6 @@
 /*
 THE PLAN:
 -ie. molecules, then root, then other that rely on molecules
--dripsy lets us typecheck our propvalues.
--GO ALL IN ON DRIPSY.
--molecules finish rewrite.
-// since molecules is relied upon for other libs
--improve Sicon even more, should have Sbutton as the container.
--idea: have defaults for the components within the provider
 -very common components =>
   customcontentcontainer
   customwrapscrollview
@@ -99,6 +93,7 @@ https://stackoverflow.com/questions/66384138/im-trying-to-reinstall-expo-cli-pac
 -any random stuff (components, then features, then maybe screens (loginscreen, ect.))
 
 -Keep it simple stupid. Step 1) regular app, dripsy, my components.
+-dripsy lets us typecheck our propvalues.
 
 // revisit nandorojo stuff. solito, ect.
 -later => make it into a web version/try making a monorepo where you copy over.
