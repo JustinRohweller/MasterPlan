@@ -5,7 +5,7 @@ import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Svi
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 
-interface CustomHeaderProps {
+export interface CustomHeaderProps {
   title?: string;
   renderLeftAction?: () => React.ReactNode;
   renderRightAction?: () => React.ReactNode;

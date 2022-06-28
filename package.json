@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@jrohweller/mycomponents.custom-headered-container": "^0.0.2",
     "@jrohweller/mycomponents.ui.constants": "^0.0.4",
     "@jrohweller/mycomponents.ui.email-auth-api": "^0.0.1",
     "@jrohweller/mycomponents.ui.expo-media-picker": "^0.0.1",

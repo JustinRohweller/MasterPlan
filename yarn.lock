@@ -1920,7 +1920,18 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@jrohweller/mycomponents.ui.constants@^0.0.4":
+"@jrohweller/mycomponents.custom-headered-container@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.cloud/@jrohweller/mycomponents.custom-headered-container/-/@jrohweller-mycomponents.custom-headered-container-0.0.2.tgz#ba988b995095bcb593badf5bee20aab89b21dc33"
+  integrity sha1-upiLmVCVvLWTut9b7iCquJsh3DM=
+  dependencies:
+    "@expo/vector-icons" "^13.0.0"
+    "@jrohweller/mycomponents.ui.constants" "0.0.4"
+    "@jrohweller/mycomponents.ui.molecules" "0.0.6"
+    "@react-navigation/native" "^6.0.10"
+    react "17.0.2"
+
+"@jrohweller/mycomponents.ui.constants@0.0.4", "@jrohweller/mycomponents.ui.constants@^0.0.4":
   version "0.0.4"
   resolved "https://node.bit.cloud/@jrohweller/mycomponents.ui.constants/-/@jrohweller-mycomponents.ui.constants-0.0.4.tgz#d88ff4e7bbf0e5d56fed322f5810b52f50937149"
   integrity sha1-2I/057vw5dVv7TIvWBC1L1CTcUk=
