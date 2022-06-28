@@ -1,5 +1,7 @@
 import { Entypo } from "@expo/vector-icons";
+import { PERCENTS } from "@jrohweller/mycomponents.ui.constants";
 import { Sicon, Stext, Sview } from "@jrohweller/mycomponents.ui.molecules";
+import { SviewProps } from "@jrohweller/mycomponents.ui.molecules/dist/Sview/Sview";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
 
@@ -8,7 +10,11 @@ interface CustomHeaderProps {
   renderLeftAction?: () => React.ReactNode;
   renderRightAction?: () => React.ReactNode;
   noBack?: boolean;
+  height?: number;
+  headerSviewProps?: SviewProps;
 }
+
+const DEFAULT_HEIGHT = 30;
 
 const CustomHeader = (props: CustomHeaderProps) => {
   const navigation = useNavigation();
@@ -16,13 +22,7 @@ const CustomHeader = (props: CustomHeaderProps) => {
 
   const renderCenterAction = () => {
     return (
-      <Stext
-        flex={1}
-        alignSelf={"center"}
-        textAlign={"center"}
-        center
-        textAlignVertical={"bottom"}
-      >
+      <Stext flex={1} alignSelf={"center"} textAlign={"center"} center>
         {props.title || route.name}
       </Stext>
     );
@@ -41,21 +41,13 @@ const CustomHeader = (props: CustomHeaderProps) => {
           iconComponent={Entypo}
           iconProps={{
             name: "chevron-small-left",
-            size: 24,
+            size: 30,
             color: "black",
           }}
         />
       );
     }
-    return (
-      <Sview
-        flex={1}
-        borderRadius={"medium"}
-        width={50}
-        height={50}
-        backgroundColor={"blue"}
-      />
-    );
+    return <Sview flex={1} />;
   };
 
   const renderRightAction = () => {
@@ -69,9 +61,12 @@ const CustomHeader = (props: CustomHeaderProps) => {
     <Sview
       width={"100%"}
       row
-      height={50}
+      height={props.height || DEFAULT_HEIGHT}
       backgroundColor={"orange"}
       alignItems="center"
+      // @ts-ignore
+      paddingHorizontal={PERCENTS.WIDTH[5]}
+      {...props.headerSviewProps}
     >
       {renderLeftAction()}
       {renderCenterAction()}
