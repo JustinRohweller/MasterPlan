@@ -9,8 +9,16 @@ const HomeScreen = ({}: HomeScreenProps) => {
     <CustomHeaderedContainer>
       <Sview flex={1} backgroundColor={"orange"} borderRadius={"massive"}>
         <Stext>Hello There</Stext>
-        <Sbutton width={200} borderRadius={"small"} backgroundColor={"black"}>
-          <Stext>Hi</Stext>
+        <Sbutton
+          borderRadius={"massive"}
+          backgroundColor={"blue"}
+          width={30}
+          center
+          alignSelf="center"
+        >
+          <Stext center alignSelf={"center"}>
+            Hi
+          </Stext>
         </Sbutton>
       </Sview>
     </CustomHeaderedContainer>

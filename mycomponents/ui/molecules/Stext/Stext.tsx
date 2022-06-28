@@ -1,6 +1,6 @@
-import { Sx, Text } from "dripsy";
+import { Sx, useSx } from "dripsy";
 import React, { ComponentType, useContext } from "react";
-import { TextProps } from "react-native";
+import { Text, TextProps } from "react-native";
 import { MoleculeThemeContext } from "..";
 import { getTextStyleProps } from "./getTextStyleProps";
 
@@ -19,6 +19,8 @@ const Stext = (props: StextProps): JSX.Element => {
   const { center, textComponent, children, textProps, ...otherProps } = props;
   const theme = useContext(MoleculeThemeContext);
 
+  const sx = useSx();
+
   let newcomponent = Text;
   if (theme?.textComponent) {
     newcomponent = theme.textComponent;
@@ -31,11 +33,11 @@ const Stext = (props: StextProps): JSX.Element => {
 
   const Newcomponent = newcomponent;
 
+  const style = { ...getTextStyleProps(props, otherProps, theme) };
+
+  console.log(sx(style));
   return (
-    <Newcomponent
-      style={{ ...getTextStyleProps(props, otherProps, theme) }}
-      {...textProps}
-    >
+    <Newcomponent style={sx(style)} sx={style} {...textProps}>
       {/* @ts-ignore */}
       {props.children}
     </Newcomponent>
