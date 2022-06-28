@@ -26,13 +26,22 @@ const HomeScreen = ({}: HomeScreenProps) => {
           }}
         />
         <Sview row>
-          <Spacer row />
+          <Spacer />
           <Simage
             source={{ uri: APP_LOCAL_IMAGES.splash.uri }}
             backgroundColor={"black"}
             height={500}
           />
         </Sview>
+        <Sview center>
+          <Spacer
+            borderRadius={"massive"}
+            backgroundColor={"white"}
+            width={80}
+          />
+        </Sview>
+        <Spacer />
+        <Spacer />
         <Sbutton
           borderRadius={"massive"}
           backgroundColor={"blue"}
