@@ -1,6 +1,5 @@
 /*
 THE PLAN:
--quick export the example stuff (App.tsx, Navigator.tsx)
 -see if you can get solito running. if it runs, use for new breaktime.
 -try FB lib
 -Make breaktime app, with cool button => custombutton
