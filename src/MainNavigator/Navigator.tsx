@@ -1,7 +1,7 @@
 import { NavigationCreator } from "@jrohweller/mycomponents.ui.navigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as screens from "./src/screens";
+import * as screens from "../screens";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

@@ -5,9 +5,9 @@ import {
 import Root from "@jrohweller/mycomponents.ui.root";
 import { LogBox } from "react-native";
 import { THEME } from "./dripsyTheme";
-import Navigator from "./Navigator";
 import * as Fonts from "./src/assets/fonts";
 import * as Images from "./src/assets/images";
+import Navigator from "./src/MainNavigator";
 
 // IF THE APP IS RELOADING TWICE BEFORE SHOWING CHANGES WHEN IMAGES LINE IS THERE:
 // REINSTALL EXPO AND IT SHOULD FIX IT>
