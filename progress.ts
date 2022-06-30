@@ -54,6 +54,10 @@ IF shit is red, do use typescript workspace version.
 // can do --force-deploy if needed. ^
 // bit export
 // 
+// stick this in workspace.jsonc if you want to make example components
+//   "teambit.component/issues": {
+    // "ignoreIssues": ["ImportNonMainFiles", "UntrackedDependencies"]
+  // },
 
 // THEN: OTHER FILE: bit install @jrohweller/mycomponents.ui.molecules
 
