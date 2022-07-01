@@ -1,7 +1,7 @@
 /*
 THE PLAN:
 -see if you can get solito running. if it runs, use for new breaktime.
--try FB lib
+-try Firebase swr  lib
 -Make breaktime app, with cool button => custombutton
 -document new project pains.
 - try the idea: 1 root alert component 
