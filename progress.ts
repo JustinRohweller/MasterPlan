@@ -1,13 +1,27 @@
 /*
 THE PLAN:
--see if you can get solito running. if it runs, use for new breaktime.
--try Firebase swr  lib
 -Make breaktime app, with cool button => custombutton
 -document new project pains.
-- try the idea: 1 root alert component 
+- try the idea: 1 root alert component (react-native-notificated)
 that takes in what to render.
 -try perf lib
 -This helps decide what next.
+-light mode: solarized
+-yarn 3
+-suspense
+-reanimated 3
+-membrane webrtc lib.
+-datadog?
+-new expo cli
+-get copilot
+-react native perf shopify
+-prisma
+-add react-devtools globally
+-perf flipper.
+// https://shopify.github.io/flash-list/
+-https://github.com/bamlab/react-native-flipper-performance-monitor#install-for-expo-projects
+-shopify perf?
+-https://shopify.github.io/react-native-performance/docs/fundamentals/render-pass-report
 
 -very common components =>
   customheaderedcontainer.
